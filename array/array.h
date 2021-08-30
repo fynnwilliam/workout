@@ -1,3 +1,5 @@
+#include <exception>
+
 class array
 {
 private:
@@ -20,9 +22,26 @@ public:
     
     inline bool empty() const { return size_ == 0; }
     
-    inline int&       operator[](std::size_t index)       { return arr_[index]; }
+    int& operator[](std::size_t index)
+    { 
+        if (!valid(index))
+            throw std::out_of_range("invalid array index");
+        
+        return arr_[index];
+    }
     
-    inline int const& operator[](std::size_t index) const { return arr_[index]; }
+    int const& operator[](std::size_t index) const
+    { 
+        if (!valid(index))
+            throw std::out_of_range("invalid array index");
+            
+        return arr_[index];
+    }
+    
+    inline bool valid(std::size_t index) const
+    {
+        return index >= 0 && index <= size_;
+    }
     
     ~array() { delete[] arr_; }
 };
