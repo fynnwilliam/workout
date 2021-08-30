@@ -1,15 +1,26 @@
 #include <iostream>
-#include <cassert>
 
 #include "array.h"
 
 int main()
 {
-    array a{10};
-    for (int i = 0; i < a.size(); ++i)
-    {
-        a[i] = (i + 1) * 10;
-    }
+    array a{3};
+    a[0] = 10;
+    a[1] = 20;
+    a[2] = 30;
+    
+    array b = a;
+    
+    std::cout << " a = " << a << '\n';
+    std::cout << " b = " << b << '\n';
+    
+    b[1] = 100;
+    std::cout << "\n b[1] = 100; \n\n";
         
-    std::cout << " array elements: " << a << '\n';
+    std::cout << " a = " << a << '\n';
+    std::cout << " b = " << b << '\n';
+    
+    array c{};
+    array d = c;
+    std::cout << c << ' ' << d << '\n';
 }

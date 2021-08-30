@@ -18,6 +18,26 @@ public:
         }
     }
     
+    /*
+    array(array const& rhs) : size_{rhs.size()}, arr_{new int[rhs.size()]{}}
+    {
+        for (int i{}; i < size(); ++i)
+            arr_[i] = rhs[i];
+    }
+    */
+    
+    array(array const& rhs)
+    {
+        if (!rhs.empty())
+        {
+            size_ = rhs.size();
+            arr_ = new int[size_]{};
+        
+            for (int i{}; i < size(); ++i)
+                arr_[i] = rhs[i];
+        }
+    }
+    
     inline int size() const { return size_; }
     
     inline bool empty() const { return size_ == 0; }
