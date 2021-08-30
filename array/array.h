@@ -18,16 +18,22 @@ public:
         }
     }
         
-    array(array const& rhs)
+    array(array const& source)
     {
-        if (!rhs.empty())
+        if (!source.empty())
         {
-            size_ = rhs.size();
+            size_ = source.size();
             arr_ = new int[size_]{};
         
             for (int i{}; i < size(); ++i)
-                arr_[i] = rhs[i];
+                arr_[i] = source[i];
         }
+    }
+    
+    array(array&& source) : arr_{source.arr_}, size_{source.size_}
+    {
+        source.arr_ = nullptr;
+        source.size_ = 0;
     }
     
     array& operator=(array rhs)

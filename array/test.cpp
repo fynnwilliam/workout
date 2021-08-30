@@ -22,5 +22,5 @@ int main()
     
     array c{};
     array d = c;
-    std::cout << c << ' ' << d << '\n';
+    std::cout << ' ' << c << ' ' << d << '\n';
 }
