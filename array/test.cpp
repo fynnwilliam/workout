@@ -4,12 +4,12 @@
 
 int main()
 {
-    array a{3};
+    array<int> a{3};
     a[0] = 10;
     a[1] = 20;
     a[2] = 30;
     
-    array b = a;
+    array<int> b = a;
     
     std::cout << " a = " << a << '\n';
     std::cout << " b = " << b << '\n';
@@ -20,7 +20,7 @@ int main()
     std::cout << " a = " << a << '\n';
     std::cout << " b = " << b << '\n';
     
-    array c{};
-    array d = c;
+    array<double> c{};
+    array<double> d = c;
     std::cout << ' ' << c << ' ' << d << '\n';
 }

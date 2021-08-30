@@ -1,9 +1,11 @@
 #include <exception>
+#include <utility>
 
+template <typename T>
 class array
 {
 private:
-    int* arr_{nullptr};
+    T* arr_{nullptr};
     int  size_{};
     
 public:
@@ -23,7 +25,7 @@ public:
         if (!source.empty())
         {
             size_ = source.size();
-            arr_ = new int[size_]{};
+            arr_ = new T[size_]{};
         
             for (int i{}; i < size(); ++i)
                 arr_[i] = source[i];
@@ -53,7 +55,7 @@ public:
     
     inline bool empty() const { return size_ == 0; }
     
-    int& operator[](std::size_t index)
+    T& operator[](std::size_t index)
     { 
         if (!valid(index))
             throw std::out_of_range("invalid array index");
@@ -61,7 +63,7 @@ public:
         return arr_[index];
     }
     
-    int const& operator[](std::size_t index) const
+    T const& operator[](std::size_t index) const
     { 
         if (!valid(index))
             throw std::out_of_range("invalid array index");
