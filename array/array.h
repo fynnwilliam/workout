@@ -19,4 +19,6 @@ public:
     inline int size() const { return size_; }
     
     inline bool empty() const { return size_ == 0; }
+    
+    ~array() { delete[] arr_; }
 };
