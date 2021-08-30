@@ -20,5 +20,7 @@ public:
     
     inline bool empty() const { return size_ == 0; }
     
+    inline int& operator[](int const& index) { return arr_[index]; }
+    
     ~array() { delete[] arr_; }
 };
