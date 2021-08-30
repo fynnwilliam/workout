@@ -1,24 +1,22 @@
-#include "array.h"
+#include <cassert>
+
+#include "stack.h"
 
 int main()
 {
-    array<int> a{3};
-    a[0] = 10;
-    a[1] = 20;
-    a[2] = 30;
+    try
+    {
+        stack<int> s{10};
     
-    array<int> b = a;
+        std::cout << " created stack of max size: " << s.max_size() << '\n';
     
-    std::cout << " a = " << a << '\n';
-    std::cout << " b = " << b << '\n';
+        while (true)
+        {
+            std::cout << " trying: stack.push(64);...";
+            s.push(64);
+            std::cout << " ok\n";
+        }
+    }
     
-    b[1] = 100;
-    std::cout << "\n b[1] = 100; \n\n";
-        
-    std::cout << " a = " << a << '\n';
-    std::cout << " b = " << b << '\n';
-    
-    array<double> c{};
-    array<double> d = c;
-    std::cout << ' ' << c << ' ' << d << '\n';
+    catch (std::exception const& e) { std::cout << "\n " << e.what() << '\n'; }
 }

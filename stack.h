@@ -12,9 +12,21 @@ private:
 public:
     explicit stack(int max_size) : array_{max_size}, top_{-1} {}
     
-    void push(T const& elem) { array_[++top_] = elem; }
+    void push(T const& elem)
+    {
+        if (size() == max_size())
+            throw std::runtime_error("stack overflow");
+        
+        array_[++top_] = elem;
+    }
     
-    T pop() { return array_[top_--]; }
+    T pop()
+    {
+        if (!size())
+            throw std::runtime_error("stack underflow");
+            
+        return array_[top_--];
+    }
     
     T const& top() const { return array_[top_]; }
     
