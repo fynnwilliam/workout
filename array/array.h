@@ -20,7 +20,9 @@ public:
     
     inline bool empty() const { return size_ == 0; }
     
-    inline int& operator[](int const& index) { return arr_[index]; }
+    inline int&       operator[](std::size_t index)       { return arr_[index]; }
+    
+    inline int const& operator[](std::size_t index) const { return arr_[index]; }
     
     ~array() { delete[] arr_; }
 };
