@@ -43,5 +43,17 @@ public:
         return index >= 0 && index <= size_;
     }
     
+    friend std::ostream& operator<<(std::ostream& os, array const& a)
+    {
+        os << "[ ";
+        
+        for (int i = 0; i < a.size(); ++i)
+            os << a[i] << ' ';
+        
+        os << ']';
+        
+        return os;
+    }
+    
     ~array() { delete[] arr_; }
 };
