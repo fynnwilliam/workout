@@ -17,15 +17,7 @@ public:
             size_ = size;
         }
     }
-    
-    /*
-    array(array const& rhs) : size_{rhs.size()}, arr_{new int[rhs.size()]{}}
-    {
-        for (int i{}; i < size(); ++i)
-            arr_[i] = rhs[i];
-    }
-    */
-    
+        
     array(array const& rhs)
     {
         if (!rhs.empty())
@@ -36,6 +28,19 @@ public:
             for (int i{}; i < size(); ++i)
                 arr_[i] = rhs[i];
         }
+    }
+    
+    array& operator=(array rhs)
+    {
+        swap(*this, rhs);
+        
+        return *this;
+    }
+    
+    friend void swap(array& a, array& b) noexcept
+    {
+        std::swap(a.arr_, b.arr_);
+        std::swap(a.size_, b.size_);
     }
     
     inline int size() const { return size_; }
