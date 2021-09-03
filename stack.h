@@ -10,7 +10,7 @@ private:
     int      top_{};
     
 public:
-    explicit stack(int max_size) : array_{max_size}, top_{-1} {}
+    explicit stack(unsigned max_size) : array_{max_size}, top_{-1} {}
     
     void push(T const& elem)
     {
@@ -34,7 +34,7 @@ public:
     
     bool empty() const { return size() == 0; }
     
-    int max_size() const { return array_.size(); }
+    unsigned max_size() const { return array_.size(); }
     
     void clear() { top_ = -1; }
     

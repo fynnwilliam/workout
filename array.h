@@ -9,12 +9,12 @@ class array
 {
 private:
     T* arr_{nullptr};
-    int  size_{};
+    unsigned  size_{};
     
 public:
     array() = default;
     
-    explicit array(int size)
+    explicit array(unsigned size)
     {
         if (size > 0)
         {
@@ -30,7 +30,7 @@ public:
             size_ = source.size();
             arr_ = new T[size_]{};
         
-            for (int i{}; i < size(); ++i)
+            for (unsigned i{}; i < size(); ++i)
                 arr_[i] = source[i];
         }
     }
@@ -54,7 +54,7 @@ public:
         std::swap(a.size_, b.size_);
     }
     
-    inline int size() const { return size_; }
+    inline unsigned size() const { return size_; }
     
     inline bool empty() const { return size_ == 0; }
     
@@ -83,7 +83,7 @@ public:
     {
         os << "[ ";
         
-        for (int i = 0; i < a.size(); ++i)
+        for (unsigned i{}; i < a.size(); ++i)
             os << a[i] << ' ';
         
         os << ']';
