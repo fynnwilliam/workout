@@ -81,7 +81,7 @@ public:
     
     inline bool valid(std::size_t index) const
     {
-        return size_ && index <= size_;
+        return size_ && index < size_;
     }
     
     friend std::ostream& operator<<(std::ostream& os, array const& a)
