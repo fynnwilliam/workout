@@ -74,6 +74,11 @@ public:
         return arr_[index];
     }
     
+    inline bool operator==(array const& rhs) const
+    {
+        return arr_ == rhs.arr_ && size_ == rhs.size_;
+    }
+    
     inline bool valid(std::size_t index) const
     {
         return index >= 0 && index <= size_;
