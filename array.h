@@ -16,7 +16,7 @@ public:
     
     explicit array(unsigned size)
     {
-        if (size > 0)
+        if (size)
         {
             arr_ = new int[size]{};
             size_ = size;
@@ -37,7 +37,7 @@ public:
     
     array(array&& source) : arr_{source.arr_}, size_{source.size_}
     {
-        source.arr_ = nullptr;
+        source.arr_  = nullptr;
         source.size_ = 0;
     }
     
@@ -81,7 +81,7 @@ public:
     
     inline bool valid(std::size_t index) const
     {
-        return index >= 0 && index <= size_;
+        return size_ && index <= size_;
     }
     
     friend std::ostream& operator<<(std::ostream& os, array const& a)
