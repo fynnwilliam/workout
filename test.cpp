@@ -1,22 +1,11 @@
-#include <cassert>
-
-#include "stack.h"
+#include "array.h"
 
 int main()
 {
-    try
-    {
-        stack<int> s{10};
+    array<int> a{10};
+
+    int i{};
+    for ( auto& elem : a) elem = ++i;
     
-        std::cout << " created stack of max size: " << s.max_size() << '\n';
-    
-        while (true)
-        {
-            std::cout << " trying: stack.push(64);...";
-            s.push(64);
-            std::cout << " ok\n";
-        }
-    }
-    
-    catch (std::exception const& e) { std::cout << "\n " << e.what() << '\n'; }
+    for ( auto const& elem : a) std::cout << elem << '\n';
 }

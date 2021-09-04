@@ -83,6 +83,10 @@ public:
     {
         return size_ && index < size_;
     }
+
+    T* begin() const { return arr_; }
+    
+    T* end() const { return size_ ? &arr_[size_] : arr_; }
     
     friend std::ostream& operator<<(std::ostream& os, array const& a)
     {
