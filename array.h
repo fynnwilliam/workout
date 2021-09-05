@@ -91,9 +91,8 @@ public:
     friend std::ostream& operator<<(std::ostream& os, array const& a)
     {
         os << "[ ";
-        
-        for (unsigned i{}; i < a.size(); ++i)
-            os << a[i] << ' ';
+
+        for (auto const& elem : a) os << elem << ' ';
         
         os << ']';
         
