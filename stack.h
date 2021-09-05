@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <sstream>
 
 #include "array.h"
 
@@ -44,12 +45,12 @@ public:
     
     std::string data() const
     {
-        std::string data{};
+        std::stringstream ss;
         
         for (int i{top_}; i >= 0; --i)
-            data += std::to_string(array_[i]) + ' ';
+            ss << array_[i] << ' ';
         
-        return data;
+        return ss.str();
     }
     
     friend std::ostream& operator<<(std::ostream& os, stack<T> const& s)

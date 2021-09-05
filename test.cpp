@@ -15,7 +15,7 @@ int main()
         s.push(8);
         
         std::cout << s << "\n";
-        std::cout << stack<float>{3} << "\n";
+        std::cout << stack<std::string>{3} << "\n";
         
     }
     
