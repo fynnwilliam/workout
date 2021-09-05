@@ -14,8 +14,12 @@ int main()
         s.push(7);
         s.push(8);
         
-        std::cout << s << "\n";
+        std::cout << s << '\n';
         std::cout << stack<std::string>{3} << "\n";
+        
+        std::stringstream ss{};
+        ss << s;
+        std::cout << ss.str() << '\n';
         
     }
     
