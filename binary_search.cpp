@@ -27,7 +27,7 @@ int binary_search(T elem, T const* const v, int const& size) noexcept
 template <typename T>
 void print(T const& v) noexcept
 {
-    std::cout << '[';
+    std::cout << "[ ";
     
     for (auto const& item : v)
         std::cout << item << ' ';
@@ -38,7 +38,7 @@ void print(T const& v) noexcept
 void verify(int const& index) noexcept
 {
     if (index == -1 )
-        std::cout << "element not found\n";
+        std::cout << "element not found, kindly check for typos" << std::endl;
     else
         std::cout << "element found at index " << index << std::endl;
 }
@@ -46,14 +46,13 @@ void verify(int const& index) noexcept
 int main()
 {
     std::vector<std::string> v{"cat", "dog", "cow", "sheep", "rabbit"};
+    
     std::sort(v.begin(), v.end(), [](auto& a, auto& b) { return a < b; });
     print(v);
     
     std::cout << "please enter an element to search: ";
     std::string elem{};
-    std::cin >> elem;
-    std::cin.clear();
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    std::getline(std::cin, elem);
     
     int index = binary_search(elem, v.data(), v.size());
     
