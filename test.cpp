@@ -1,11 +1,12 @@
-#include "array.h"
+#include "stack.h"
 
 int main()
 {
-    array<int> a{10};
-
-    int i{};
-    for ( auto& elem : a) elem = ++i;
+    try
+    {
+        stack<int> s{23};
+        std::cout << s.top() << '\n';
+    }
     
-    for ( auto const& elem : a) std::cout << elem << '\n';
+    catch (std::exception const& e) { std::cout << e.what() << std::endl; }
 }

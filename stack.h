@@ -19,7 +19,7 @@ public:
         
         array_[++top_] = elem;
     }
-    
+
     T pop()
     {
         if (!size())
@@ -28,9 +28,12 @@ public:
         return array_[top_--];
     }
     
-    T const& top() const { return array_[top_]; }
+    T const& top() const
+    {
+        return size() ? array_[top_] : throw std::runtime_error("empty stack");
+    }
     
-    int size() const { return top_ + 1; }
+    unsigned size() const { return top_ + 1; }
     
     bool empty() const { return size() == 0; }
     
