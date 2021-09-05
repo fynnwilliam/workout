@@ -18,7 +18,7 @@ public:
     {
         if (size)
         {
-            arr_ = new int[size]{};
+            arr_ = new T[size]{};
             size_ = size;
         }
     }
