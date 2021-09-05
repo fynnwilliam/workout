@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 #include "array.h"
 
@@ -41,22 +42,18 @@ public:
     
     void clear() { top_ = -1; }
     
+    std::string data() const
+    {
+        std::string data{};
+        
+        for (int i{top_}; i >= 0; --i)
+            data += std::to_string(array_[i]) + ' ';
+        
+        return data;
+    }
+    
     friend std::ostream& operator<<(std::ostream& os, stack<T> const& s)
     {
-        if (s.empty())
-        {
-            os << "  [*** empty stack ***]\n\n";
-            
-            return os;
-        }
-        
-        os << "  [stack]\n";
-        
-        for (int i{s.top_}; i >= 0; --i)
-            os << "   " << s.array_[i] << '\n';
-            
-        os << '\n';
-        
-        return os;
+        return os << (s.empty() ? "[ empty stack ]" : s.data());
     }
 };
