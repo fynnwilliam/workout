@@ -55,6 +55,6 @@ public:
     
     friend std::ostream& operator<<(std::ostream& os, stack<T> const& s)
     {
-        return os << (s.empty() ? "[ empty stack ]" : s.data());
+        return os << s.data();
     }
 };

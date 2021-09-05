@@ -20,7 +20,6 @@ int main()
         std::stringstream ss{};
         ss << s;
         std::cout << ss.str() << '\n';
-        
     }
     
     catch (std::exception const& e) { std::cout << e.what() << std::endl; }
