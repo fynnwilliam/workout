@@ -81,7 +81,7 @@ public:
     
     inline bool valid(std::size_t index) const
     {
-        return size_ && index < size_;
+        return index < size_;
     }
 
     T* begin() const { return arr_; }
