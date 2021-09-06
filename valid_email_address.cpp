@@ -9,5 +9,5 @@ bool valid_email(std::string const& item)
 
 int main()
 {
-    std::cout << std::boolalpha << valid_email("example@email.com") << '\n';
+    std::cout << std::boolalpha << valid_email("example@email.com") << std::endl;
 }
