@@ -1,6 +1,5 @@
 #include <iostream>
 #include <unordered_map>
-#include <cassert>
 
 unsigned long nth_fibonacci(int n)
 {
