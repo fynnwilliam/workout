@@ -8,7 +8,7 @@ unsigned long grid_traveler(int m, int n)
     std::string key{std::to_string(m) + ',' + std::to_string(n)};
     static std::unordered_map<std::string, unsigned long> memo;
     
-    if (memo.count(key))   return memo[key];
+    if (memo.count(key))  return memo[key];
     if (!m || !n) 	      return 0;
     if (m == 1 && n == 1) return 1;
     
