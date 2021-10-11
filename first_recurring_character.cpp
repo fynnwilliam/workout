@@ -1,16 +1,13 @@
-#include <unordered_map>
 #include <iostream>
 #include <string>
 
 char first_recurring_char(std::string const& s)
-{
-    std::unordered_map<char, int> m;
-    
-    for (char const& c : s)
-        ++m[c];
-    
-    for (char const& c : s)
-        if (m[c] > 1) return c;
+{   
+    for (std::size_t i{}; i < s.size() - 1; ++i)
+    {
+        if (auto pos = s.find_last_of(s[i]); pos > i && pos < s.size())
+            return s[i];
+    }
     
     return ' ';
 }
