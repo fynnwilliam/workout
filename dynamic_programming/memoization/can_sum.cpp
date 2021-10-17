@@ -22,9 +22,9 @@ bool can_sum(int target, std::vector<int> const& v, std::unordered_map<int, bool
 
 int main()
 {
-    std::cout << std::boolalpha << can_sum(7, std::vector<int>{2, 3}) << '\n'
-                                << can_sum(7, std::vector<int>{5, 3, 4, 7}) << '\n'
-                                << can_sum(7, std::vector<int>{2, 4}) << '\n'
-                                << can_sum(19, std::vector<int>{12, 3, 5}) << '\n'
-                                << can_sum(41, std::vector<int>{7, 15}) << std::endl;
+    std::cout << std::boolalpha << can_sum(7,  std::vector<int>{2, 3})       << '\n'
+                                << can_sum(7,  std::vector<int>{5, 3, 4, 7}) << '\n'
+                                << can_sum(7,  std::vector<int>{2, 4})       << '\n'
+                                << can_sum(19, std::vector<int>{12, 3, 5})   << '\n'
+                                << can_sum(41, std::vector<int>{7, 15})      << std::endl;
 }

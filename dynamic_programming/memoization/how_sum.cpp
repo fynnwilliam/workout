@@ -7,8 +7,8 @@
 std::unique_ptr<std::vector<int>> how_sum(int target, std::vector<int> const& v, std::unordered_map<int, std::unique_ptr<std::vector<int>>>&& m = {})
 {
     if (m.count(target)) return std::move(m[target]);
-    if (!target) return std::unique_ptr<std::vector<int>> {new std::vector<int>{}};
-    if (target < 0) return {{}};
+    if (!target)         return std::make_unique<std::vector<int>>();
+    if (target < 0)      return nullptr;
     
     for (int elem : v)
     {
@@ -19,13 +19,12 @@ std::unique_ptr<std::vector<int>> how_sum(int target, std::vector<int> const& v,
         }
     }
 
-    
-    return std::move(m[target] = {{}});
+    return std::move(m[target] = nullptr);
 }
 
 int main()
 {
-    auto v{ how_sum(100, {3, 33, 13, 5, 8}) };
+    auto v{ how_sum(100, {8, 5, 3, 33, 13}) };
     
     if (!v)
     {

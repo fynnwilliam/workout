@@ -5,10 +5,10 @@
 #include <list>
 
 std::list<std::list<std::string>>
-all_construct(std::string s, std::vector<std::string> word_bank, std::unordered_map<std::string, std::list<std::list<std::string>>>&& m = {})
+all_construct(std::string s, std::vector<std::string> const& word_bank, std::unordered_map<std::string, std::list<std::list<std::string>>>&& m = {})
 {
     if (m.count(s)) return m[s];
-    if (s.empty()) return {{}};
+    if (s.empty())  return {{}};
     
     std::list<std::list<std::string>> result;
     

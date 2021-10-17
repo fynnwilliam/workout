@@ -7,7 +7,7 @@
 int count_construct(std::string s, std::vector<std::string> word_bank, std::unordered_map<std::string, int>&& m = {})
 {
     if (m.count(s)) return m[s];
-    if (s.empty()) return 1;
+    if (s.empty())  return 1;
     
     int total_count{};
     
@@ -27,5 +27,5 @@ int main()
 {
     std::vector<std::string> v{"a", "p", "ent", "enter", "ot", "o", "t"};
 
-    std::cout << std::boolalpha << count_construct("enterapotentpot", v) << '\n';
+    std::cout << std::boolalpha << count_construct("enterapotentpot", v) << std::endl;
 }

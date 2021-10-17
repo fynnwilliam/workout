@@ -4,10 +4,10 @@
 #include <vector>
 #include <string>
 
-bool can_construct(std::string s, std::vector<std::string>& word_bank, std::unordered_map<std::string, bool>&& m = {})
+bool can_construct(std::string s, std::vector<std::string> const& word_bank, std::unordered_map<std::string, bool>&& m = {})
 {
     if (m.count(s)) return m[s];
-    if (s.empty()) return true;
+    if (s.empty())  return true;
 
     for (auto const& word : word_bank)
     {
