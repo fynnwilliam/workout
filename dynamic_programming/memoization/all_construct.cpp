@@ -19,10 +19,10 @@ all_construct(std::string s, std::vector<std::string> word_bank, std::unordered_
             auto suffix_list = all_construct(s.substr(word.length()), word_bank, std::move(m));
             
             for (auto& elem : suffix_list)
+            {
                 elem.push_front(word);
-            
-            for (auto& elem : suffix_list)
                 result.push_back(elem);
+            }
         }
     }
 
