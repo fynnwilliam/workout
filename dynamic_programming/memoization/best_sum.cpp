@@ -6,10 +6,10 @@
 std::unique_ptr<std::vector<int>> best_sum(int target, std::vector<int> const& v, std::unordered_map<int, std::vector<int>>&& m = {})
 {
     if (m.count(target)) return std::make_unique<std::vector<int>>(m[target]);
-    if (!target) return std::unique_ptr<std::vector<int>>{new std::vector<int>{}};
-    if (target < 0) return {{}};
+    if (!target)         return std::make_unique<std::vector<int>>();
+    if (target < 0)      return nullptr;
 
-    std::unique_ptr<std::vector<int>> shortest_c;
+    std::unique_ptr<std::vector<int>> shortest_c{};
     
     for (int elem : v)
     {
