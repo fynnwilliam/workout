@@ -6,13 +6,10 @@ unsigned long nth_fibonacci(int n)
 {
     static std::unordered_map<int, unsigned long> m;
     
-    if (m.count(n)) return m[n];
-    if (n <= 0)     return 0;
-    if (n == 1)     return 1;
-
-    m[n] = nth_fibonacci(n - 1) + nth_fibonacci(n - 2);
-    
-    return m[n];
+    return m.count(n) ? m[n] :
+           n <  1     ? 0    :
+           n == 1     ? 1    :
+           m[n] = nth_fibonacci(n - 1) + nth_fibonacci(n - 2);
 }
 
 int main()
