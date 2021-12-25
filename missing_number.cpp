@@ -2,6 +2,7 @@
 #include <numeric>
 #include <ctime>
 #include <array>
+#include <cstdlib>
 
 unsigned sum_of_n(std::size_t n)
 {
