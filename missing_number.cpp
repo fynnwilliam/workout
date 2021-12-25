@@ -3,15 +3,15 @@
 #include <ctime>
 #include <array>
 
-std::size_t sum_of_n(std::size_t n)
+unsigned sum_of_n(std::size_t n)
 {
     return n * (n + 1) / 2;
 }
 
 int missing_number(auto const& numbers)
 {
-    std::size_t expected_sum = sum_of_n(numbers.size());
-    std::size_t current_sum  = std::accumulate(numbers.begin(), numbers.end(), 0);
+    unsigned expected_sum = sum_of_n(numbers.size());
+    unsigned current_sum  = std::accumulate(numbers.begin(), numbers.end(), 0);
     
     return expected_sum - current_sum;
 }
