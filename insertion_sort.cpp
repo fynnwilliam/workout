@@ -23,15 +23,12 @@ int main()
     std::vector<char> characters{'a', 'c', 'd', 'f', 'h'};
     
     insertion_sort(numbers, 2);
+    insertion_sort(numbers, 0);
     insertion_sort(numbers, 9);
-    insertion_sort(numbers, 5);
-    insertion_sort(numbers, 4);
     
     insertion_sort(characters, 'b');
-    insertion_sort(characters, 'c');
     insertion_sort(characters, 'e');
     insertion_sort(characters, 'i');
-    insertion_sort(characters, 'g');
     
     print(numbers);
     print(characters);
