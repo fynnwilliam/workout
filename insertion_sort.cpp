@@ -26,16 +26,10 @@ void print(T const& container)
 int main()
 {
     std::vector<int>  numbers{1, 3, 4, 6, 7, 8, 10};
-    std::vector<char> characters{'a', 'c', 'd', 'f', 'h'};
 
     insertion_sort(numbers, 2);
     insertion_sort(numbers, 0);
     insertion_sort(numbers, 9);
     
-    insertion_sort(characters, 'b');
-    insertion_sort(characters, 'e');
-    insertion_sort(characters, 'i');
-    
     print(numbers);
-    print(characters);
 }
