@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <iterator>
 #include <iostream>
+#include <cassert>
 #include <vector>
 
 template <typename T>
@@ -25,4 +26,6 @@ int main()
     insertion_sort(numbers, 2);
     insertion_sort(numbers, 0);
     insertion_sort(numbers, 9);
+    
+    assert((numbers == std::vector{0, 1, 2, 3, 4, 6, 7, 8, 9, 10}));
 }
