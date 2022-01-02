@@ -14,10 +14,11 @@ template <typename T, typename... U>
     requires requires(T x, typename T::value_type value)
         {{ x.begin() } -> std::forward_iterator; x.insert(x.begin(), value);}
     && (std::same_as<typename T::value_type, U> && ...)
-void insertion_sort(T& container, U... values)
+void insertion_sort(T& container, U... value)
 {
-    for (auto const& value : {values...})
-        _insertion_sort(container, value);
+    if (std::initializer_list<typename T::value_type> values{value...}; values.size())
+        for (auto const& value : values)
+            _insertion_sort(container, value);
 }
 
 int main()
@@ -25,5 +26,6 @@ int main()
     std::vector<int>  numbers{1, 3, 4, 6, 7, 8, 10};
 
     insertion_sort(numbers, 2, 0, 9);
+    insertion_sort(numbers);
     assert((numbers == std::vector{0, 1, 2, 3, 4, 6, 7, 8, 9, 10}));
 }
