@@ -4,11 +4,14 @@
 #include <vector>
 
 template <typename T>
-    requires requires(T x, typename T::value_type value)
-    {
-        { x.begin() } -> std::forward_iterator;
-          x.insert(x.begin(), value);
-    }
+concept elem = requires(T x, typename T::value_type value)
+              {
+                  { x.begin() } -> std::forward_iterator;
+                    x.insert(x.begin(), value);
+              };
+
+template <typename T>
+    requires elem<T>
 void insertion_sort(T& container, typename T::value_type value)
 {
     auto itr{std::ranges::upper_bound(container, value)};
