@@ -12,4 +12,5 @@
 |_can_construct.cpp_ | Trying to construct a target string from an array of given words. We can use each word in the array, as many times as needed.|
 |_count_construct.cpp_ | Building on __can_construct.cpp__, we find the maximum number of ways the target string can be constructed.|
 |_all_construct.cpp_ | Also progressing on __count_construct.cpp__, displays all the possible ways of constructing the target string, an empty list otherwise.|
-|_missing_number.cpp_ |  Finding the missing number in a given integer array of 1 to 100.|
+|_missing_number.cpp_ | Finding the missing number in a given integer array of 1 to 100.|
+|_insertion_sort.cpp_ | Implements an insertion sort algorithm - elements in the container will be arranged in ascending order.|
