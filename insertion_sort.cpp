@@ -1,12 +1,11 @@
 #include <algorithm>
 #include <iterator>
-#include <iostream>
 #include <cassert>
 #include <vector>
 
 template <typename T>
     requires requires(T x, typename T::value_type value)
-              {{ x.begin() } -> std::forward_iterator; x.insert(x.begin(), value);}
+        {{ x.begin() } -> std::forward_iterator; x.insert(x.begin(), value);}
 void insertion_sort(T& container, typename T::value_type value)
 {
     auto itr{std::ranges::upper_bound(container, value)};
