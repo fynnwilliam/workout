@@ -18,14 +18,6 @@ void insertion_sort(T& container, typename T::value_type value)
     container.insert(itr, value);
 }
 
-template <typename T>
-void print(T const& container)
-{
-    for (typename T::value_type elem : container)
-        std::cout << elem << ' ';
-    std::cout << '\n';
-}
-
 int main()
 {
     std::vector<int>  numbers{1, 3, 4, 6, 7, 8, 10};
@@ -33,6 +25,4 @@ int main()
     insertion_sort(numbers, 2);
     insertion_sort(numbers, 0);
     insertion_sort(numbers, 9);
-    
-    print(numbers);
 }
