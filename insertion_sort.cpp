@@ -4,8 +4,6 @@
 #include <vector>
 
 template <typename T>
-    requires requires(T x, typename T::value_type value)
-        {{ x.begin() } -> std::forward_iterator; x.insert(x.begin(), value);}
 void _insertion_sort(T& container, typename T::value_type value)
 {
     auto itr{std::ranges::upper_bound(container, value)};
