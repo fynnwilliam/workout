@@ -14,4 +14,4 @@
 |_all_construct.cpp_ | Also progressing on __count_construct.cpp__, displays all the possible ways of constructing the target string, an empty list otherwise.|
 |_missing_number.cpp_ | Finding the missing number in a given integer array of 1 to 100.|
 |_insertion_sort.cpp_ | Implements an insertion sort algorithm - elements in the container will be arranged in ascending order.|
-|_swap_without_temp.cpp_ | Swapping two numbers or char types without introducing a third variable.|
+|_swap_without_temp.cpp_ | Swapping two numbers or char types without introducing a third variable. __Updated__ function `swap_without_temp` to support `std::string`s.|
