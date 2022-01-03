@@ -1,4 +1,5 @@
-#include <iostream>
+#include <cassert>
+#include <concepts>
 
 template <typename T>
     requires std::integral<T> || std::floating_point<T>
@@ -11,10 +12,9 @@ void swap_without_temp(T& a, T& b)
 
 int main()
 {
-    int a{};
-    int b{3};
+    char a{'a'};
+    char b{'b'};
     
     swap_without_temp(a, b);
-    std::cout << "a: " << a << '\n' 
-              << "b: " << b << '\n';
+    assert(a == 'b' && b == 'a');
 }
