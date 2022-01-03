@@ -1,6 +1,7 @@
 #include <iostream>
 
 template <typename T>
+    requires std::integral<T> || std::floating_point<T>
 void swap_without_temp(T& a, T& b)
 {
     a += b;
