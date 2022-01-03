@@ -1,6 +1,7 @@
 #include <iostream>
 
-void swap_without_temp(int& a, int& b)
+template <typename T>
+void swap_without_temp(T& a, T& b)
 {
     a += b;
     b = a - b;
