@@ -10,10 +10,10 @@ struct edge
 
 struct rectangle
 {
-    edge width_;
-    edge height_;
+    edge width;
+    edge height;
     
-    rectangle(edge width, edge height) : width_{width}, height_{height} {}
+    rectangle(edge w, edge h) : width{w}, height{h} {}
 };
 
 bool edges_overlap(edge a, edge b)
