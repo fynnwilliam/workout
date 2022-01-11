@@ -20,3 +20,8 @@ bool edges_overlap(edge a, edge b)
 {
     return a.begin <= b.begin ? b.begin <= a.end : a.begin <= b.end;
 }
+
+bool rectangles_overlap(rectangle a, rectangle b)
+{
+    return edges_overlap(a.width, b.width) && edges_overlap(a.height, b.height);
+}
