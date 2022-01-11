@@ -29,5 +29,5 @@ bool rectangles_overlap(rectangle a, rectangle b)
 
 int main()
 {
-    assert(rectangles_overlap(rectangle{{2, 10}, {2, 5}}, rectangle{{4, 16}, {1, 5}}));
+    assert(rectangles_overlap({{2, 10}, {2, 5}}, {{4, 16}, {1, 5}}));
 }
