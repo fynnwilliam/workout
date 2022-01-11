@@ -15,3 +15,8 @@ struct rectangle
     
     rectangle(edge width, edge height) : width_{width}, height_{height} {}
 };
+
+bool edges_overlap(edge a, edge b)
+{
+    return a.begin <= b.begin ? b.begin <= a.end : a.begin <= b.end;
+}
