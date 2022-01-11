@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <cassert>
 
 struct edge
 {
@@ -24,4 +25,9 @@ bool edges_overlap(edge a, edge b)
 bool rectangles_overlap(rectangle a, rectangle b)
 {
     return edges_overlap(a.width, b.width) && edges_overlap(a.height, b.height);
+}
+
+int main()
+{
+    assert(rectangles_overlap(rectangle{{2, 10}, {2, 5}}, rectangle{{4, 16}, {1, 5}}));
 }
