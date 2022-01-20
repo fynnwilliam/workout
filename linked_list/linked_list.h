@@ -13,6 +13,7 @@ private:
         T data{};
 
         node() = default;
+        node(T d) : data{d} {}
     };
 
     std::unique_ptr<node> head_;
