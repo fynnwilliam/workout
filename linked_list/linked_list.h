@@ -13,7 +13,7 @@ private:
         T data{};
     };
 
-    node* head_{nullptr};
+    std::unique_ptr<node> head_;
     node* tail_{nullptr};
     std::size_t size_{};
 
@@ -22,6 +22,6 @@ public:
     linked_list(std::initializer_list<T>);
 
     std::size_t size() const noexcept;
-    
+
     void push_back(T const&) noexcept;
 };
