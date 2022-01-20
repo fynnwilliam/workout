@@ -19,8 +19,9 @@ private:
 
 public:
     linked_list() = default;
-    // linked_list(std::initializer_list<T>);
+    linked_list(std::initializer_list<T>);
 
     std::size_t size() const noexcept;
+    
     void push_back(T const&) noexcept;
 };
