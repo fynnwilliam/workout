@@ -56,3 +56,11 @@ void linked_list<T>::_push_front(T const& item) noexcept
     temp->previous = head_.get();
     head_->next = std::move(temp);
 }
+
+template <typename T>
+void linked_list<T>::_push_back(T const& item) noexcept
+{
+    tail_->next = std::make_unique<node>(node{item});
+    tail_->next->previous = tail_;
+    tail_ = tail_->next.get();
+}
