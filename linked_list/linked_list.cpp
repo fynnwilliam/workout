@@ -47,3 +47,12 @@ void linked_list<T>::initial_push(T const& item) noexcept
     head_ = std::make_unique<node>(node{item});
         tail_ = head_.get();
 }
+
+template <typename T>
+void linked_list<T>::_push_front(T const& item) noexcept
+{
+    auto temp{std::move(head_)};
+    head_ = std::make_unique<node>(node{item});
+    temp->previous = head_.get();
+    head_->next = std::move(temp);
+}
