@@ -8,8 +8,8 @@ class linked_list
 private:
     struct node
     {
-        std::unique_ptr<node> previous;
         std::unique_ptr<node> next;
+        node* previous;
         T data{};
 
         node() = default;
