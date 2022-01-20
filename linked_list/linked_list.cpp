@@ -7,6 +7,12 @@ std::size_t linked_list<T>::size() const noexcept
 }
 
 template <typename T>
+bool linked_list<T>::empty() const noexcept
+{
+    return size() == 0;
+}
+
+template <typename T>
 void linked_list<T>::push_back(T const& item) noexcept
 {
     size() ? _push_back(item) : initial_push(item);
