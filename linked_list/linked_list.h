@@ -1,3 +1,4 @@
+#include <memory>
 #include <cstddef>
 #include <initializer_list>
 
@@ -7,9 +8,9 @@ class linked_list
 private:
     struct node
     {
-        node* previous{nullptr};
-        node* next{nullptr};
-        T     data{};
+        std::unique_ptr<node> previous;
+        std::unique_ptr<node> next;
+        T data{};
     };
 
     node* head_{nullptr};
@@ -18,7 +19,8 @@ private:
 
 public:
     linked_list() = default;
-    linked_list(std::initializer_list<T>);
+    // linked_list(std::initializer_list<T>);
 
     std::size_t size() const noexcept;
+    void push_back(T const&) noexcept;
 };
