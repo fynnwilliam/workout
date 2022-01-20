@@ -1,4 +1,5 @@
 #include <cstddef>
+#include <initializer_list>
 
 template <typename T>
 class linked_list
@@ -17,4 +18,5 @@ private:
 
 public:
     linked_list() = default;
+    linked_list(std::initializer_list<T>);
 };
