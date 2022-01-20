@@ -28,10 +28,10 @@ void linked_list<T>::push_front(T const& item) noexcept
 {
     if (size())
     {
-        auto temp{head_.release()};
+        auto temp{std::move(head_)};
         head_ = std::make_unique<node>(node{item});
         temp->previous = head_.get();
-        head_->next = temp.release();
+        head_->next = std::move(temp);
     }
     else
     {
