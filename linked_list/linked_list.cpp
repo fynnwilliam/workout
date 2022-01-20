@@ -10,7 +10,7 @@ template <typename T>
 void linked_list<T>::push_back(T const& item) noexcept
 {
     size() ? _push_back(item) : initial_push(item);
-    ++size;
+    ++size_;
 }
 
 template <typename T>
@@ -24,7 +24,7 @@ template <typename T>
 void linked_list<T>::initial_push(T const& item) noexcept
 {
     head_ = std::make_unique<node>(node{item});
-        tail_ = head_.get();
+    tail_ = head_.get();
 }
 
 template <typename T>
