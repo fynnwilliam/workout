@@ -9,7 +9,7 @@ std::size_t linked_list<T>::size() const noexcept
 template <typename T>
 void linked_list<T>::push_back(T const& item) noexcept
 {
-    if (size_)
+    if (size_++)
     {
         tail_->next = std::make_unique<node>(node{item});
         tail_->next->previous = tail_;
