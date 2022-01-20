@@ -16,6 +16,8 @@ private:
         node(T d) : data{d} {}
     };
 
+    void initial_push(T const&) noexcept;
+
     std::unique_ptr<node> head_;
     node* tail_{nullptr};
     std::size_t size_{};
