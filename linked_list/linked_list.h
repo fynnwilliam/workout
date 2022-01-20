@@ -30,6 +30,7 @@ public:
 
     std::size_t size() const noexcept;
 
+    bool empty() const noexcept;
     void push_back(T const&) noexcept;
     void push_front(T const&) noexcept;
 };
