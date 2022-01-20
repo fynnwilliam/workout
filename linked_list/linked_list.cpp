@@ -16,18 +16,7 @@ void linked_list<T>::push_back(T const& item) noexcept
 template <typename T>
 void linked_list<T>::push_front(T const& item) noexcept
 {
-    if (size())
-    {
-        auto temp{std::move(head_)};
-        head_ = std::make_unique<node>(node{item});
-        temp->previous = head_.get();
-        head_->next = std::move(temp);
-    }
-    else
-    {
-        head_ = std::make_unique<node>(node{item});
-        tail_ = head_.get();
-    }
+    size() ? _push_front(item) : initial_push(item);
     ++size_;
 }
 
