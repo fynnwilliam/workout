@@ -30,6 +30,7 @@ void linked_list<T>::push_front(T const& item) noexcept
     {
         auto temp{head_.release()};
         head_ = std::make_unique<node>(node{item});
+        temp->previous = head_.get();
         head_->next = temp.release();
     }
     else
