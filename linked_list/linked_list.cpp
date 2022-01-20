@@ -12,6 +12,7 @@ void linked_list<T>::push_back(T const& item) noexcept
     if (size_)
     {
         tail_->next = std::make_unique<node>(node{item});
+        tail_->next->previous = tail_;
         tail_ = tail_->next.get();
     }
     else
