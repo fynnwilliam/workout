@@ -17,6 +17,7 @@ private:
     };
 
     void initial_push(T const&) noexcept;
+    void _push_front(T const&) noexcept;
 
     std::unique_ptr<node> head_;
     node* tail_{nullptr};
