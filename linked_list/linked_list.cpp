@@ -22,3 +22,20 @@ void linked_list<T>::push_back(T const& item) noexcept
     }
     ++size;
 }
+
+template <typename T>
+void linked_list<T>::push_front(T const& item) noexcept
+{
+    if (size())
+    {
+        auto temp{head_.release()};
+        head_ = std::make_unique<node>(node{item});
+        head_->next = temp.release();
+    }
+    else
+    {
+        head_ = std::make_unique<node>(node{item});
+        tail_ = head_.get();
+    }
+    ++size_;
+}
