@@ -11,9 +11,9 @@ private:
         T     data{};
     };
 
-    node* head{nullptr};
-    node* tail{nullptr};
-    std::size_t size{};
+    node* head_{nullptr};
+    node* tail_{nullptr};
+    std::size_t size_{};
 
 public:
     linked_list() = default;
