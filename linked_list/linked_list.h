@@ -11,6 +11,8 @@ private:
         std::unique_ptr<node> previous;
         std::unique_ptr<node> next;
         T data{};
+
+        node() = default;
     };
 
     std::unique_ptr<node> head_;
