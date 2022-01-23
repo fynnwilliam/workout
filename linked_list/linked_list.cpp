@@ -13,9 +13,9 @@ bool linked_list<T>::empty() const noexcept
 }
 
 template <typename T>
-void linked_list<T>::push_back(T const& item) noexcept
+void linked_list<T>::push_back(T const& value) noexcept
 {
-    size() ? _push_back(item) : initial_push(item);
+    size() ? _push_back(value) : initial_push(value);
     ++size_;
 }
 
