@@ -33,4 +33,5 @@ public:
     bool empty() const noexcept;
     void push_back(T const&) noexcept;
     void push_front(T const&) noexcept;
+    void pop_back() noexcept;
 };
