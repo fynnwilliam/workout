@@ -22,7 +22,7 @@ void linked_list<T>::push_back(T const& value) noexcept
 template <typename T>
 void linked_list<T>::push_front(T const& value) noexcept
 {
-    size() ? _push_front(item) : initial_push(item);
+    size() ? _push_front(value) : initial_push(value);
     ++size_;
 }
 
