@@ -29,7 +29,7 @@ void linked_list<T>::push_front(T const& value) noexcept
 template <typename T>
 void linked_list<T>::initial_push(T const& value) noexcept
 {
-    head_ = std::make_unique<node>(node{item});
+    head_ = std::make_unique<node>(node{value});
     tail_ = head_.get();
 }
 
