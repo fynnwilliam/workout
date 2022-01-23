@@ -45,7 +45,7 @@ void linked_list<T>::_push_front(T const& value) noexcept
 template <typename T>
 void linked_list<T>::_push_back(T const& value) noexcept
 {
-    tail_->next = std::make_unique<node>(node{item});
+    tail_->next = std::make_unique<node>(node{value});
     tail_->next->previous = tail_;
     tail_ = tail_->next.get();
 }
