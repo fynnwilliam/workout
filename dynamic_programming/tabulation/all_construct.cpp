@@ -2,14 +2,14 @@
 #include <vector>
 #include <string>
 
-std::vector<std::vector<std::string>> all_construct(std::string s, std::vector<std::string> word_bank)
+auto all_construct(std::string const& s, std::vector<std::string> const& word_bank)
 {
     std::vector<std::vector<std::vector<std::string>>> table(s.size() + 1);
     table[0] = {{}};
     
     for (std::size_t i{}; i < table.size(); ++i)
     {
-        for (auto& word : word_bank)
+        for (auto const& word : word_bank)
         {
             if(table[i].size() && s.substr(i).find(word) == 0)
             {
@@ -21,7 +21,7 @@ std::vector<std::vector<std::string>> all_construct(std::string s, std::vector<s
                 }
             }
          }
-      }         
+    }         
     
     return table.back();
 }
