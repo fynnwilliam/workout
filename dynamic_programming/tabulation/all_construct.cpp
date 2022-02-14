@@ -26,15 +26,12 @@ std::vector<std::vector<std::string>> all_construct(std::string s, std::vector<s
     return table.back();
 }
 
-void print(auto& v)
+void print(auto const& v)
 {
-    for (auto& outter : v)
+    for (auto const& outter : v)
     {
-        for (auto& inner : outter)
-        {
+        for (auto const& inner : outter)
             std::cout << inner << ' ';
-        }
-        
         std::cout << '\n';
     }
 }
