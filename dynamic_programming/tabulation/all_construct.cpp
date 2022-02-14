@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
 auto all_construct(std::string const& s, std::vector<std::string> const& word_bank)
 {
@@ -38,7 +38,6 @@ void print(auto const& v)
 
 int main()
 {
-    auto v = all_construct("hefaefef", {"he", "is", "fe", "faef", "ef", "f", "fae"});
-    
-    print(v);
+    print(all_construct("hefaefef",
+                        {"he", "is", "fe", "faef", "ef", "f", "fae"}));
 }
