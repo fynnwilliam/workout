@@ -15,11 +15,8 @@ auto best_sum(int target, std::vector<int> const& v)
            {
                auto temp = table[i];
                temp.push_back(num);
-               
-               if (table[i + num].empty())
-                   table[i + num] = temp;
-               
-               if (temp.size() < table[i + num].size())
+
+               if (table[i + num].empty() || temp.size() < table[i + num].size())
                    table[i + num] = temp;
            }
        }
