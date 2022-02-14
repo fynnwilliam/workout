@@ -16,8 +16,8 @@ auto all_construct(std::string const& s, std::vector<std::string> const& word_ba
                 auto temp = table[i];
                 for (auto& elem : temp)
                 {
-                    elem.push_back(word);
-                    table[i + word.size()].push_back(elem);
+                    elem.emplace_back(word);
+                    table[i + word.size()].emplace_back(elem);
                 }
             }
          }
