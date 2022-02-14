@@ -1,6 +1,6 @@
+#include <array>
 #include <iostream>
 #include <vector>
-#include <array>
 
 bool can_sum(int const target, std::vector<int> v)
 {
