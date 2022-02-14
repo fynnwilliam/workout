@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
 int count_construct(std::string s, std::vector<std::string> word_bank)
 {
@@ -21,5 +21,7 @@ int count_construct(std::string s, std::vector<std::string> word_bank)
 
 int main()
 {
-    std::cout << std::boolalpha << count_construct("purple", {"purp", "p", "ur", "le", "purpl"}) << '\n';
+    std::cout << std::boolalpha
+              << count_construct("purple", {"purp", "p", "ur", "le", "purpl"})
+              << '\n';
 }
