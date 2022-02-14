@@ -9,7 +9,7 @@ bool can_construct(std::string target, std::vector<std::string> word_bank)
     
     for (std::size_t i{}; i < table.size(); ++i)
     {
-        for (auto& word : word_bank)
+        for (auto const& word : word_bank)
         {
             if (table[i] && target.substr(i).find(word) == 0)
                 table[i + word.length()] = table[i];
