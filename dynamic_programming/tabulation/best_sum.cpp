@@ -38,7 +38,5 @@ void print(std::vector<int> const& v)
 
 int main()
 {
-    auto v = best_sum(8, {2, 4, 3, 7});
-    
-    print(v);
+    print(best_sum(8, {2, 4, 3, 7}));
 }
