@@ -1,6 +1,6 @@
 #include <iostream>
-#include <vector>
 #include <string>
+#include <vector>
 
 bool can_construct(std::string target, std::vector<std::string> word_bank)
 {
@@ -21,5 +21,7 @@ bool can_construct(std::string target, std::vector<std::string> word_bank)
 
 int main()
 {
-    std::cout << std::boolalpha << can_construct("performance", {"per", "orm", "f", "p", "ance"}) << '\n';
+  std::cout << std::boolalpha
+            << can_construct("performance", {"per", "orm", "f", "p", "ance"})
+            << std::endl;
 }
