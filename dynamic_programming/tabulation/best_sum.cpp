@@ -2,7 +2,7 @@
 #include <iostream>
 #include <vector>
 
-std::vector<int> best_sum(int target, std::vector<int> v)
+auto best_sum(int target, std::vector<int> const& v)
 {
     std::vector<std::vector<int>> table(target + 1);
     table[0] = {0};
