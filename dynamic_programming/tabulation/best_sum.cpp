@@ -29,11 +29,10 @@ std::vector<int> best_sum(int target, std::vector<int> v)
    return table.back();
 }
 
-void print(std::vector<int>& v)
+void print(std::vector<int> const& v)
 {
     for (int i : v)
         std::cout << i << ' ';
-        
     std::cout << '\n';
 }
 
