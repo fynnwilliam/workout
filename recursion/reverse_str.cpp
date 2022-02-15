@@ -1,11 +1,9 @@
 #include <iostream>
 #include <string>
 
-auto reverse_str(std::string s)
+std::string reverse_str(std::string s)
 {
-    if (s.empty()) return std::string{};
-
-    return reverse_str(s.substr(1)) + s[0];
+    return s.empty() ? std::string{} : reverse_str(s.substr(1)) + s[0];
 }
 
 int main()
