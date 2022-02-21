@@ -23,10 +23,7 @@ auto anagram_(std::string a, std::string b)
     for (auto const& c : a) ++map_a[c];
     for (auto const& c : b) ++map_b[c];
 
-    for (auto const& [key, value] : map_a)
-        if (map_b[key] != value) return false;
-    
-    return true;
+    return map_a == map_b;
 }
 
 int main()
