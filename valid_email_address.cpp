@@ -3,7 +3,7 @@
 
 bool is_valid_email(std::string_view item)
 {
-    std::regex pattern{"(\\w+)(\\.|_)?(\\w+)\\@(\\w+)(\\.(\\w+))+"};
+    static const std::regex pattern{"(\\w+)(\\.|_)?(\\w+)\\@(\\w+)(\\.(\\w+))+"};
     return std::regex_match(item.data(), pattern);
 }
 
