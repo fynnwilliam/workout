@@ -1,10 +1,10 @@
 #include <iostream>
 #include <regex>
 
-bool is_valid_email(std::string const& item)
+bool is_valid_email(std::string_view item)
 {
     std::regex pattern{"(\\w+)(\\.|_)?(\\w+)\\@(\\w+)(\\.(\\w+))+"};
-    return std::regex_match(item, pattern);
+    return std::regex_match(item.data(), pattern);
 }
 
 int main()
