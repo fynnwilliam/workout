@@ -1,4 +1,4 @@
-#include <iostream>
+#include <catch2/catch_test_macros.hpp>
 #include <regex>
 
 bool is_valid_email(std::string_view item) {
@@ -6,7 +6,6 @@ bool is_valid_email(std::string_view item) {
   return std::regex_match(item.data(), pattern);
 }
 
-int main() {
-  std::cout << std::boolalpha << is_valid_email("example@email.com")
-            << std::endl;
+TEST_CASE("is_valid_email") {
+  REQUIRE(is_valid_email("example@email.com") == true);
 }
