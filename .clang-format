@@ -1,0 +1,6 @@
+---
+BasedOnStyle: LLVM
+AlignAfterOpenBracket: BlockIndent
+AlignArrayOfStructures: Right
+PointerAlignment: Left
+ReferenceAlignment: Left
