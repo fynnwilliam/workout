@@ -8,4 +8,9 @@ bool is_valid_email(std::string_view item) {
 
 TEST_CASE("is_valid_email") {
   REQUIRE(is_valid_email("example@email.com") == true);
+  REQUIRE(is_valid_email("firstname.lastname@domain.com") == true);
+  REQUIRE(is_valid_email("firstname_lastname@domain.com") == true);
+
+  REQUIRE_FALSE(is_valid_email("example_email.com"));
+  REQUIRE_FALSE(is_valid_email("example@email"));
 }
