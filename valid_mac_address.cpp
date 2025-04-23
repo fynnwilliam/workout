@@ -3,7 +3,7 @@
 
 bool is_mac_address(std::string_view item)
 {
-    std::regex pattern{"((([a-f]|\\d){2}\\:){5}([a-f]|\\d){2})|((([A-F]|\\d){2}\\:){5}([A-F]|\\d){2})"};
+    static const std::regex pattern{"((([a-f]|\\d){2}\\:){5}([a-f]|\\d){2})|((([A-F]|\\d){2}\\:){5}([A-F]|\\d){2})"};
     return std::regex_match(item.data(), pattern);
 }
 
