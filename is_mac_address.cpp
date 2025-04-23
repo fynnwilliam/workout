@@ -1,4 +1,4 @@
-#include <iostream>
+#include <catch2/catch_test_macros.hpp>
 #include <regex>
 
 bool is_mac_address(std::string_view item) {
@@ -6,6 +6,6 @@ bool is_mac_address(std::string_view item) {
   return std::regex_match(item.data(), pattern);
 }
 
-int main() {
-  std::cout << std::boolalpha << is_mac_address("2a:27:c7:b7:3d:17") << '\n';
+TEST_CASE("is_mac_address") {
+  REQUIRE(is_mac_address("2a:27:c7:b7:3d:17") == true);
 }
