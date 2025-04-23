@@ -8,4 +8,8 @@ bool is_mac_address(std::string_view item) {
 
 TEST_CASE("is_mac_address") {
   REQUIRE(is_mac_address("2a:27:c7:b7:3d:17") == true);
+  REQUIRE(is_mac_address("01-23-45-67-89-ab") == true);
+  REQUIRE(is_mac_address("00-1A-2B-3C-4D-5E") == true);
+  REQUIRE(is_mac_address("2a:27:c7:z7:3d:17") == false);
+  REQUIRE(is_mac_address("2a:27a:c7:b7:3d:17") == false);
 }
