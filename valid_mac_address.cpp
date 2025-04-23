@@ -1,11 +1,10 @@
 #include <iostream>
-#include <string>
 #include <regex>
 
-bool is_mac_address(std::string item)
+bool is_mac_address(std::string_view item)
 {
     std::regex pattern{"((([a-f]|\\d){2}\\:){5}([a-f]|\\d){2})|((([A-F]|\\d){2}\\:){5}([A-F]|\\d){2})"};
-    return std::regex_match(item, pattern);
+    return std::regex_match(item.data(), pattern);
 }
 
 int main()
