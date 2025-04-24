@@ -1,4 +1,5 @@
 #include <array>
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 
 int _atoi(const char* b, const char* e) {
@@ -38,4 +39,14 @@ TEST_CASE("_atoi(1'123'456'789)") {
   auto end = sv.end();
 
   REQUIRE(_atoi(begin, end) == 1'123'456'789);
+}
+
+TEST_CASE("_atoi", "[!benchmark]") {
+  std::string_view sv = "1123456789";
+  auto begin = sv.begin();
+  auto end = sv.end();
+
+  REQUIRE(_atoi(begin, end) == 1'123'456'789);
+
+  BENCHMARK("atoi(1'123'456'789)") { return _atoi(begin, end); };
 }
