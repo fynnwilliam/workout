@@ -24,4 +24,10 @@ int _atoi(const char* b, const char* e) {
   return number * sign;
 }
 
-TEST_CASE("_atoi") { REQUIRE(_atoi("-135d3") == -135); }
+TEST_CASE("_atoi") {
+  std::string_view sv = "-1353";
+  auto begin = sv.begin();
+  auto end = sv.end();
+
+  REQUIRE(_atoi(begin, end) == -1353);
+}
