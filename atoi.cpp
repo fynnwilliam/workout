@@ -1,6 +1,6 @@
 #include <iostream>
 
-int _atoi(std::string const& s) {
+int _atoi(std::string_view s) {
   int index{};
   int sign{1};
 
