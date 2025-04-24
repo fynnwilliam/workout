@@ -1,4 +1,4 @@
-#include <iostream>
+#include <catch2/catch_test_macros.hpp>
 
 int _atoi(std::string_view s) {
   int index{};
@@ -20,7 +20,4 @@ int _atoi(std::string_view s) {
   return res * sign;
 }
 
-int main() {
-  std::cout << _atoi("-135d3") << '\n';
-  std::cout << std::atoi("-135d3") << std::endl;
-}
+TEST_CASE("_atoi") { REQUIRE(_atoi("-135d3") == -135); }
