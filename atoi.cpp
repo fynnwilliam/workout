@@ -12,7 +12,7 @@ int _atoi(std::string_view s) {
   }
 
   int number{};
-  for (; b < e ; ++b) {
+  for (; b < e; ++b) {
     auto digit = unsigned(*b) - '0';
     assert(digit < 10);
     number = number * 10 + digit;
@@ -22,27 +22,13 @@ int _atoi(std::string_view s) {
 }
 
 TEST_CASE("_atoi(-1353)") {
-  std::string_view sv = "-1353";
-  auto begin = sv.begin();
-  auto end = sv.end();
-
-  REQUIRE(_atoi(begin, end) == -1353);
-}
-
-TEST_CASE("_atoi(1'123'456'789)") {
-  std::string_view sv = "1123456789";
-  auto begin = sv.begin();
-  auto end = sv.end();
-
-  REQUIRE(_atoi(begin, end) == 1'123'456'789);
+  REQUIRE(_atoi("-1353") == -1353);
+  REQUIRE(_atoi("1123456789") == 1'123'456'789);
 }
 
 TEST_CASE("_atoi", "[!benchmark]") {
-  std::string_view sv = "1123456789";
-  auto begin = sv.begin();
-  auto end = sv.end();
+  REQUIRE(_atoi("-1353") == -1353);
+  REQUIRE(_atoi("1123456789") == 1'123'456'789);
 
-  REQUIRE(_atoi(begin, end) == 1'123'456'789);
-
-  BENCHMARK("atoi(1'123'456'789)") { return _atoi(begin, end); };
+  BENCHMARK("atoi(1'123'456'789)") { return _atoi("1123456789"); };
 }
