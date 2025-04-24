@@ -24,10 +24,18 @@ int _atoi(const char* b, const char* e) {
   return number * sign;
 }
 
-TEST_CASE("_atoi") {
+TEST_CASE("_atoi(-1353)") {
   std::string_view sv = "-1353";
   auto begin = sv.begin();
   auto end = sv.end();
 
   REQUIRE(_atoi(begin, end) == -1353);
+}
+
+TEST_CASE("_atoi(1'123'456'789)") {
+  std::string_view sv = "1123456789";
+  auto begin = sv.begin();
+  auto end = sv.end();
+
+  REQUIRE(_atoi(begin, end) == 1'123'456'789);
 }
