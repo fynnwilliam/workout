@@ -4,17 +4,17 @@
 #include <string>
 
 namespace swt {
-template <typename T>
-  requires std::integral<T> || std::floating_point<T>
-void swap(T& a, T& b) {
+template <typename number>
+  requires std::integral<number> || std::floating_point<number>
+void swap(number& a, number& b) {
   a += b;
   b = a - b;
   a -= b;
 }
 
-template <typename T>
-  requires std::same_as<T, std::string>
-void swap(T& a, T& b) {
+template <typename str_t>
+  requires std::same_as<str_t, std::string>
+void swap(str_t& a, str_t& b) {
   a.append(b);
   b = a.substr(0, a.size() - b.size());
   a = a.substr(b.size());
