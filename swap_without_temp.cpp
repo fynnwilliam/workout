@@ -4,7 +4,7 @@
 
 template <typename T>
   requires std::integral<T> || std::floating_point<T>
-void swap_n(T& a, T& b) {
+void swap(T& a, T& b) {
   a += b;
   b = a - b;
   a -= b;
@@ -12,7 +12,7 @@ void swap_n(T& a, T& b) {
 
 template <typename T>
   requires std::same_as<T, std::string>
-void swap_s(T& a, T& b) {
+void swap(T& a, T& b) {
   a.append(b);
   b = a.substr(0, a.size() - b.size());
   a = a.substr(b.size());
@@ -20,9 +20,9 @@ void swap_s(T& a, T& b) {
 
 template <typename T> void swap_without_temp(T& a, T& b) {
   if constexpr (std::same_as<T, std::string>)
-    return swap_s(a, b);
+    return swap(a, b);
   else
-    swap_n(a, b);
+    swap(a, b);
 }
 
 int main() {
