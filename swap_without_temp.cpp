@@ -21,7 +21,7 @@ void swap(T& a, T& b) {
 }
 } // namespace swt
 
-TEST_CASE("swapt(char, char)") {
+TEST_CASE("swap(char, char)") {
   char a{'a'};
   char b{'b'};
 
@@ -30,7 +30,7 @@ TEST_CASE("swapt(char, char)") {
   REQUIRE(b == 'a');
 }
 
-TEST_CASE("swapt(std::string, std::string)") {
+TEST_CASE("swap(std::string, std::string)") {
   std::string s1{"world"};
   std::string s2{"hello"};
 
