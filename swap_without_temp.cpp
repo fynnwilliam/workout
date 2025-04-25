@@ -10,7 +10,9 @@ void swap_n(T& a, T& b) {
   a -= b;
 }
 
-void swap_s(std::string& a, std::string& b) {
+template <typename T>
+  requires std::same_as<T, std::string>
+void swap_s(T& a, T& b) {
   a.append(b);
   b = a.substr(0, a.size() - b.size());
   a = a.substr(b.size());
