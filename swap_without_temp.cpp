@@ -1,4 +1,4 @@
-#include <cassert>
+#include <catch2/catch_test_macros.hpp>
 #include <concepts>
 #include <string>
 
@@ -20,16 +20,20 @@ void swap(T& a, T& b) {
 }
 } // namespace swt
 
-int main() {
+TEST_CASE("swapt(char, char)") {
   char a{'a'};
   char b{'b'};
 
   swt::swap(a, b);
-  assert(a == 'b' && b == 'a');
+  REQUIRE(a == 'b');
+  REQUIRE(b == 'a');
+}
 
+TEST_CASE("swapt(std::string, std::string)") {
   std::string s1{"world"};
   std::string s2{"hello"};
 
   swt::swap(s1, s2);
-  assert(s1 == "hello" && s2 == "world");
+  REQUIRE(s1 == "hello");
+  REQUIRE(s2 == "world");
 }
