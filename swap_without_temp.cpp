@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <concepts>
 #include <string>
@@ -36,4 +37,13 @@ TEST_CASE("swapt(std::string, std::string)") {
   swt::swap(s1, s2);
   REQUIRE(s1 == "hello");
   REQUIRE(s2 == "world");
+}
+
+TEST_CASE("swap", "[!benchmark]") {
+  std::string s1{"world"};
+  std::string s2{"hello"};
+
+  swt::swap(s1, s2);
+
+  BENCHMARK("swt::swap(s1, s2)") { return swt::swap(s1, s2); };
 }
