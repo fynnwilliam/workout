@@ -38,6 +38,14 @@ TEST_CASE("private_a") {
   REQUIRE(private_a("7.6.5.4") == false);
 }
 
+TEST_CASE("private_b") {
+  REQUIRE(private_b("172.16.0.0") == true);
+  REQUIRE(private_b("172.20.2.254") == true);
+  REQUIRE(private_b("172.31.255.255") == true);
+  REQUIRE(private_b("81.10.10.10") == false);
+  REQUIRE(private_b("172.61.5.4") == false);
+}
+
 TEST_CASE("private_ip") {
   REQUIRE(private_ip("8.8.8.8") == false);
 }
