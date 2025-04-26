@@ -30,7 +30,7 @@ bool public_ip(std::string const& ip)
     return !private_ip(ip);
 }
 
-TEST_CASE("private_a") {
+TEST_CASE("private_a returns true for range [10.0.0.0, 10.255.255.255]") {
   REQUIRE(private_a("10.0.0.0") == true);
   REQUIRE(private_a("10.40.2.254") == true);
   REQUIRE(private_a("10.255.255.255") == true);
@@ -38,7 +38,7 @@ TEST_CASE("private_a") {
   REQUIRE(private_a("7.6.5.4") == false);
 }
 
-TEST_CASE("private_b") {
+TEST_CASE("private_b returns true for range [172.16.0.0, 172.31.255.255]") {
   REQUIRE(private_b("172.16.0.0") == true);
   REQUIRE(private_b("172.20.2.254") == true);
   REQUIRE(private_b("172.31.255.255") == true);
