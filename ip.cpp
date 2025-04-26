@@ -1,33 +1,32 @@
 #include <catch2/catch_test_macros.hpp>
-#include <string>
 #include <regex>
 
-bool private_a(std::string const& ip)
+bool private_a(const std::string_view& ip)
 {
     std::regex pattern{"([1][0])(\\.([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){3}"};
-    return std::regex_match(ip, pattern);
+    return std::regex_match(ip.data(), pattern);
 }
 
-bool private_b(std::string const& ip)
+bool private_b(const std::string_view& ip)
 {
     std::regex pattern{"([1][7][2])(\\.(1[6-9]|2[0-9]|3[01]))(\\.([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){2}"};
-    return std::regex_match(ip, pattern);
+    return std::regex_match(ip.data(), pattern);
 }
 
-bool private_c(std::string const& ip)
+bool private_c(const std::string_view& ip)
 {
     std::regex pattern{"([1][9][2])(\\.([1][6][8]))(\\.([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){2}"};
-    return std::regex_match(ip, pattern);
+    return std::regex_match(ip.data(), pattern);
 }
 
-bool private_ip(std::string const& ip)
+bool private_ip(const std::string_view& ip)
 {
     return private_a(ip) || private_b(ip) || private_c(ip) || ip == "127.0.0.1";
 }
 
-bool public_ip(std::string const& ip)
+bool public_ip(const std::string_view& ip)
 {
-    return !private_ip(ip);
+    return !private_ip(ip.data());
 }
 
 TEST_CASE("private_a returns true for range [10.0.0.0, 10.255.255.255]") {
