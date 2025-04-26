@@ -30,6 +30,14 @@ bool public_ip(std::string const& ip)
     return !private_ip(ip);
 }
 
+TEST_CASE("private_a") {
+  REQUIRE(private_a("10.0.0.0") == true);
+  REQUIRE(private_a("10.40.2.254") == true);
+  REQUIRE(private_a("10.255.255.255") == true);
+  REQUIRE(private_a("8.10.10.10") == false);
+  REQUIRE(private_a("7.6.5.4") == false);
+}
+
 TEST_CASE("private_ip") {
   REQUIRE(private_ip("8.8.8.8") == false);
 }
