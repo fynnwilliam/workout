@@ -64,4 +64,8 @@ TEST_CASE("private_ip") {
 
 TEST_CASE("public_ip") {
   REQUIRE(public_ip("8.8.8.8") == true);
+  REQUIRE(public_ip("81.82.83.84") == true);
+  REQUIRE(public_ip("43.2.1.254") == true);
+  REQUIRE(public_ip("10.2.1.92") == false);
+  REQUIRE(public_ip("127.0.0.1") == false);
 }
