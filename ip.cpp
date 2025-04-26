@@ -22,7 +22,7 @@ bool private_c(std::string const& ip)
 
 bool private_ip(std::string const& ip)
 {
-    return private_a(ip) || private_b(ip) || private_c(ip);
+    return private_a(ip) || private_b(ip) || private_c(ip) || ip == "127.0.0.1";
 }
 
 bool public_ip(std::string const& ip)
