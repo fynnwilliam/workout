@@ -1,4 +1,4 @@
-#include <iostream>
+#include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <regex>
 
@@ -30,8 +30,10 @@ bool public_ip(std::string const& ip)
     return !private_ip(ip);
 }
 
-int main()
-{
-    std::cout << std::boolalpha << private_ip("8.8.8.8") << '\n'
-              << std::boolalpha << public_ip("8.8.8.8")  << std::endl;
+TEST_CASE("private_ip") {
+  REQUIRE(private_ip("8.8.8.8") == false);
+}
+
+TEST_CASE("public_ip") {
+  REQUIRE(public_ip("8.8.8.8") == true);
 }
