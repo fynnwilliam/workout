@@ -46,6 +46,14 @@ TEST_CASE("private_b") {
   REQUIRE(private_b("172.61.5.4") == false);
 }
 
+TEST_CASE("private_c returns true for range [192.168.0.0, 192.168.255.255]") {
+  REQUIRE(private_c("192.168.0.0") == true);
+  REQUIRE(private_c("192.168.1.254") == true);
+  REQUIRE(private_c("192.168.255.255") == true);
+  REQUIRE(private_c("192.167.1.54") == false);
+  REQUIRE(private_c("192.68.2.3") == false);
+}
+
 TEST_CASE("private_ip") {
   REQUIRE(private_ip("8.8.8.8") == false);
 }
