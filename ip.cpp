@@ -36,6 +36,13 @@ bool is_ipv4(const std::string_view& ip) {
   };
   return std::regex_match(ip.data(), pattern);
 }
+
+bool is_ipv6(const std::string_view& ip) {
+  static const std::regex pattern{
+      std::format("^{0}(:{0}){{7}}$", "[0-9|a-f|A-F]{1,4}")
+  };
+  return std::regex_match(ip.data(), pattern);
+}
 } // namespace ip
 
 TEST_CASE("is_private_a returns true for range [10.0.0.0, 10.255.255.255]") {
