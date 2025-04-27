@@ -86,3 +86,14 @@ TEST_CASE("is_ipv4 returns true for range [0.0.0.0, 255.255.255.255]") {
   REQUIRE(ip::is_ipv4("310.62.11.9") == false);
   REQUIRE(ip::is_ipv4("2.28.35.258") == false);
 }
+
+TEST_CASE(
+    "is_ipv6 returns true for range [0000:0000:0000:0000:0000:0000:0000:0000, "
+    "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff]"
+) {
+  REQUIRE(ip::is_ipv6("0000:0000:0000:0000:0000:0000:0000:0000") == true);
+  REQUIRE(ip::is_ipv6("c3:0:f2:bd:a3:f01:ff3:23") == true);
+  REQUIRE(ip::is_ipv6("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff") == true);
+  REQUIRE(ip::is_ipv6("af:0:33:g12:ff2:92:55:cb") == false);
+  REQUIRE(ip::is_ipv6("22:d3:23:0:0:39:fc9:12:1") == false);
+}
