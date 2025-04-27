@@ -77,5 +77,5 @@ TEST_CASE("is_ipv4 returns true for range [0.0.0.0, 255.255.255.255]") {
   REQUIRE(ip::is_ipv4("222.50.3.6") == true);
   REQUIRE(ip::is_ipv4("41.23.21.54") == true);
   REQUIRE(ip::is_ipv4("310.62.11.9") == false);
-  REQUIRE(ip::is_ipv4("2.28.35.228") == false);
+  REQUIRE(ip::is_ipv4("2.28.35.258") == false);
 }
