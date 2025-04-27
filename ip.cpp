@@ -4,19 +4,19 @@
 namespace ip {
 bool is_private_a(const std::string_view& ip)
 {
-    static const std::regex pattern{"([1][0])(\\.([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){3}"};
+    static const std::regex pattern{"(10)(\\.([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){3}"};
     return std::regex_match(ip.data(), pattern);
 }
 
 bool is_private_b(const std::string_view& ip)
 {
-    static const std::regex pattern{"([1][7][2])(\\.(1[6-9]|2[0-9]|3[01]))(\\.([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){2}"};
+    static const std::regex pattern{"(172)(\\.(1[6-9]|2[0-9]|3[01]))(\\.([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){2}"};
     return std::regex_match(ip.data(), pattern);
 }
 
 bool is_private_c(const std::string_view& ip)
 {
-    static const std::regex pattern{"([1][9][2])(\\.([1][6][8]))(\\.([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){2}"};
+    static const std::regex pattern{"(192)(\\.(168))(\\.([01]?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){2}"};
     return std::regex_match(ip.data(), pattern);
 }
 
