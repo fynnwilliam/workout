@@ -29,6 +29,13 @@ bool is_private(const std::string_view& ip) {
 }
 
 bool is_public(const std::string_view& ip) { return !is_private(ip.data()); }
+
+bool is_ipv4(const std::string_view& ip) {
+  static const std::regex pattern{
+      std::format("{0}(\\.{0}){{3}}", "(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])")
+  };
+  return std::regex_match(ip.data(), pattern);
+}
 } // namespace ip
 
 TEST_CASE("is_private_a returns true for range [10.0.0.0, 10.255.255.255]") {
