@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <regex>
 
@@ -111,4 +112,13 @@ TEST_CASE(
   REQUIRE(ip::is_ipv6("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff") == true);
   REQUIRE(ip::is_ipv6("af:0:33:g12:ff2:92:55:cb") == false);
   REQUIRE(ip::is_ipv6("22:d3:23:0:0:39:fc9:12:1") == false);
+}
+
+TEST_CASE("is_private_a", "[!benchmark]") {
+  REQUIRE(ip::is_private_a("10.0.0.0") == true);
+  REQUIRE(ip::is_private_a("10.255.255.255") == true);
+
+  BENCHMARK("is_private_a(10.255.255.255)") {
+    return ip::is_private_a("10.255.255.255");
+  };
 }
