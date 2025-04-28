@@ -140,3 +140,12 @@ TEST_CASE("is_private_c", "[!benchmark]") {
     return ip::is_private_c("192.168.255.255");
   };
 }
+
+TEST_CASE("is_private", "[!benchmark]") {
+  REQUIRE(ip::is_private("10.81.82.83") == true);
+  REQUIRE(ip::is_private("172.17.2.14") == true);
+
+  BENCHMARK("is_private(192.168.255.255)") {
+    return ip::is_private("192.168.255.255");
+  };
+}
