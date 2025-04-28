@@ -3,40 +3,40 @@
 #include <regex>
 
 namespace ip {
-bool is_private_a(const std::string_view& ip) {
+[[nodiscard]] bool is_private_a(const std::string_view& ip) {
   static const std::regex pattern{
       "10(\\.(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){3}"
   };
   return std::regex_match(ip.data(), pattern);
 }
 
-bool is_private_b(const std::string_view& ip) {
+[[nodiscard]] bool is_private_b(const std::string_view& ip) {
   static const std::regex pattern{
       "172(\\.(1[6-9]|2[0-9]|3[01]))(\\.(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){2}"
   };
   return std::regex_match(ip.data(), pattern);
 }
 
-bool is_private_c(const std::string_view& ip) {
+[[nodiscard]] bool is_private_c(const std::string_view& ip) {
   static const std::regex pattern{
       "192\\.168(\\.(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){2}"
   };
   return std::regex_match(ip.data(), pattern);
 }
 
-bool is_private(const std::string_view& ip) {
+[[nodiscard]] bool is_private(const std::string_view& ip) {
   return is_private_a(ip) || is_private_b(ip) || is_private_c(ip) ||
          ip == "127.0.0.1";
 }
 
-bool is_ipv4(const std::string_view& ip) {
+[[nodiscard]] bool is_ipv4(const std::string_view& ip) {
   static const std::regex pattern{
       std::format("{0}(\\.{0}){{3}}", "(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])")
   };
   return std::regex_match(ip.data(), pattern);
 }
 
-bool is_public(const std::string_view& ip) {
+[[nodiscard]] bool is_public(const std::string_view& ip) {
   const auto second_octect = ip.substr(4, 2);
 
   return !ip.starts_with("10") && !ip.starts_with("192.168.") &&
@@ -45,7 +45,7 @@ bool is_public(const std::string_view& ip) {
          ip != "127.0.0.1" && is_ipv4(ip.data());
 }
 
-bool is_ipv6(const std::string_view& ip) {
+[[nodiscard]] bool is_ipv6(const std::string_view& ip) {
   static const std::regex pattern{
       std::format("^{0}(:{0}){{7}}$", "[0-9|a-f|A-F]{1,4}")
   };
