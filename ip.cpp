@@ -149,3 +149,12 @@ TEST_CASE("is_private", "[!benchmark]") {
     return ip::is_private("192.168.255.255");
   };
 }
+
+TEST_CASE("is_ipv4", "[!benchmark]") {
+  REQUIRE(ip::is_ipv4("222.50.3.6") == true);
+  REQUIRE(ip::is_ipv4("41.23.21.54") == true);
+
+  BENCHMARK("is_ipv4(41.23.21.54)") {
+    return ip::is_ipv4("41.23.21.54");
+  };
+}
