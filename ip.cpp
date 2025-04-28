@@ -122,3 +122,12 @@ TEST_CASE("is_private_a", "[!benchmark]") {
     return ip::is_private_a("10.255.255.255");
   };
 }
+
+TEST_CASE("is_private_b", "[!benchmark]") {
+  REQUIRE(ip::is_private_b("172.16.0.0") == true);
+  REQUIRE(ip::is_private_b("172.20.2.254") == true);
+
+  BENCHMARK("is_private_b(172.31.255.255)") {
+    return ip::is_private_b("172.31.255.255");
+  };
+}
