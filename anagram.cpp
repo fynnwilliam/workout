@@ -7,6 +7,13 @@ auto anagram(std::string a, std::string b) {
   if (a.size() != b.size())
     return false;
 
+  std::ranges::transform(a, a.begin(), [](unsigned char c) -> unsigned char {
+    return std::tolower(c);
+  });
+  std::ranges::transform(b, b.begin(), [](unsigned char c) -> unsigned char {
+    return std::tolower(c);
+  });
+  
   std::ranges::sort(a);
   std::ranges::sort(b);
 
