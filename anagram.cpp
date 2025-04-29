@@ -35,6 +35,15 @@ auto anagram_(std::string a, std::string b) {
   return map_a == map_b;
 }
 
-TEST_CASE("anagram") { REQUIRE(anagram("abcdef", "fedcba") == true); }
+TEST_CASE("anagram") {
+  REQUIRE(anagram("abcdef", "fedcba") == true);
+  REQUIRE(anagram("Listen", "Silent") == true);
+  REQUIRE(anagram("Earth", "Heart") == true);
+  REQUIRE(anagram("Secure", "Rescue") == true);
+  REQUIRE(
+      anagram("hydroxydeoxycorticosterones", "hydroxydesoxycorticosterone") ==
+      true
+  );
+}
 
 TEST_CASE("anagram_") { REQUIRE(anagram_("abcdef", "fedcba") == true); }
