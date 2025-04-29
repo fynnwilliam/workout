@@ -1,5 +1,5 @@
 #include <algorithm>
-#include <iostream>
+#include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <unordered_map>
 
@@ -28,7 +28,6 @@ auto anagram_(std::string a, std::string b) {
   return map_a == map_b;
 }
 
-int main() {
-  std::cout << std::boolalpha << anagram("abcdef", "fedcba") << std::endl;
-  std::cout << std::boolalpha << anagram_("abcdef", "fedcba") << std::endl;
-}
+TEST_CASE("anagram") { REQUIRE(anagram("abcdef", "fedcba") == true); }
+
+TEST_CASE("anagram_") { REQUIRE(anagram_("abcdef", "fedcba") == true); }
