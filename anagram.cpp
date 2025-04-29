@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <unordered_map>
@@ -46,4 +47,13 @@ TEST_CASE("anagram") {
   );
 }
 
-TEST_CASE("anagram_") { REQUIRE(anagram_("abcdef", "fedcba") == true); }
+TEST_CASE("anagram_") {
+  REQUIRE(anagram_("abcdef", "fedcba") == true);
+  REQUIRE(anagram_("Listen", "Silent") == true);
+  REQUIRE(anagram_("Earth", "Heart") == true);
+  REQUIRE(anagram_("Secure", "Rescue") == true);
+  REQUIRE(
+      anagram_("hydroxydeoxycorticosterones", "hydroxydesoxycorticosterone") ==
+      true
+  );
+}
