@@ -2,7 +2,6 @@
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
-#include <unordered_map>
 
 auto anagram(std::string a, std::string b) {
   if (a.size() != b.size())
@@ -22,18 +21,19 @@ auto anagram(std::string a, std::string b) {
 }
 
 auto anagram_(std::string_view a, std::string_view b) {
-  if (a.size() != b.size())
+  const auto size = a.size();
+  if (size != b.size())
     return false;
 
-  std::unordered_map<char, std::size_t> map_a;
-  auto map_b = map_a;
+  std::vector<size_t> letters_from_a(26, 0zu);
+  std::vector<size_t> letters_from_b(26, 0zu);
 
-  for (unsigned char c : a)
-    ++map_a[std::tolower(c)];
-  for (unsigned char c : b)
-    ++map_b[std::tolower(c)];
+  for (size_t i = 0zu; i < size; ++i) {
+    ++letters_from_a[std::tolower((unsigned(a[i]))) - 'a'];
+    ++letters_from_b[std::tolower((unsigned(b[i]))) - 'a'];
+  }
 
-  return map_a == map_b;
+  return letters_from_a == letters_from_b;
 }
 
 TEST_CASE("anagram") {
