@@ -13,7 +13,7 @@ auto anagram(std::string a, std::string b) {
   std::ranges::transform(b, b.begin(), [](unsigned char c) -> unsigned char {
     return std::tolower(c);
   });
-  
+
   std::ranges::sort(a);
   std::ranges::sort(b);
 
@@ -27,10 +27,10 @@ auto anagram_(std::string a, std::string b) {
   std::unordered_map<char, std::size_t> map_a;
   auto map_b = map_a;
 
-  for (auto const& c : a)
-    ++map_a[c];
-  for (auto const& c : b)
-    ++map_b[c];
+  for (unsigned char c : a)
+    ++map_a[std::tolower(c)];
+  for (unsigned char c : b)
+    ++map_b[std::tolower(c)];
 
   return map_a == map_b;
 }
