@@ -7,8 +7,8 @@ auto anagram(std::string a, std::string b) {
   if (a.size() != b.size())
     return false;
 
-  std::sort(begin(a), end(a));
-  std::sort(begin(b), end(b));
+  std::ranges::sort(a);
+  std::ranges::sort(b);
 
   return a == b;
 }
