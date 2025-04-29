@@ -3,31 +3,32 @@
 #include <string>
 #include <unordered_map>
 
-auto anagram(std::string a, std::string b)
-{
-    if (a.size() != b.size()) return false;
+auto anagram(std::string a, std::string b) {
+  if (a.size() != b.size())
+    return false;
 
-    std::sort(begin(a), end(a));
-    std::sort(begin(b), end(b));
-    
-    return a == b;
+  std::sort(begin(a), end(a));
+  std::sort(begin(b), end(b));
+
+  return a == b;
 }
 
-auto anagram_(std::string a, std::string b)
-{
-    if (a.size() != b.size()) return false;
+auto anagram_(std::string a, std::string b) {
+  if (a.size() != b.size())
+    return false;
 
-    std::unordered_map<char, std::size_t> map_a;
-    auto map_b = map_a;
+  std::unordered_map<char, std::size_t> map_a;
+  auto map_b = map_a;
 
-    for (auto const& c : a) ++map_a[c];
-    for (auto const& c : b) ++map_b[c];
+  for (auto const& c : a)
+    ++map_a[c];
+  for (auto const& c : b)
+    ++map_b[c];
 
-    return map_a == map_b;
+  return map_a == map_b;
 }
 
-int main()
-{
-    std::cout << std::boolalpha << anagram ("abcdef", "fedcba") << std::endl;
-    std::cout << std::boolalpha << anagram_("abcdef", "fedcba") << std::endl;
+int main() {
+  std::cout << std::boolalpha << anagram("abcdef", "fedcba") << std::endl;
+  std::cout << std::boolalpha << anagram_("abcdef", "fedcba") << std::endl;
 }
