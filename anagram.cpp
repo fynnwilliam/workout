@@ -21,7 +21,7 @@ auto anagram(std::string a, std::string b) {
   return a == b;
 }
 
-auto anagram_(std::string a, std::string b) {
+auto anagram_(std::string_view a, std::string_view b) {
   if (a.size() != b.size())
     return false;
 
