@@ -67,3 +67,13 @@ TEST_CASE("anagram", "[!benchmark]") {
     );
   };
 }
+
+TEST_CASE("anagram_", "[!benchmark]") {
+  REQUIRE(anagram_("Secure", "Rescue") == true);
+
+  BENCHMARK("anagram_(hydroxydeoxycorticosterones)") {
+    return anagram_(
+        "hydroxydeoxycorticosterones", "hydroxydesoxycorticosterone"
+    );
+  };
+}
