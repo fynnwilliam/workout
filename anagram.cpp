@@ -3,7 +3,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <string>
 
-auto anagram(std::string a, std::string b) {
+[[nodiscard]] auto anagram(std::string a, std::string b) {
   if (a.size() != b.size())
     return false;
 
@@ -20,7 +20,7 @@ auto anagram(std::string a, std::string b) {
   return a == b;
 }
 
-auto anagram_(std::string_view a, std::string_view b) {
+[[nodiscard]] auto anagram_(std::string_view a, std::string_view b) {
   const auto size = a.size();
   if (size != b.size())
     return false;
