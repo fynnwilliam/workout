@@ -2,7 +2,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <regex>
 
-bool is_mac_address(std::string_view item) {
+[[nodiscard]] bool is_mac_address(std::string_view item) {
   static const std::regex pattern{
       "((([a-fA-F]|\\d){2}(\\:|\\-)){5}([a-fA-F]|\\d){2})"
   };
