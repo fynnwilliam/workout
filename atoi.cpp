@@ -1,7 +1,7 @@
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 
-int _atoi(std::string_view s) {
+[[nodiscard]] int _atoi(std::string_view s) {
   auto b = s.begin();
   auto e = s.end();
 
