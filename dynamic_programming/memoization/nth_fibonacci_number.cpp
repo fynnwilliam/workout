@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <cmath>
 #include <unordered_map>
@@ -74,4 +75,20 @@ TEST_CASE("nth_fibonacci") {
   REQUIRE(nth_fibonacci(39) == 63'245'986zu);
   REQUIRE(nth_fibonacci(50) == 12'586'269'025zu);
   REQUIRE(nth_fibonacci(71) == 308'061'521'170'129zu);
+}
+
+TEST_CASE("nth_fibonacci_map", "[!benchmark]") {
+  BENCHMARK("nth_fibonacci_map 71") { return nth_fibonacci_map(71); };
+}
+
+TEST_CASE("nth_fibonacci_vector", "[!benchmark]") {
+  BENCHMARK("nth_fibonacci_vector 71") { return nth_fibonacci_vector(71); };
+}
+
+TEST_CASE("nth_fibonacci_array", "[!benchmark]") {
+  BENCHMARK("nth_fibonacci_array 71") { return nth_fibonacci_array(71); };
+}
+
+TEST_CASE("nth_fibonacci", "[!benchmark]") {
+  BENCHMARK("nth_fibonacci 71") { return nth_fibonacci(71); };
 }
