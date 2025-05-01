@@ -12,6 +12,19 @@ auto nth_fibonacci = [cache = std::unordered_map<uint8_t, size_t>{
   return r = fib(n - 1u) + fib(n - 2u);
 };
 
+auto nth_fibonacci_vector = [cache = std::vector<size_t>{0zu, 1zu, 1zu}](
+                                this auto&& fib, uint8_t n
+                            ) -> size_t {
+  if (n < cache.size()) {
+    if (cache[n] > 0u || n == 0u)
+      return cache[n];
+  } else {
+    cache.resize(n + 1, 0u);
+  }
+
+  return cache[n] = fib(n - 1) + fib(n - 2);
+};
+
 TEST_CASE("nth_fibonacci") {
   REQUIRE(nth_fibonacci(2) == 1zu);
   REQUIRE(nth_fibonacci(39) == 63'245'986zu);
