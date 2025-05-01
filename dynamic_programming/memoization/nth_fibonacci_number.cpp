@@ -14,7 +14,7 @@ unsigned long nth_fibonacci(int n)
 
 int main()
 {
-    std::cout << nth_fibonacci(10'000) << std::endl;
+    std::cout << nth_fibonacci(93) << std::endl;
     
-    assert(nth_fibonacci(9'000) + nth_fibonacci(9'001) == nth_fibonacci(9'002));
+    assert(nth_fibonacci(93) == 12'200'160'415'121'876'738zu);
 }
