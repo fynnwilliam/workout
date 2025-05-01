@@ -1,4 +1,5 @@
 #include <catch2/catch_test_macros.hpp>
+#include <cmath>
 #include <unordered_map>
 
 auto nth_fibonacci_map = [cache = std::unordered_map<uint8_t, size_t>{
@@ -33,6 +34,14 @@ auto nth_fibonacci_array = [cache = std::array<size_t, 94zu>{1zu, 1zu, 1zu}](
   if (r > 0zu || n == 0u)
     return r;
   return r = fib(n - 1u) + fib(n - 2u);
+};
+
+constexpr auto nth_fibonacci = [](uint8_t n) -> size_t {
+  constexpr double phi = 1.6'180'339'887'498'949'025;
+  constexpr double psi = -0.6'180'339'887'498'949'025;
+  constexpr double sqrt_five = 2.23'606'797'749'979;
+
+  return (std::pow(phi, n) - std::pow(psi, n)) / sqrt_five;
 };
 
 TEST_CASE("nth_fibonacci_map") {
