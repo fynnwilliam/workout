@@ -50,3 +50,11 @@ TEST_CASE("nth_fibonacci_vector") {
   REQUIRE(nth_fibonacci_vector(71) == 308'061'521'170'129zu);
   REQUIRE(nth_fibonacci_vector(93) == 12'200'160'415'121'876'738zu);
 }
+
+TEST_CASE("nth_fibonacci_array") {
+  REQUIRE(nth_fibonacci_array(2) == 1zu);
+  REQUIRE(nth_fibonacci_array(39) == 63'245'986zu);
+  REQUIRE(nth_fibonacci_array(50) == 12'586'269'025zu);
+  REQUIRE(nth_fibonacci_array(71) == 308'061'521'170'129zu);
+  REQUIRE(nth_fibonacci_array(93) == 12'200'160'415'121'876'738zu);
+}
