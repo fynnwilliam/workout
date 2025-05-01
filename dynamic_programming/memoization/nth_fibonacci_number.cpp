@@ -1,14 +1,16 @@
 #include <catch2/catch_test_macros.hpp>
 #include <unordered_map>
 
-unsigned long nth_fibonacci(int n) {
-  static std::unordered_map<int, unsigned long> m;
-
-  return m.count(n) ? m[n]
-         : n < 1    ? 0
-         : n == 1   ? 1
-                    : m[n] = nth_fibonacci(n - 1) + nth_fibonacci(n - 2);
-}
+auto nth_fibonacci = [cache = std::unordered_map<uint8_t, size_t>{
+                          {0u, 0zu},
+                          {1u, 1zu},
+                          {2u, 1zu}
+}](this auto&& fib, uint8_t n) -> size_t {
+  auto& r = cache[n];
+  if (r > 0uz)
+    return r;
+  return r = fib(n - 1u) + fib(n - 2u);
+};
 
 TEST_CASE("nth_fibonacci") {
   REQUIRE(nth_fibonacci(2) == 1zu);
