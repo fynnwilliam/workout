@@ -1,5 +1,4 @@
-#include <cassert>
-#include <iostream>
+#include <catch2/catch_test_macros.hpp>
 #include <unordered_map>
 
 unsigned long nth_fibonacci(int n) {
@@ -11,8 +10,6 @@ unsigned long nth_fibonacci(int n) {
                     : m[n] = nth_fibonacci(n - 1) + nth_fibonacci(n - 2);
 }
 
-int main() {
-  std::cout << nth_fibonacci(93) << std::endl;
-
-  assert(nth_fibonacci(93) == 12'200'160'415'121'876'738zu);
+TEST_CASE("nth_fibonacci") {
+  REQUIRE(nth_fibonacci(93) == 12'200'160'415'121'876'738zu);
 }
