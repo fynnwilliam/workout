@@ -1,10 +1,10 @@
 #include <catch2/catch_test_macros.hpp>
 #include <unordered_map>
 
-auto nth_fibonacci = [cache = std::unordered_map<uint8_t, size_t>{
-                          {0u, 0zu},
-                          {1u, 1zu},
-                          {2u, 1zu}
+auto nth_fibonacci_map = [cache = std::unordered_map<uint8_t, size_t>{
+                              {0u, 0zu},
+                              {1u, 1zu},
+                              {2u, 1zu}
 }](this auto&& fib, uint8_t n) -> size_t {
   auto& r = cache[n];
   if (r > 0uz)
@@ -25,12 +25,12 @@ auto nth_fibonacci_vector = [cache = std::vector<size_t>{0zu, 1zu, 1zu}](
   return cache[n] = fib(n - 1) + fib(n - 2);
 };
 
-TEST_CASE("nth_fibonacci") {
-  REQUIRE(nth_fibonacci(2) == 1zu);
-  REQUIRE(nth_fibonacci(39) == 63'245'986zu);
-  REQUIRE(nth_fibonacci(50) == 12'586'269'025zu);
-  REQUIRE(nth_fibonacci(71) == 308'061'521'170'129zu);
-  REQUIRE(nth_fibonacci(93) == 12'200'160'415'121'876'738zu);
+TEST_CASE("nth_fibonacci_map") {
+  REQUIRE(nth_fibonacci_map(2) == 1zu);
+  REQUIRE(nth_fibonacci_map(39) == 63'245'986zu);
+  REQUIRE(nth_fibonacci_map(50) == 12'586'269'025zu);
+  REQUIRE(nth_fibonacci_map(71) == 308'061'521'170'129zu);
+  REQUIRE(nth_fibonacci_map(93) == 12'200'160'415'121'876'738zu);
 }
 
 TEST_CASE("nth_fibonacci_vector") {
