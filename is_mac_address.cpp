@@ -18,5 +18,7 @@ TEST_CASE("is_mac_address") {
 }
 
 TEST_CASE("is_mac_address", "[!benchmark]") {
-  BENCHMARK("") { return is_mac_address("01-23-45-67-89-ab"); };
+  BENCHMARK("is_mac_address(01-23-45-67-89-ab)") {
+    return is_mac_address("01-23-45-67-89-ab");
+  };
 }
