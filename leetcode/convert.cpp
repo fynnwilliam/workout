@@ -2,21 +2,21 @@
 #include <catch2/catch_test_macros.hpp>
 #include <string>
 
-std::string convert(const std::string& s, size_t numRows) {
-  if (numRows == 1zu || numRows >= s.size())
+std::string convert(const std::string& s, size_t rows) {
+  if (rows == 1zu || rows >= s.size())
     return s;
 
-  const auto last_rows_index = numRows - 1zu;
-  const auto initial_steps = last_rows_index * 2zu;
+  const auto last_row_index = rows - 1zu;
+  const auto initial_steps = last_row_index * 2zu;
   const auto last{cend(s)};
 
   std::string new_s{s};
 
-  for (size_t i{}, x{}; i < numRows; ++i) {
+  for (size_t i{}, x{}; i < rows; ++i) {
     auto row_i_steps{2zu * i};
     for (auto j{cbegin(s) + i}; j < last; j += row_i_steps, ++x) {
       new_s[x] = *j;
-      row_i_steps = i == 0zu || i == last_rows_index
+      row_i_steps = i == 0zu || i == last_row_index
                         ? initial_steps
                         : initial_steps - row_i_steps;
     }
