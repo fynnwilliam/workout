@@ -3,14 +3,15 @@
 #include <string>
 
 std::string convert(const std::string& s, size_t rows) {
-  if (rows == 1zu || rows >= s.size())
+  const auto size = s.size();
+  if (rows == 1zu || rows >= size)
     return s;
 
   const auto last_row_index = rows - 1zu;
   const auto initial_steps = last_row_index * 2zu;
   const auto last{cend(s)};
 
-  std::string new_s{s};
+  std::string new_s(size, ' ');
 
   for (size_t i{}, x{}; i < rows; ++i) {
     auto row_i_steps{2zu * i};
