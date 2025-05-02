@@ -1,5 +1,29 @@
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <string>
+
+std::string convert(const std::string& s, size_t numRows) {
+  if (numRows == 1zu || numRows >= s.size())
+    return s;
+
+  const auto last_rows_index = numRows - 1zu;
+  const auto initial_steps = last_rows_index * 2zu;
+  const auto last{cend(s)};
+
+  std::string new_s{s};
+
+  for (size_t i{}, x{}; i < numRows; ++i) {
+    auto row_i_steps{2zu * i};
+    for (auto j{cbegin(s) + i}; j < last; j += row_i_steps, ++x) {
+      new_s[x] = *j;
+      row_i_steps = i == 0zu || i == last_rows_index
+                        ? initial_steps
+                        : initial_steps - row_i_steps;
+    }
+  }
+
+  return new_s;
+}
 
 TEST_CASE("convert") {
   REQUIRE(convert("PAYPALISHIRING", 3) == "PAHNAPLSIIGYIR");
