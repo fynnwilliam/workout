@@ -4,24 +4,24 @@
 #include <unordered_map>
 
 auto nth_fibonacci_map = [cache = std::unordered_map<uint8_t, size_t>{
-                              {0u, 0zu},
-                              {1u, 1zu},
-                              {2u, 1zu}
+                              {0, 0zu},
+                              {1, 1zu},
+                              {2, 1zu}
 }](this auto&& fib, uint8_t n) -> size_t {
   auto& r = cache[n];
   if (r > 0uz)
     return r;
-  return r = fib(n - 1u) + fib(n - 2u);
+  return r = fib(n - 1) + fib(n - 2);
 };
 
 auto nth_fibonacci_vector = [cache = std::vector<size_t>{0zu, 1zu, 1zu}](
                                 this auto&& fib, uint8_t n
                             ) -> size_t {
   if (n < cache.size()) {
-    if (cache[n] > 0u || n == 0u)
+    if (cache[n] > 0zu || n == 0)
       return cache[n];
   } else {
-    cache.resize(n + 1, 0u);
+    cache.resize(n + 1, 0zu);
   }
 
   return cache[n] = fib(n - 1) + fib(n - 2);
@@ -30,11 +30,11 @@ auto nth_fibonacci_vector = [cache = std::vector<size_t>{0zu, 1zu, 1zu}](
 auto nth_fibonacci_array = [cache = std::array<size_t, 256zu>{0zu, 1zu, 1zu}](
                                this auto&& fib, uint8_t n
                            ) -> size_t {
-  assert(n < 94u);
+  assert(n < 94);
   auto& r = cache[n];
-  if (r > 0zu || n == 0u)
+  if (r > 0zu || n == 0)
     return r;
-  return r = fib(n - 1u) + fib(n - 2u);
+  return r = fib(n - 1) + fib(n - 2);
 };
 
 constexpr auto nth_fibonacci = [](uint8_t n) -> size_t {
