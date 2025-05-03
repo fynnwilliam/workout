@@ -13,7 +13,7 @@
 
   int number{};
   for (; b < e; ++b) {
-    auto digit = unsigned(*b) - '0';
+    auto digit = uint8_t(*b) - '0';
     assert(digit < 10);
     number = number * 10 + digit;
   }
