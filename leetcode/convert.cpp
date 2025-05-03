@@ -9,13 +9,13 @@ std::string convert(const std::string& s, size_t rows) {
 
   const auto last_row_index = rows - 1zu;
   const auto initial_steps = last_row_index * 2zu;
-  const auto last{cend(s)};
+  const auto last{s.data() + size};
 
   std::string new_s(size, ' ');
 
   for (size_t i{}, x{}; i < rows; ++i) {
     auto row_i_steps{2zu * i};
-    for (auto j{cbegin(s) + i}; j < last; j += row_i_steps, ++x) {
+    for (auto j{s.data() + i}; j < last; j += row_i_steps, ++x) {
       new_s[x] = *j;
       row_i_steps = i == 0zu || i == last_row_index
                         ? initial_steps
