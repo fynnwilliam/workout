@@ -27,7 +27,7 @@ auto nth_fibonacci_vector = [cache = std::vector<size_t>{0zu, 1zu, 1zu}](
   return cache[n] = fib(n - 1) + fib(n - 2);
 };
 
-auto nth_fibonacci_array = [cache = std::array<size_t, 94zu>{1zu, 1zu, 1zu}](
+auto nth_fibonacci_array = [cache = std::array<size_t, 256zu>{1zu, 1zu, 1zu}](
                                this auto&& fib, uint8_t n
                            ) -> size_t {
   assert(n < 94u);
