@@ -29,8 +29,8 @@
   std::vector<size_t> letters_from_b(26, 0zu);
 
   for (size_t i = 0zu; i < size; ++i) {
-    ++letters_from_a[std::tolower((unsigned(a[i]))) - 'a'];
-    ++letters_from_b[std::tolower((unsigned(b[i]))) - 'a'];
+    ++letters_from_a[static_cast<size_t>(std::tolower((unsigned(a[i]))) - 'a')];
+    ++letters_from_b[static_cast<size_t>(std::tolower((unsigned(b[i]))) - 'a')];
   }
 
   return letters_from_a == letters_from_b;
