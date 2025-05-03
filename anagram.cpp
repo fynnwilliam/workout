@@ -7,10 +7,10 @@
   if (a.size() != b.size())
     return false;
 
-  std::ranges::transform(a, a.begin(), [](unsigned char c) -> unsigned char {
+  std::ranges::transform(a, a.begin(), [](unsigned char c) {
     return std::tolower(c);
   });
-  std::ranges::transform(b, b.begin(), [](unsigned char c) -> unsigned char {
+  std::ranges::transform(b, b.begin(), [](unsigned char c) {
     return std::tolower(c);
   });
 
