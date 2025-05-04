@@ -7,21 +7,21 @@ namespace ip {
   static const std::regex pattern{
       "10(\\.(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){3}"
   };
-  return std::regex_match(ip.data(), pattern);
+  return std::regex_match(ip.begin(), ip.end(), pattern);
 }
 
 [[nodiscard]] bool is_private_b(const std::string_view& ip) {
   static const std::regex pattern{
       "172(\\.(1[6-9]|2[0-9]|3[01]))(\\.(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){2}"
   };
-  return std::regex_match(ip.data(), pattern);
+  return std::regex_match(ip.begin(), ip.end(), pattern);
 }
 
 [[nodiscard]] bool is_private_c(const std::string_view& ip) {
   static const std::regex pattern{
       "192\\.168(\\.(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])){2}"
   };
-  return std::regex_match(ip.data(), pattern);
+  return std::regex_match(ip.begin(), ip.end(), pattern);
 }
 
 [[nodiscard]] bool is_private(const std::string_view& ip) {
@@ -33,7 +33,7 @@ namespace ip {
   static const std::regex pattern{
       std::format("{0}(\\.{0}){{3}}", "(1?[0-9][0-9]?|2[0-4][0-9]|25[0-5])")
   };
-  return std::regex_match(ip.data(), pattern);
+  return std::regex_match(ip.begin(), ip.end(), pattern);
 }
 
 [[nodiscard]] bool is_public(const std::string_view& ip) {
@@ -49,7 +49,7 @@ namespace ip {
   static const std::regex pattern{
       std::format("^{0}(:{0}){{7}}$", "[0-9|a-f|A-F]{1,4}")
   };
-  return std::regex_match(ip.data(), pattern);
+  return std::regex_match(ip.begin(), ip.end(), pattern);
 }
 } // namespace ip
 
@@ -154,7 +154,5 @@ TEST_CASE("is_ipv4", "[!benchmark]") {
   REQUIRE(ip::is_ipv4("222.50.3.6") == true);
   REQUIRE(ip::is_ipv4("41.23.21.54") == true);
 
-  BENCHMARK("is_ipv4(41.23.21.54)") {
-    return ip::is_ipv4("41.23.21.54");
-  };
+  BENCHMARK("is_ipv4(41.23.21.54)") { return ip::is_ipv4("41.23.21.54"); };
 }

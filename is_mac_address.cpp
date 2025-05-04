@@ -6,7 +6,7 @@
   static const std::regex pattern{
       "((([a-fA-F]|\\d){2}(\\:|\\-)){5}([a-fA-F]|\\d){2})"
   };
-  return std::regex_match(item.data(), pattern);
+  return std::regex_match(item.begin(), item.end(), pattern);
 }
 
 TEST_CASE("is_mac_address") {
