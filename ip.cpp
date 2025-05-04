@@ -42,7 +42,7 @@ namespace ip {
   return !ip.starts_with("10") && !ip.starts_with("192.168.") &&
          !(ip.starts_with("172.") && ip[6] == '.' && second_octect >= "16" &&
            second_octect <= "31") &&
-         ip != "127.0.0.1" && is_ipv4(ip.data());
+         ip != "127.0.0.1" && is_ipv4(ip);
 }
 
 [[nodiscard]] bool is_ipv6(const std::string_view& ip) {
