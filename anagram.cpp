@@ -25,8 +25,8 @@
   if (size != b.size())
     return false;
 
-  std::vector<size_t> letters_from_a(26, 0zu);
-  std::vector<size_t> letters_from_b(26, 0zu);
+  std::array<size_t, 26> letters_from_a{};
+  std::array<size_t, 26> letters_from_b{};
 
   for (size_t i = 0zu; i < size; ++i) {
     ++letters_from_a[static_cast<size_t>(std::tolower((uint8_t(a[i]))) - 'a')];
