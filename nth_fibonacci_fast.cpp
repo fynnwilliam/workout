@@ -1,7 +1,7 @@
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 
-const auto fib_fast = [](uint8_t n) {
+const auto fib_fast = [](uint8_t n) -> size_t {
   assert(n < 94);
   if (n == 0 || n > 93)
     return 0zu;
