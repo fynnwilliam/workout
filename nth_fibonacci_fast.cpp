@@ -33,7 +33,9 @@ TEST_CASE("fib_fast") {
 }
 
 TEST_CASE("fib_fast", "[!benchmark]") {
-  BENCHMARK("fib_fast 71") { return fib_fast(93); };
+  BENCHMARK("fib_fast 71") {
+    return fib_fast(93);
+  };
 }
 
 TEST_CASE("nth_fibonacci") {
@@ -45,5 +47,7 @@ TEST_CASE("nth_fibonacci") {
 }
 
 TEST_CASE("nth_fibonacci", "[!benchmark]") {
-  BENCHMARK("nth_fibonacci 71") { return nth_fibonacci(71); };
+  BENCHMARK("nth_fibonacci 71") {
+    return nth_fibonacci(71);
+  };
 }

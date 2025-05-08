@@ -62,13 +62,19 @@ TEST_CASE("nth_fibonacci_array") {
 }
 
 TEST_CASE("nth_fibonacci_map", "[!benchmark]") {
-  BENCHMARK("nth_fibonacci_map 71") { return nth_fibonacci_map(71); };
+  BENCHMARK("nth_fibonacci_map 71") {
+    return nth_fibonacci_map(71);
+  };
 }
 
 TEST_CASE("nth_fibonacci_vector", "[!benchmark]") {
-  BENCHMARK("nth_fibonacci_vector 71") { return nth_fibonacci_vector(71); };
+  BENCHMARK("nth_fibonacci_vector 71") {
+    return nth_fibonacci_vector(71);
+  };
 }
 
 TEST_CASE("nth_fibonacci_array", "[!benchmark]") {
-  BENCHMARK("nth_fibonacci_array 71") { return nth_fibonacci_array(71); };
+  BENCHMARK("nth_fibonacci_array 71") {
+    return nth_fibonacci_array(71);
+  };
 }

@@ -17,5 +17,7 @@ TEST_CASE("is_valid_email") {
 
 TEST_CASE("is_valid_email", "[!benchmark]") {
   std::string_view sv = "firstname.lastname@domain.com";
-  BENCHMARK("is_valid_email(sv)") { return is_valid_email(sv); };
+  BENCHMARK("is_valid_email(sv)") {
+    return is_valid_email(sv);
+  };
 }

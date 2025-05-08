@@ -45,5 +45,7 @@ TEST_CASE("swap", "[!benchmark]") {
 
   swt::swap(s1, s2);
 
-  BENCHMARK("swt::swap(s1, s2)") { return swt::swap(s1, s2); };
+  BENCHMARK("swt::swap(s1, s2)") {
+    return swt::swap(s1, s2);
+  };
 }
