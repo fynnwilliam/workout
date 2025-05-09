@@ -33,8 +33,7 @@ TEST_CASE("missing_number") {
 
 TEST_CASE("missing_number", "[!benchmark]") {
   std::iota(numbers.begin(), numbers.end(), 1);
-  auto index = distributor(gen);
-  numbers[index] = 0;
+  numbers[distributor(gen)] = 0;
 
   BENCHMARK("missing_number(numbers)") {
     return missing_number(numbers);
