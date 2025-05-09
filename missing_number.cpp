@@ -25,10 +25,15 @@ std::uniform_int_distribution<size_t> distributor(0, 100);
 
 TEST_CASE("missing_number") {
   std::iota(numbers.begin(), numbers.end(), 1);
+
   auto index = distributor(gen);
   numbers[index] = 0;
   REQUIRE(missing_number(numbers) == index + 1);
+
   numbers[index] = index + 1;
+  index = distributor(gen);
+  numbers[index] = 0;
+  REQUIRE(missing_number(numbers) == index + 1);
 }
 
 TEST_CASE("missing_number", "[!benchmark]") {
