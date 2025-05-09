@@ -1,7 +1,7 @@
 #include <array>
+#include <catch2/catch_test_macros.hpp>
 #include <cstdlib>
 #include <ctime>
-#include <iostream>
 #include <numeric>
 #include <random>
 
@@ -16,14 +16,14 @@ size_t missing_number(auto const& numbers) {
   return expected_sum - current_sum;
 }
 
-int main() {
+TEST_CASE("missing_number") {
   std::array<int, 100> numbers;
   std::iota(numbers.begin(), numbers.end(), 1);
 
   std::mt19937 gen{std::random_device{}()};
   std::uniform_int_distribution<size_t> distributor(0, 100);
 
-  numbers[distributor(gen)] = 0;
-
-  std::cout << missing_number(numbers) << std::endl;
+  auto index = distributor(gen);
+  numbers[index] = 0;
+  REQUIRE(missing_number(numbers) == index + 1);
 }
