@@ -4,13 +4,13 @@
 #include <iostream>
 #include <numeric>
 
-unsigned sum_of_n(std::size_t n) {
+std::size_t sum_of_n(std::size_t n) {
   return n * (n + 1) / 2;
 }
 
 int missing_number(auto const& numbers) {
-  unsigned expected_sum = sum_of_n(numbers.size());
-  unsigned current_sum = std::accumulate(numbers.begin(), numbers.end(), 0);
+  size_t expected_sum = sum_of_n(numbers.size());
+  auto current_sum = std::accumulate(numbers.begin(), numbers.end(), 0);
 
   return expected_sum - current_sum;
 }
