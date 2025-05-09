@@ -1,4 +1,5 @@
 #include <array>
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <cstdlib>
 #include <ctime>
@@ -16,14 +17,26 @@ size_t missing_number(auto const& numbers) {
   return expected_sum - current_sum;
 }
 
+namespace {
+std::array<int, 100> numbers;
+std::mt19937 gen{std::random_device{}()};
+std::uniform_int_distribution<size_t> distributor(0, 100);
+} // namespace
+
 TEST_CASE("missing_number") {
-  std::array<int, 100> numbers;
   std::iota(numbers.begin(), numbers.end(), 1);
-
-  std::mt19937 gen{std::random_device{}()};
-  std::uniform_int_distribution<size_t> distributor(0, 100);
-
   auto index = distributor(gen);
   numbers[index] = 0;
   REQUIRE(missing_number(numbers) == index + 1);
+  numbers[index] = index + 1;
+}
+
+TEST_CASE("missing_number", "[!benchmark]") {
+  std::iota(numbers.begin(), numbers.end(), 1);
+  auto index = distributor(gen);
+  numbers[index] = 0;
+
+  BENCHMARK("missing_number(numbers)") {
+    return missing_number(numbers);
+  };
 }
