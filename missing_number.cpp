@@ -1,9 +1,5 @@
-#include <array>
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
-#include <cstdlib>
-#include <ctime>
-#include <numeric>
 #include <random>
 
 std::size_t sum_of_n(std::size_t n) {
@@ -13,7 +9,6 @@ std::size_t sum_of_n(std::size_t n) {
 size_t missing_number(auto const& numbers) {
   size_t expected_sum = sum_of_n(numbers.size());
   size_t current_sum = std::accumulate(numbers.begin(), numbers.end(), 0zu);
-
   return expected_sum - current_sum;
 }
 
