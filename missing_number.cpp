@@ -3,6 +3,7 @@
 #include <ctime>
 #include <iostream>
 #include <numeric>
+#include <random>
 
 std::size_t sum_of_n(std::size_t n) {
   return n * (n + 1) / 2;
@@ -19,8 +20,10 @@ int main() {
   std::array<int, 100> numbers;
   std::iota(numbers.begin(), numbers.end(), 1);
 
-  std::srand(std::time(nullptr));
-  numbers[std::rand() % 100] = 0;
+  std::mt19937 gen{std::random_device{}()};
+  std::uniform_int_distribution<size_t> distributor(0, 100);
+
+  numbers[distributor(gen)] = 0;
 
   std::cout << missing_number(numbers) << std::endl;
 }
