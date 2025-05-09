@@ -8,7 +8,7 @@ std::size_t sum_of_n(std::size_t n) {
   return n * (n + 1) / 2;
 }
 
-int missing_number(auto const& numbers) {
+size_t missing_number(auto const& numbers) {
   size_t expected_sum = sum_of_n(numbers.size());
   size_t current_sum = std::accumulate(numbers.begin(), numbers.end(), 0zu);
 
