@@ -13,9 +13,10 @@ size_t missing_number(auto const& numbers) {
 }
 
 namespace {
-std::array<int, 100> numbers;
+const size_t size = 100;
+std::array<int, size> numbers;
 std::mt19937 gen{std::random_device{}()};
-std::uniform_int_distribution<size_t> distributor(0, 100);
+std::uniform_int_distribution<size_t> distributor(0, size);
 } // namespace
 
 TEST_CASE("missing_number") {
