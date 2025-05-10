@@ -16,7 +16,7 @@ namespace {
 const size_t size = 100;
 std::array<int, size> numbers;
 std::mt19937 gen{std::random_device{}()};
-std::uniform_int_distribution<size_t> distributor(0, size);
+std::uniform_int_distribution<size_t> distributor(0, size - 1);
 } // namespace
 
 TEST_CASE("missing_number") {
