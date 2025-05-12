@@ -1,18 +1,20 @@
+#include <algorithm>
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
-#include <set>
 
-std::set<int> extract_unique(const auto & v) {
-  std::set<int> s;
-  for (auto elem : v) {
-    s.insert(elem);
-  }
+auto extract_unique(const auto& v) {
+  std::vector<int> unique_numbers;
 
-  return s;
+  unique_numbers.reserve(v.size());
+  std::ranges::copy(v, std::back_inserter(unique_numbers));
+  std::ranges::sort(unique_numbers);
+  std::ranges::unique(unique_numbers);
+
+  return unique_numbers;
 }
 
 int nth_largest_element(auto const& v, std::size_t index) {
-  std::set<int> s{extract_unique(v)};
+  auto s = extract_unique(v);
 
   if (s.size() >= index)
     return *std::next(cbegin(s), static_cast<long>(index - 1));
