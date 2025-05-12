@@ -14,11 +14,8 @@ std::set<int> extract_unique(std::vector<int> const& v) {
 int nth_largest_element(auto const& v, std::size_t index) {
   std::set<int> s{extract_unique(v)};
 
-  for (size_t count = 1; const auto& i : s) {
-    if (count++ == index)
-      return i;
-  }
-
+  if (s.size() >= index)
+    return *std::next(cbegin(s), static_cast<long>(index - 1));
   return -1;
 }
 
