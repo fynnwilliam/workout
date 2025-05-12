@@ -1,4 +1,4 @@
-#include <iostream>
+#include <catch2/catch_test_macros.hpp>
 #include <set>
 #include <vector>
 
@@ -23,8 +23,7 @@ int nth_largest_element(auto const& v, int index) {
   return -1;
 }
 
-int main() {
+TEST_CASE("nth_largest_element") {
   std::vector<int> v{1, 3, 2, 17, 18, 8, 19, 22, 2, 10, 11, 11, 133};
-
-  std::cout << nth_largest_element(v, 9) << std::endl;
+  REQUIRE(nth_largest_element(v, 9) == 19);
 }
