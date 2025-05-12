@@ -15,10 +15,7 @@ auto extract_unique(const auto& v) {
 
 int nth_largest_element(auto const& v, std::size_t index) {
   auto s = extract_unique(v);
-
-  if (s.size() >= index)
-    return *std::next(cbegin(s), static_cast<long>(index - 1));
-  return -1;
+  return s.size() >= index ? s[--index] : -1;
 }
 
 TEST_CASE("nth_largest_element") {
