@@ -13,7 +13,7 @@ std::set<int> extract_unique(std::vector<int> const& v) {
   return s;
 }
 
-int nth_largest_element(auto const& v, int index) {
+int nth_largest_element(auto const& v, std::size_t index) {
   std::set<int> s{extract_unique(v)};
 
   std::size_t count{1};
