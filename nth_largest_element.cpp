@@ -2,7 +2,7 @@
 #include <catch2/catch_test_macros.hpp>
 #include <set>
 
-std::set<int> extract_unique(std::vector<int> const& v) {
+std::set<int> extract_unique(const auto & v) {
   std::set<int> s;
   for (auto elem : v) {
     s.insert(elem);
