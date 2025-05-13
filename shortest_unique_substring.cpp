@@ -16,7 +16,8 @@ std::string smallest_substr(std::string_view s, auto const& arr) {
   if (arr.size() > s.size())
     return std::string{};
 
-  for (std::size_t i{}; i <= s.size() - arr.size(); ++i) {
+  for (std::size_t i{}, max_index = s.size() - arr.size(); i <= max_index;
+       ++i) {
     std::string sub_str = check_sub(s.substr(i, arr.size()), arr);
     if (!sub_str.empty())
       return sub_str;
