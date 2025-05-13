@@ -5,7 +5,7 @@
 
 std::string check_sub(std::string_view s, const auto& arr) {
   for (auto const& x : arr) {
-    if (s.find(x) == std::string::npos)
+    if (s.find(x) == std::string_view::npos)
       return std::string{};
   }
 
