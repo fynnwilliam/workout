@@ -1,18 +1,18 @@
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
-#include <string>
+#include <string_view>
 #include <vector>
 
-std::string check_sub(std::string const& s, auto& arr) {
+std::string check_sub(std::string_view s, auto& arr) {
   for (auto const& x : arr) {
     if (s.find(x) == std::string::npos)
       return std::string{};
   }
 
-  return s;
+  return std::string{s};
 }
 
-std::string smallest_substr(std::string const& s, auto const& arr) {
+std::string smallest_substr(std::string_view s, auto const& arr) {
   if (arr.size() > s.size())
     return std::string{};
 
