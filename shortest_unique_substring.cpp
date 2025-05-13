@@ -17,13 +17,10 @@ std::string smallest_substr(std::string_view s, auto const& arr) {
   if (arr_size > s.size())
     return std::string{};
 
-  for (std::size_t i{}, max_index = s.size() - arr_size; i <= max_index; ++i) {
-    std::string sub_str = check_sub(s.substr(i, arr_size), arr);
-    if (!sub_str.empty())
-      return sub_str;
-  }
+  std::string arr_str(arr_size, ' ');
+  std::memcpy(arr_str.data(), arr.data(), arr_size);
 
-  return std::string{};
+  return s.find(arr_str) == std::string_view::npos ? std::string{} : arr_str;
 }
 
 TEST_CASE("smallest_substr") {
