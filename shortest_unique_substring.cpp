@@ -1,7 +1,6 @@
-#include <algorithm>
-#include <vector>
 #include <iostream>
 #include <string>
+#include <vector>
 
 std::string check_sub(std::string const& s, auto& arr) {
   for (auto const& x : arr) {
