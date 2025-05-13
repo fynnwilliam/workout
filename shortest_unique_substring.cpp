@@ -3,15 +3,6 @@
 #include <string_view>
 #include <vector>
 
-std::string check_sub(std::string_view s, const auto& arr) {
-  for (auto const& x : arr) {
-    if (s.find(x) == std::string_view::npos)
-      return std::string{};
-  }
-
-  return std::string{s};
-}
-
 std::string smallest_substr(std::string_view s, auto const& arr) {
   const auto arr_size = arr.size();
   if (arr_size > s.size())
