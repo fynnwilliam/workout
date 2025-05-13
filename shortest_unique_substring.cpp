@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <vector>
@@ -29,4 +30,10 @@ TEST_CASE("smallest_substr") {
   REQUIRE(
       smallest_substr("hippopotamus", std::vector{'o', 't', 'a'}) == "ota"s
   );
+}
+
+TEST_CASE("smallest_substr", "[!benchmark]") {
+  BENCHMARK("smallest_substr(s, arr)") {
+    return smallest_substr("hippopotamus", std::vector{'o', 't', 'a'});
+  };
 }
