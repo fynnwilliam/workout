@@ -13,12 +13,12 @@ std::string check_sub(std::string_view s, auto& arr) {
 }
 
 std::string smallest_substr(std::string_view s, auto const& arr) {
-  if (arr.size() > s.size())
+  const auto arr_size = arr.size();
+  if (arr_size > s.size())
     return std::string{};
 
-  for (std::size_t i{}, max_index = s.size() - arr.size(); i <= max_index;
-       ++i) {
-    std::string sub_str = check_sub(s.substr(i, arr.size()), arr);
+  for (std::size_t i{}, max_index = s.size() - arr_size; i <= max_index; ++i) {
+    std::string sub_str = check_sub(s.substr(i, arr_size), arr);
     if (!sub_str.empty())
       return sub_str;
   }
