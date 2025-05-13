@@ -3,7 +3,7 @@
 #include <string_view>
 #include <vector>
 
-std::string check_sub(std::string_view s, auto& arr) {
+std::string check_sub(std::string_view s, const auto& arr) {
   for (auto const& x : arr) {
     if (s.find(x) == std::string::npos)
       return std::string{};
