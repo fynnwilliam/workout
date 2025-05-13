@@ -33,7 +33,8 @@ TEST_CASE("smallest_substr") {
 }
 
 TEST_CASE("smallest_substr", "[!benchmark]") {
+  std::string s(1'000'000, ' ');
   BENCHMARK("smallest_substr(s, arr)") {
-    return smallest_substr("hippopotamus", std::vector{'o', 't', 'a'});
+    return smallest_substr(s, std::vector{'o', 't', 'a'});
   };
 }
