@@ -1,4 +1,4 @@
-#include <iostream>
+#include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <vector>
 
@@ -24,7 +24,9 @@ std::string smallest_substr(std::string const& s, auto const& arr) {
   return std::string{};
 }
 
-int main() {
-  std::vector v{'o', 't', 'a'};
-  std::cout << smallest_substr("hippopotamus", v) << std::endl;
+TEST_CASE("smallest_substr") {
+  using namespace std::string_literals;
+  REQUIRE(
+      smallest_substr("hippopotamus", std::vector{'o', 't', 'a'}) == "ota"s
+  );
 }
