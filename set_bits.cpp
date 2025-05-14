@@ -34,12 +34,12 @@ TEST_CASE("_set_bits") {
 
 TEST_CASE("set_bits", "[!benchmark]") {
   BENCHMARK("set_bits(128)") {
-    return set_bits(128);
+    return set_bits(UINT64_MAX);
   };
 }
 
 TEST_CASE("_set_bits", "[!benchmark]") {
   BENCHMARK("_set_bits(128)") {
-    return _set_bits(128);
+    return _set_bits(UINT64_MAX);
   };
 }
