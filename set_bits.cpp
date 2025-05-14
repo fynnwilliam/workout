@@ -1,7 +1,7 @@
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 
-constexpr int set_bits(int n) { // Brian Kernighan's approach
+constexpr int set_bits(std::uint64_t n) { // Brian Kernighan's approach
   int count{};
   for (; n; count++)
     n &= n - 1;
@@ -9,7 +9,7 @@ constexpr int set_bits(int n) { // Brian Kernighan's approach
   return count;
 }
 
-constexpr int _set_bits(int n) { // other approach
+constexpr int _set_bits(std::uint64_t n) { // other approach
   int count{};
 
   while (n) {
