@@ -2,7 +2,7 @@
 #include <catch2/catch_test_macros.hpp>
 
 constexpr int set_bits(std::uint64_t n) { // Brian Kernighan's approach
-  int count{};
+  std::uint8_t count{};
   for (; n; count++)
     n &= n - 1;
 
@@ -10,7 +10,7 @@ constexpr int set_bits(std::uint64_t n) { // Brian Kernighan's approach
 }
 
 constexpr int _set_bits(std::uint64_t n) { // other approach
-  int count{};
+  std::uint8_t count{};
 
   while (n) {
     count += n & 1;
