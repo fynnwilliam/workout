@@ -8,7 +8,7 @@ std::string smallest_substr(std::string_view s, auto const& arr) {
   if (arr_size > s.size())
     return std::string{};
 
-  std::string arr_str{arr.data(), arr_size};
+  std::string arr_str{std::data(arr), arr_size};
 
   return s.find(arr_str) == std::string_view::npos ? std::string{} : arr_str;
 }
