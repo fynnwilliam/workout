@@ -1,4 +1,4 @@
-#include <iostream>
+#include <catch2/catch_test_macros.hpp>
 
 constexpr int set_bits(int n) { // Brian Kernighan's approach
   int count{};
@@ -19,6 +19,10 @@ constexpr int _set_bits(int n) { // other approach
   return count;
 }
 
-int main() {
-  std::cout << set_bits(128) << '\n' << _set_bits(128) << std::endl;
+TEST_CASE("set_bits") {
+  REQUIRE(set_bits(128) == 1);
+}
+
+TEST_CASE("_set_bits") {
+  REQUIRE(_set_bits(128) == 1);
 }
