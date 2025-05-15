@@ -17,6 +17,7 @@ TEST_CASE("reverse_str") {
   REQUIRE(reverse_str({}) == ""s);
   REQUIRE(reverse_str("a") == "a"s);
   REQUIRE(reverse_str("ab") == "ba"s);
+  REQUIRE(reverse_str("abc") == "cba"s);
 }
 
 TEST_CASE("reverse_str", "[!benchmark]") {
