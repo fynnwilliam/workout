@@ -3,14 +3,10 @@
 #include <string>
 
 std::string reverse_str(std::string s) {
-  std::string reversed{s};
+  for (std::size_t i = 0, j = s.size() - 1; i < j; ++i, --j)
+    std::swap(s[i], s[j]);
 
-  std::size_t size = s.size();
-
-  for (char const& c : s)
-    reversed[--size] = c;
-
-  return reversed;
+  return s;
 }
 
 TEST_CASE("reverse_str") {
