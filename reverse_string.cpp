@@ -15,6 +15,8 @@ TEST_CASE("reverse_str") {
   REQUIRE(reverse_str("?gniod uoy era woh") == "how are you doing?"s);
   REQUIRE(reverse_str("how_are_you_doing?") == "?gniod_uoy_era_woh"s);
   REQUIRE(reverse_str({}) == ""s);
+  REQUIRE(reverse_str("a") == "a"s);
+  REQUIRE(reverse_str("ab") == "ba"s);
 }
 
 TEST_CASE("reverse_str", "[!benchmark]") {
