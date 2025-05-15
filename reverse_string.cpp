@@ -12,6 +12,8 @@ std::string reverse_str(std::string s) {
 TEST_CASE("reverse_str") {
   using namespace std::string_literals;
   REQUIRE(reverse_str("how are you doing?") == "?gniod uoy era woh"s);
+  REQUIRE(reverse_str("?gniod uoy era woh") == "how are you doing?"s);
+  REQUIRE(reverse_str("how_are_you_doing?") == "?gniod_uoy_era_woh"s);
 }
 
 TEST_CASE("reverse_str", "[!benchmark]") {
