@@ -3,8 +3,8 @@
 #include <string>
 
 std::string reverse_str(std::string s) {
-  for (std::size_t i = 0, j = s.size() - 1; i < j; ++i, --j)
-    std::swap(s[i], s[j]);
+  for (char* i = s.data(), *j = i + s.size() - 1; i < j; ++i, --j)
+    std::swap(*i, *j);
 
   return s;
 }
