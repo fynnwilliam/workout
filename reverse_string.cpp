@@ -1,4 +1,4 @@
-#include <iostream>
+#include <catch2/catch_test_macros.hpp>
 #include <string>
 
 std::string reverse_str(std::string s) {
@@ -14,6 +14,7 @@ std::string reverse_str(std::string s) {
   return reversed;
 }
 
-int main() {
-  std::cout << reverse_str("how are you doing?") << std::endl;
+TEST_CASE("reverse_str") {
+  using namespace std::string_literals;
+  REQUIRE(reverse_str("how are you doing?") == "?gniod uoy era woh"s);
 }
