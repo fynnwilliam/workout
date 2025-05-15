@@ -5,9 +5,7 @@
 std::string reverse_str(std::string s) {
   std::string reversed{s};
 
-  std::size_t size{};
-  while (s[size] != '\0')
-    ++size;
+  std::size_t size = s.size();
 
   for (char const& c : s)
     reversed[--size] = c;
