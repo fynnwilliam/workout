@@ -1,5 +1,4 @@
 #include <catch2/catch_test_macros.hpp>
-#include <iostream>
 #include <vector>
 
 void copy_elem(auto i, auto const& j) {
