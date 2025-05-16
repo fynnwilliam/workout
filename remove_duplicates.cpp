@@ -2,13 +2,6 @@
 #include <iostream>
 #include <vector>
 
-void print(std::vector<int> v) {
-  for (auto elem : v) {
-    std::cout << elem << ' ';
-  }
-  std::cout << '\n';
-}
-
 void copy_elem(auto i, auto const& j) {
   for (; i < j - 1; ++i) {
     *i = *(i + 1);
