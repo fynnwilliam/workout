@@ -10,13 +10,16 @@ void copy_elem(auto i, auto const& j) {
 
 auto remove_duplicate(auto& v) {
   std::size_t count{};
-  for (auto i{begin(v)}, back_itr = end(v) - 1; i < back_itr - count; ++i) {
-    if (*i == *(i + 1)) {
-      copy_elem(i + 1, end(v) - ++count);
+  auto last = std::end(v) - 1;
+  
+  for (auto i = std::begin(v); i < last; ++i) {
+    if (auto m = i + 1; *i == *m) {
+      copy_elem(m, last--);
+      ++count;
     }
   }
 
-  v.erase(end(v) - count, end(v));
+  v.erase(++last, std::end(v));
   return count;
 }
 
