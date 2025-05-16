@@ -10,7 +10,7 @@ void copy_elem(auto i, auto const& j) {
 
 auto remove_duplicate(auto& v) {
   std::size_t count{};
-  for (auto i{begin(v)}; v.size() && i < end(v) - 1 - count; ++i) {
+  for (auto i{begin(v)}, back_itr = end(v) - 1; i < back_itr - count; ++i) {
     if (*i == *(i + 1)) {
       copy_elem(i + 1, end(v) - count++);
     }
