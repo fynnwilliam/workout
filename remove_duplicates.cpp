@@ -3,7 +3,7 @@
 #include <vector>
 
 void copy_elem(auto i, auto const& j) {
-  for (; i < j - 1; ++i) {
+  for (; i < j; ++i) {
     *i = *(i + 1);
   }
 }
@@ -12,7 +12,7 @@ auto remove_duplicate(auto& v) {
   std::size_t count{};
   for (auto i{begin(v)}, back_itr = end(v) - 1; i < back_itr - count; ++i) {
     if (*i == *(i + 1)) {
-      copy_elem(i + 1, end(v) - count++);
+      copy_elem(i + 1, end(v) - ++count);
     }
   }
 
