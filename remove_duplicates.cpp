@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <vector>
 
@@ -24,4 +25,11 @@ TEST_CASE("remove_duplicate") {
 
   REQUIRE(remove_duplicate(v) == 2);
   REQUIRE(v == std::vector{1, 2, 3, 4, 5, 6, 7, 8});
+}
+
+TEST_CASE("remove_duplicate", "[!benchmark]") {
+  std::vector v{1, 2, 2, 3, 4, 4, 5, 6, 7, 8, 9, 9, 10, 12, 12, 14, 15, 16};
+  BENCHMARK("remove_duplicate(v)") {
+    return remove_duplicate(v);
+  };
 }
