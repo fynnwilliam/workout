@@ -1,3 +1,4 @@
+#include <catch2/catch_test_macros.hpp>
 #include <iostream>
 #include <vector>
 
@@ -26,15 +27,9 @@ auto remove_duplicate(auto& v) {
   return count;
 }
 
-int main() {
+TEST_CASE("remove_duplicate") {
   std::vector<int> v{1, 2, 2, 3, 4, 4, 5, 6, 7, 8};
-  // {1, 2, 3, 4, 4, 5, 6, 7, 8, 8};
-  // {1, 2, 3, 4, 5, 6, 7, 8, 8, 8};
-  print(v);
 
-  const auto count = remove_duplicate(v);
-
-  print(v);
-
-  std::cout << "number of duplicates found: " << count << '\n';
+  REQUIRE(remove_duplicate(v) == 2);
+  REQUIRE(v == std::vector{1, 2, 3, 4, 5, 6, 7, 8});
 }
