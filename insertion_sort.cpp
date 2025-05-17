@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <concepts>
 #include <vector>
@@ -22,4 +23,11 @@ TEST_CASE("insertion_sort") {
   std::vector<int> numbers{1, 3, 4, 6, 7, 8};
   insertion_sort(numbers, 2, 0, 9, 5);
   REQUIRE((numbers == std::vector{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}));
+}
+
+TEST_CASE("insertion_sort", "[!benchmark]") {
+  std::vector<int> numbers{1, 3};
+  BENCHMARK("insertion_sort(numbers, ...)") {
+    return insertion_sort(numbers, 2, 0, 9, 5, 2, 4, 3, 9, 19, 10, 100, 7, 8);
+  };
 }
