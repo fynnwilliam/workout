@@ -1,5 +1,5 @@
 #include <algorithm>
-#include <cassert>
+#include <catch2/catch_test_macros.hpp>
 #include <concepts>
 #include <vector>
 
@@ -18,9 +18,8 @@ void insertion_sort(T& container, U... args) {
   }
 }
 
-int main() {
+TEST_CASE("insertion_sort") {
   std::vector<int> numbers{1, 3, 4, 6, 7, 8};
-
   insertion_sort(numbers, 2, 0, 9, 5);
-  assert((numbers == std::vector{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}));
+  REQUIRE((numbers == std::vector{0, 1, 2, 3, 4, 5, 6, 7, 8, 9}));
 }
