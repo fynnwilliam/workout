@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <cassert>
 #include <concepts>
-#include <iterator>
 #include <vector>
 
 template <typename Container>
