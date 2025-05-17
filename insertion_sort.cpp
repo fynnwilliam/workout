@@ -19,8 +19,10 @@ void _insertion_sort(T& container, typename T::value_type value) {
 template <insertable T, typename... U>
   requires(std::same_as<typename T::value_type, U> && ...)
 void insertion_sort(T& container, U... args) {
-  for (auto const& arg : {args...})
-    _insertion_sort(container, arg);
+  for (auto const& arg : {args...}) {
+    const auto itr = std::ranges::upper_bound(container, arg);
+    container.insert(itr, arg);
+  }
 }
 
 int main() {
