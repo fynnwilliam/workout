@@ -10,17 +10,14 @@ concept insertable = requires(Container c, Container::value_type v) {
   { std::begin(c) } -> std::forward_iterator;
 };
 
-template <typename T>
+template <insertable T>
 void _insertion_sort(T& container, typename T::value_type value) {
   auto itr{std::ranges::upper_bound(container, value)};
   container.insert(itr, value);
 }
 
-template <typename T, typename... U>
-  requires requires(T x, typename T::value_type value) {
-    { x.begin() } -> std::forward_iterator;
-    x.insert(x.begin(), value);
-  } && (std::same_as<typename T::value_type, U> && ...)
+template <insertable T, typename... U>
+  requires (std::same_as<typename T::value_type, U> && ...)
 void insertion_sort(T& container, U... args) {
   if (std::initializer_list<typename T::value_type> values{args...};
       values.size())
