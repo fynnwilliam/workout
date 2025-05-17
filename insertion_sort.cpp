@@ -1,7 +1,14 @@
 #include <algorithm>
 #include <cassert>
+#include <concepts>
 #include <iterator>
 #include <vector>
+
+template <typename Container>
+concept insertable = requires(Container c, Container::value_type v) {
+  c.insert(std::begin(c), v);
+  { std::begin(c) } -> std::forward_iterator;
+};
 
 template <typename T>
 void _insertion_sort(T& container, typename T::value_type value) {
