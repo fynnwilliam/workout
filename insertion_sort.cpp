@@ -17,12 +17,10 @@ void _insertion_sort(T& container, typename T::value_type value) {
 }
 
 template <insertable T, typename... U>
-  requires (std::same_as<typename T::value_type, U> && ...)
+  requires(std::same_as<typename T::value_type, U> && ...)
 void insertion_sort(T& container, U... args) {
-  if (std::initializer_list<typename T::value_type> values{args...};
-      values.size())
-    for (auto const& value : values)
-      _insertion_sort(container, value);
+  for (auto const& arg : {args...})
+    _insertion_sort(container, arg);
 }
 
 int main() {
