@@ -6,25 +6,25 @@ struct node {
   unsigned height = 0;
 };
 
-void compute_height(node*);
+constexpr void compute_height(node*);
 
-inline void leaf_height(node* n) {
+constexpr void leaf_height(node* n) {
   n->height = 0;
 }
 
-inline void left_height(node* n) {
+constexpr void left_height(node* n) {
   auto& [left, _, height] = *n;
   compute_height(left);
   height = left->height + 1;
 }
 
-inline void right_height(node* n) {
+constexpr void right_height(node* n) {
   auto& [_, right, height] = *n;
   compute_height(right);
   height = right->height + 1;
 }
 
-inline void mountain_height(node* n) {
+constexpr void mountain_height(node* n) {
   auto& [left, right, height] = *n;
   compute_height(left);
   compute_height(right);
@@ -32,7 +32,7 @@ inline void mountain_height(node* n) {
   height = std::max(left->height, right->height) + 1;
 }
 
-void compute_height(node* n) {
+constexpr void compute_height(node* n) {
   auto& [left, right, _] = *n;
   !left && !right  ? leaf_height(n)
   : left && !right ? left_height(n)
