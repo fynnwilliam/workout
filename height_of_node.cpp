@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 
 struct node {
@@ -45,4 +46,12 @@ TEST_CASE("height of a default node should be zero(0)") {
   node n;
   compute_height(&n);
   REQUIRE(n.height == 0u);
+}
+
+TEST_CASE("compute_height", "[!benchmark]") {
+  node left, right;
+  node n{&left, &right};
+  BENCHMARK("compute_height(&n)") {
+    return compute_height(&n);
+  };
 }
