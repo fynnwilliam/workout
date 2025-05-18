@@ -21,11 +21,11 @@ inline void right_height(node* n) {
 }
 
 inline void mountain_height(node* n) {
-  compute_height(n->left);
-  compute_height(n->right);
+  auto& [left, right, height] = *n;
+  compute_height(left);
+  compute_height(right);
 
-  n->height = n->left->height >= n->right->height ? n->left->height + 1
-                                                  : n->right->height + 1;
+  height = left->height >= right->height ? left->height + 1 : right->height + 1;
 }
 
 void compute_height(node* n) {
