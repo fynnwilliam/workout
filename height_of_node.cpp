@@ -48,27 +48,27 @@ TEST_CASE("height of a default node should be zero(0)") {
   REQUIRE(n.height == 0u);
 }
 
+namespace {
+node a, b, c{&a, &b};
+node d, e{&c, &d}, f;
+node g, h{&f, &g}, i{&e, &h};
+node j, k, l{&j, &k};
+node m, n{&l, &m}, o{&i, &n};
+
+node r, s, t{&r, &s};
+node u, v{&t, &u}, w;
+node x, y{&w, &x}, z{&v, &y};
+
+node p{&o, &z};
+} // namespace
+
 TEST_CASE("function calls in fib(7) has a height of 5 when shown as a tree") {
-  node a, b, c{&a, &b};
-  node d, e{&c, &d}, f;
-  node g, h{&f, &g}, i{&e, &h};
-  node j, k, l{&j, &k};
-  node m, n{&l, &m}, o{&i, &n};
-
-  node r, s, t{&r, &s};
-  node u, v{&t, &u}, w;
-  node x, y{&w, &x}, z{&v, &y};
-
-  node p{&o, &z};
-
   compute_height(&p);
   REQUIRE(p.height == 5u);
 }
 
 TEST_CASE("compute_height", "[!benchmark]") {
-  node left, right;
-  node n{&left, &right};
-  BENCHMARK("compute_height(&n)") {
-    return compute_height(&n);
+  BENCHMARK("compute_height(&p)") {
+    return compute_height(&p);
   };
 }
