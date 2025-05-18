@@ -1,3 +1,9 @@
+struct node {
+  node* left = nullptr;
+  node* right = nullptr;
+  unsigned height = 0;
+};
+
 void compute_height(node*);
 
 inline void leaf_height(node* n) {
