@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <catch2/catch_test_macros.hpp>
 
 struct node {
   node* left = nullptr;
@@ -38,4 +39,10 @@ constexpr void compute_height(node* n) {
   : left && !right ? left_height(n)
   : !left && right ? right_height(n)
                    : mountain_height(n);
+}
+
+TEST_CASE("height of a default node should be zero(0)") {
+  node n;
+  compute_height(&n);
+  REQUIRE(n.height == 0u);
 }
