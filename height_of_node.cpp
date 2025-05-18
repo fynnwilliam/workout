@@ -68,7 +68,7 @@ TEST_CASE("function calls in fib(7) has a height of 5 when shown as a tree") {
 }
 
 TEST_CASE("compute_height", "[!benchmark]") {
-  BENCHMARK("compute_height(&p)") {
+  BENCHMARK("compute_height(p)") {
     return compute_height(p);
   };
 }
