@@ -29,8 +29,9 @@ inline void mountain_height(node* n) {
 }
 
 void compute_height(node* n) {
-  !n->left && !n->right  ? leaf_height(n)
-  : n->left && !n->right ? left_height(n)
-  : !n->left && n->right ? right_height(n)
-                         : mountain_height(n);
+  auto& [left, right, _] = *n;
+  !left && !right  ? leaf_height(n)
+  : left && !right ? left_height(n)
+  : !left && right ? right_height(n)
+                   : mountain_height(n);
 }
