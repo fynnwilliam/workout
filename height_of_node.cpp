@@ -37,9 +37,9 @@ constexpr void mountain_height(node* n) {
 constexpr void compute_height(node* n) {
   auto& [left, right, _] = *n;
   !left && !right  ? leaf_height(n)
+  : left && right  ? mountain_height(n)
   : left && !right ? left_height(n)
-  : !left && right ? right_height(n)
-                   : mountain_height(n);
+                   : right_height(n);
 }
 
 TEST_CASE("height of a default node should be zero(0)") {
