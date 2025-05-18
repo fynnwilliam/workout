@@ -1,3 +1,5 @@
+#include <algorithm>
+
 struct node {
   node* left = nullptr;
   node* right = nullptr;
@@ -27,7 +29,7 @@ inline void mountain_height(node* n) {
   compute_height(left);
   compute_height(right);
 
-  height = left->height >= right->height ? left->height + 1 : right->height + 1;
+  height = std::max(left->height, right->height) + 1;
 }
 
 void compute_height(node* n) {
