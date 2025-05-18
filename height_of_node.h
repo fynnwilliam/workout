@@ -11,8 +11,9 @@ inline void leaf_height(node* n) {
 }
 
 inline void left_height(node* n) {
-  compute_height(n->left);
-  n->height = n->left->height + 1;
+  auto& [left, _, height] = *n;
+  compute_height(left);
+  height = left->height + 1;
 }
 
 inline void right_height(node* n) {
