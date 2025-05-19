@@ -1,3 +1,10 @@
+struct node {
+  node* parent = nullptr;
+  node* left = nullptr;
+  node* right = nullptr;
+  int value = 0;
+};
+
 node* leftmost_key(node* n) {
   return n->left ? leftmost_key(n->left) : n;
 }
