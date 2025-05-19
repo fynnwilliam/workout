@@ -23,6 +23,7 @@ node* in_order_successor(node* n) {
 
   if (u == n) {
     return is_left_alligned(n) ? n->parent : climb(n);
-  } else
-    return u;
+  }
+
+  return u;
 }
