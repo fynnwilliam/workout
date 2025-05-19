@@ -5,6 +5,10 @@ struct node {
   int value = 0;
 };
 
+constexpr bool operator>(const node& lhs, const node& rhs) noexcept {
+  return lhs.value > rhs.value;
+}
+
 node* leftmost_key(node* n) {
   return n->left ? leftmost_key(n->left) : n;
 }
