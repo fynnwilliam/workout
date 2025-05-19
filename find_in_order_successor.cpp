@@ -18,7 +18,8 @@ node* root_node(node* n) {
 }
 
 bool is_left_alligned(node* n) {
-  return n == n->parent->left;
+  auto& [parent, _, _, _] = *n;
+  return parent && n == parent->left;
 }
 
 node* climb(node* n) {
