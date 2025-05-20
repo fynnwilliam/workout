@@ -28,10 +28,11 @@ node* climb(node* n) {
 }
 
 node* in_order_successor(node& n) {
-  node* u = !n.right ? &n : leftmost_key(n.right);
+  auto& [parent, _, right, _] = n;
+  node* u = !right ? &n : leftmost_key(right);
 
   if (u == &n) {
-    return is_left_alligned(&n) ? n.parent : climb(&n);
+    return is_left_alligned(&n) ? parent : climb(&n);
   }
 
   return u;
