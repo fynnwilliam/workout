@@ -27,14 +27,11 @@ node* climb(node* n) {
   return *root > *n ? root : nullptr;
 }
 
-node* in_order_successor(node* n) {
-  if (!n)
-    return nullptr;
+node* in_order_successor(node& n) {
+  node* u = !n.right ? &n : leftmost_key(n.right);
 
-  node* u = !n->right ? n : leftmost_key(n->right);
-
-  if (u == n) {
-    return is_left_alligned(n) ? n->parent : climb(n);
+  if (u == &n) {
+    return is_left_alligned(&n) ? n.parent : climb(&n);
   }
 
   return u;
