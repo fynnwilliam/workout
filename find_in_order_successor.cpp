@@ -9,8 +9,8 @@ constexpr bool operator>(const node& lhs, const node& rhs) noexcept {
   return lhs.value > rhs.value;
 }
 
-node* leftmost_key(node* n) {
-  return n->left ? leftmost_key(n->left) : n;
+node* leftmost_key(node& n) {
+  return n.left ? leftmost_key(*n.left) : &n;
 }
 
 node* root_node(node& n) {
@@ -29,7 +29,7 @@ node* climb(node& n) {
 
 node* in_order_successor(node& n) {
   auto& [parent, _, right, _] = n;
-  node* u = right ? leftmost_key(right) : &n;
+  node* u = right ? leftmost_key(*right) : &n;
 
   if (u == &n) {
     return is_left_alligned(n) ? parent : climb(n);
