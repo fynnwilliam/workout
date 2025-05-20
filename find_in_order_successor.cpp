@@ -22,9 +22,9 @@ bool is_left_alligned(node* n) {
   return parent && n == parent->left;
 }
 
-node* climb(node* n) {
-  node* root{root_node(n)};
-  return *root > *n ? root : nullptr;
+node* climb(node& n) {
+  node* root{root_node(&n)};
+  return *root > n ? root : nullptr;
 }
 
 node* in_order_successor(node& n) {
@@ -32,7 +32,7 @@ node* in_order_successor(node& n) {
   node* u = right ? leftmost_key(right) : &n;
 
   if (u == &n) {
-    return is_left_alligned(&n) ? parent : climb(&n);
+    return is_left_alligned(&n) ? parent : climb(n);
   }
 
   return u;
