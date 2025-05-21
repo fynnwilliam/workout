@@ -1,3 +1,5 @@
+#include <catch2/catch_test_macros.hpp>
+
 struct node {
   node* parent = nullptr;
   node* left = nullptr;
@@ -33,4 +35,35 @@ struct node {
     return leftmost_key(*right);
   }
   return is_left_alligned(n) ? parent : climb(n);
+}
+
+/*
+            23
+           /  \
+          11   25
+         /  \
+        7    15
+            /  \
+           13  17
+*/
+
+TEST_CASE("in_order_successor") {
+  node a{.value = 23};
+  node b{.parent = &a, .value = 11}, c{.parent = &a, .value = 25};
+  a.left = &b;
+  a.right = &c;
+  node d{.parent = &b, .value = 7}, e{.parent = &b, .value = 15};
+  b.left = &d;
+  b.right = &e;
+  node f{.parent = &e, .value = 13}, g{.parent = &e, .value = 17};
+  e.left = &f;
+  e.right = &g;
+
+  REQUIRE(in_order_successor(e) == &g);
+  REQUIRE(in_order_successor(b) == &f);
+  REQUIRE(in_order_successor(a) == &c);
+  REQUIRE(in_order_successor(d) == &b);
+  REQUIRE(in_order_successor(f) == &e);
+  REQUIRE(in_order_successor(g) == &a);
+  REQUIRE(in_order_successor(c) == nullptr);
 }
