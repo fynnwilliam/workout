@@ -12,11 +12,13 @@ struct node {
   return lhs.value > rhs.value;
 }
 
-[[nodiscard]] constexpr const node* leftmost_key(const node& n) {
+template <typename node_t> using n_ptr = std::remove_reference_t<node_t>*;
+
+[[nodiscard]] constexpr auto leftmost_key(auto& n) -> n_ptr<decltype(n)> {
   return n.left ? leftmost_key(*n.left) : &n;
 }
 
-[[nodiscard]] constexpr const node* root_node(const node& n) {
+[[nodiscard]] constexpr auto root_node(auto& n) -> n_ptr<decltype(n)> {
   return n.parent ? root_node(*n.parent) : &n;
 }
 
@@ -25,12 +27,12 @@ struct node {
   return parent && &n == parent->left;
 }
 
-[[nodiscard]] constexpr const node* climb(const node& n) {
-  const node* root = root_node(n);
+[[nodiscard]] constexpr auto climb(auto& n) -> n_ptr<decltype(n)> {
+  n_ptr<decltype(n)> root = root_node(n);
   return *root > n ? root : nullptr;
 }
 
-[[nodiscard]] constexpr const node* in_order_successor(const node& n) {
+[[nodiscard]] constexpr auto in_order_successor(auto& n) -> n_ptr<decltype(n)> {
   auto& [parent, _, right, _] = n;
   if (right != nullptr) {
     return leftmost_key(*right);
