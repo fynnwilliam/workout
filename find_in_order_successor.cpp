@@ -32,7 +32,7 @@ template <typename node_t> using n_ptr = std::remove_reference_t<node_t>*;
   return *root > n ? root : nullptr;
 }
 
-[[nodiscard]] constexpr auto in_order_successor(auto& n) -> n_ptr<decltype(n)> {
+[[nodiscard]] constexpr auto inorder_successor(auto& n) -> n_ptr<decltype(n)> {
   auto& [parent, _, right, _] = n;
   if (right != nullptr) {
     return leftmost_key(*right);
@@ -50,7 +50,7 @@ template <typename node_t> using n_ptr = std::remove_reference_t<node_t>*;
            10  14
 */
 
-TEST_CASE("in_order_successor") {
+TEST_CASE("inorder_successor") {
   node a{.value = 20};
   node b{.parent = &a, .value = 8}, c{.parent = &a, .value = 22};
   a.left = &b;
@@ -62,16 +62,16 @@ TEST_CASE("in_order_successor") {
   e.left = &f;
   e.right = &g;
 
-  REQUIRE(in_order_successor(e) == &g);
-  REQUIRE(in_order_successor(b) == &f);
-  REQUIRE(in_order_successor(a) == &c);
-  REQUIRE(in_order_successor(d) == &b);
-  REQUIRE(in_order_successor(f) == &e);
-  REQUIRE(in_order_successor(g) == &a);
-  REQUIRE(in_order_successor(c) == nullptr);
+  REQUIRE(inorder_successor(e) == &g);
+  REQUIRE(inorder_successor(b) == &f);
+  REQUIRE(inorder_successor(a) == &c);
+  REQUIRE(inorder_successor(d) == &b);
+  REQUIRE(inorder_successor(f) == &e);
+  REQUIRE(inorder_successor(g) == &a);
+  REQUIRE(inorder_successor(c) == nullptr);
 }
 
-TEST_CASE("in_order_successor", "[!benchmark]") {
+TEST_CASE("inorder_successor", "[!benchmark]") {
   node a{.value = 23};
   node b{.parent = &a, .value = 11}, c{.parent = &a, .value = 25};
   a.left = &b;
@@ -83,7 +83,7 @@ TEST_CASE("in_order_successor", "[!benchmark]") {
   e.left = &f;
   e.right = &g;
 
-  BENCHMARK("in_order_successor(g)") {
-    return in_order_successor(g);
+  BENCHMARK("inorder_successor(g)") {
+    return inorder_successor(g);
   };
 }
