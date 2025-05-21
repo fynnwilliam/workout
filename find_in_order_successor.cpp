@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 
 struct node {
@@ -66,4 +67,21 @@ TEST_CASE("in_order_successor") {
   REQUIRE(in_order_successor(f) == &e);
   REQUIRE(in_order_successor(g) == &a);
   REQUIRE(in_order_successor(c) == nullptr);
+}
+
+TEST_CASE("in_order_successor", "[!benchmark]") {
+  node a{.value = 23};
+  node b{.parent = &a, .value = 11}, c{.parent = &a, .value = 25};
+  a.left = &b;
+  a.right = &c;
+  node d{.parent = &b, .value = 7}, e{.parent = &b, .value = 15};
+  b.left = &d;
+  b.right = &e;
+  node f{.parent = &e, .value = 13}, g{.parent = &e, .value = 17};
+  e.left = &f;
+  e.right = &g;
+
+  BENCHMARK("in_order_successor(g)") {
+    return in_order_successor(g);
+  };
 }
