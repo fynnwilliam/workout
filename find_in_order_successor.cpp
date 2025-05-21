@@ -41,24 +41,24 @@ template <typename node_t> using n_ptr = std::remove_reference_t<node_t>*;
 }
 
 /*
-            23
+            20
            /  \
-          11   25
+          8   22
          /  \
-        7    15
+        4    12
             /  \
-           13  17
+           10  14
 */
 
 TEST_CASE("in_order_successor") {
-  node a{.value = 23};
-  node b{.parent = &a, .value = 11}, c{.parent = &a, .value = 25};
+  node a{.value = 20};
+  node b{.parent = &a, .value = 8}, c{.parent = &a, .value = 22};
   a.left = &b;
   a.right = &c;
-  node d{.parent = &b, .value = 7}, e{.parent = &b, .value = 15};
+  node d{.parent = &b, .value = 4}, e{.parent = &b, .value = 12};
   b.left = &d;
   b.right = &e;
-  node f{.parent = &e, .value = 13}, g{.parent = &e, .value = 17};
+  node f{.parent = &e, .value = 10}, g{.parent = &e, .value = 14};
   e.left = &f;
   e.right = &g;
 
