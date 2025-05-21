@@ -5,8 +5,7 @@ struct node {
   int value = 0;
 };
 
-[[nodiscard]] constexpr bool
-operator>(const node& lhs, const node& rhs) noexcept {
+[[nodiscard]] constexpr bool operator>(const node& lhs, const node& rhs) {
   return lhs.value > rhs.value;
 }
 
