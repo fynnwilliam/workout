@@ -11,10 +11,6 @@ char first_non_recurring_char(std::string const& s) {
   return ' ';
 }
 
-std::string declare(char const& c) {
-  return c == ' ' ? "none found" : std::string{c};
-}
-
 TEST_CASE("first_non_recurring_char") {
   using namespace std::string_literals;
   REQUIRE(first_non_recurring_char("character"s) == 'h');
