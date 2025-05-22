@@ -3,8 +3,8 @@
 #include <string>
 
 char first_non_recurring_char(std::string const& s) {
-  for (std::size_t i{}; i < s.size(); ++i) {
-    if (s.find_last_of(s[i]) == i && s.find_first_of(s[i]) == i)
+  for (std::size_t i{1}; i < s.size(); ++i) {
+    if (s.find_last_of(s[i]) == i && s[i] != s[i - 1])
       return s[i];
   }
 
