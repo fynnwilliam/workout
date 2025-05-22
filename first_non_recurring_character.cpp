@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
 
@@ -20,4 +21,13 @@ TEST_CASE("first_non_recurring_char") {
   REQUIRE(first_non_recurring_char("recurring"s) == 'e');
   REQUIRE(first_non_recurring_char("maximised"s) == 'a');
   REQUIRE(first_non_recurring_char("applejack"s) == 'l');
+}
+
+TEST_CASE("first_non_recurring_char", "[!benchmark]") {
+  std::string s(1'000'000, ' ');
+  s.append("a");
+  
+  BENCHMARK("first_non_recurring_char(s)") {
+    return first_non_recurring_char(s);
+  };
 }
