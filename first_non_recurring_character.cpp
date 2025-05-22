@@ -4,7 +4,7 @@
 
 char first_non_recurring_char(std::string const& s) {
   for (std::size_t i{1}; i < s.size(); ++i) {
-    if (s.find_last_of(s[i]) == i && s[i] != s[i - 1])
+    if (s[i] != s[i - 1] && s.find_last_of(s[i]) == i)
       return s[i];
   }
 
