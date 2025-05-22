@@ -4,7 +4,7 @@
 
 char first_non_recurring_char(std::string const& s) {
   for (std::size_t i{}; i < s.size(); ++i) {
-    if (s.find_first_of(s[i]) == s.find_last_of(s[i]))
+    if (s.find_last_of(s[i]) == i && s.find_first_of(s[i]) == i)
       return s[i];
   }
 
@@ -26,7 +26,7 @@ TEST_CASE("first_non_recurring_char") {
 TEST_CASE("first_non_recurring_char", "[!benchmark]") {
   std::string s(1'000'000, ' ');
   s.append("a");
-  
+
   BENCHMARK("first_non_recurring_char(s)") {
     return first_non_recurring_char(s);
   };
