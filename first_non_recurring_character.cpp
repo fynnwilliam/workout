@@ -17,4 +17,7 @@ std::string declare(char const& c) {
 TEST_CASE("first_non_recurring_char") {
   using namespace std::string_literals;
   REQUIRE(first_non_recurring_char("character"s) == 'h');
+  REQUIRE(first_non_recurring_char("recurring"s) == 'e');
+  REQUIRE(first_non_recurring_char("maximised"s) == 'a');
+  REQUIRE(first_non_recurring_char("applejack"s) == 'l');
 }
