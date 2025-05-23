@@ -1,11 +1,13 @@
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <ranges>
 #include <string>
 
 char first_non_recurring_char(std::string const& s) {
-  for (std::size_t i{}; i < s.size(); ++i) {
-    if ((i == 0zu || s[i] != s[i - 1]) && s.find_last_of(s[i]) == i)
-      return s[i];
+  for (auto [i, c] : std::views::enumerate(s)) {
+    if ((i == 0 || c != s[static_cast<std::size_t>(i) - 1]) &&
+        s.find_last_of(c) == static_cast<std::size_t>(i))
+      return c;
   }
 
   return ' ';
