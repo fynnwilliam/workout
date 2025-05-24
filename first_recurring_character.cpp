@@ -23,7 +23,7 @@ TEST_CASE("first_recurring_char", "[!benchmark]") {
   std::string s{"characters"};
   s.append(1'000'000, ' ');
 
-  BENCHMARK("") {
+  BENCHMARK("first_recurring_char(s)") {
     return first_recurring_char(s);
   };
 }
