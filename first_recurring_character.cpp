@@ -3,7 +3,7 @@
 
 char first_recurring_char(std::string const& s) {
   for (std::size_t i{}; i < s.size() - 1; ++i) {
-    if (auto pos = s.find_last_of(s[i]); pos > i && pos < s.size())
+    if (s.find_last_of(s[i]) != i)
       return s[i];
   }
 
