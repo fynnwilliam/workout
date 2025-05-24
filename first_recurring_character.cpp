@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
 
@@ -16,4 +17,13 @@ TEST_CASE("first_recurring_char") {
   REQUIRE(first_recurring_char("recurring"s) == 'r');
   REQUIRE(first_recurring_char("maximised"s) == 'm');
   REQUIRE(first_recurring_char("applejack"s) == 'a');
+}
+
+TEST_CASE("first_recurring_char", "[!benchmark]") {
+  std::string s{"characters"};
+  s.append(1'000'000, ' ');
+
+  BENCHMARK("") {
+    return first_recurring_char(s);
+  };
 }
