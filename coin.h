@@ -99,7 +99,7 @@ std::vector<coin> _shortest_path(point player, std::vector<coin>& coins) {
   return min.neighbours();
 }
 
-std::vector<coin> coin_list(std::vector<point> coins) {
+std::vector<coin> coin_list(const std::vector<point>& coins) {
   std::vector<coin> c;
 
   for (auto const& coin : coins)
