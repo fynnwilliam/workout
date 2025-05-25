@@ -82,7 +82,8 @@ inline point _closest_coin(point player, const std::vector<point>& coins) {
   return closest_c;
 }
 
-inline std::vector<coin> _shortest_path(point player, std::vector<coin>& coins) {
+inline std::vector<coin>
+_shortest_path(point player, std::vector<coin>& coins) {
   if (coins.empty())
     return coins;
 
