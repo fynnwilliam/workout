@@ -60,7 +60,7 @@ public:
 
   inline bool operator==(coin const& rhs) const {
     return path() == rhs.path() && location() == rhs.location() &&
-           compare(neighbours_, rhs.neighbours_);
+           neighbours_ == rhs.neighbours_;
   }
 
   friend bool compare(auto const& a, auto const& b) {
