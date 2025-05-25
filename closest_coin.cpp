@@ -13,7 +13,7 @@ void closest_coin(point a, std::vector<point> coins) {
   std::cout << '\n';
 }
 
-void shortest_path(point a, std::vector<point> coins) {
+void shortest_path(point a, const std::vector<point>& coins) {
   auto coins_{coin_list(coins)};
 
   for (auto const& coin : _shortest_path(a, coins_)) {
