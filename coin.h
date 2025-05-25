@@ -68,7 +68,7 @@ public:
   }
 };
 
-point _closest_coin(point player, std::vector<point> coins) {
+inline point _closest_coin(point player, std::vector<point> coins) {
   point closest_c{coins[0]};
 
   for (auto const& coin : coins) {
@@ -79,7 +79,7 @@ point _closest_coin(point player, std::vector<point> coins) {
   return closest_c;
 }
 
-std::vector<coin> _shortest_path(point player, std::vector<coin>& coins) {
+inline std::vector<coin> _shortest_path(point player, std::vector<coin>& coins) {
   if (coins.empty())
     return coins;
 
@@ -99,7 +99,7 @@ std::vector<coin> _shortest_path(point player, std::vector<coin>& coins) {
   return min.neighbours();
 }
 
-std::vector<coin> coin_list(const std::vector<point>& coins) {
+inline std::vector<coin> coin_list(const std::vector<point>& coins) {
   std::vector<coin> c;
 
   for (auto const& coin : coins)
