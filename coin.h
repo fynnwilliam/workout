@@ -68,7 +68,7 @@ public:
   }
 };
 
-inline point _closest_coin(point player, std::vector<point> coins) {
+inline point _closest_coin(point player, const std::vector<point>& coins) {
   point closest_c{coins[0]};
 
   for (auto const& coin : coins) {
