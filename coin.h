@@ -62,10 +62,6 @@ public:
     return path() == rhs.path() && location() == rhs.location() &&
            neighbours_ == rhs.neighbours_;
   }
-
-  friend bool compare(auto const& a, auto const& b) {
-    return a == b;
-  }
 };
 
 inline point _closest_coin(point player, const std::vector<point>& coins) {
