@@ -58,10 +58,7 @@ public:
     return closest_c;
   }
 
-  inline bool operator==(coin const& rhs) const {
-    return path() == rhs.path() && location() == rhs.location() &&
-           neighbours_ == rhs.neighbours_;
-  }
+  inline bool operator==(coin const&) const  = default;
 };
 
 inline point _closest_coin(point player, const std::vector<point>& coins) {
