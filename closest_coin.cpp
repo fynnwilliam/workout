@@ -1,5 +1,19 @@
 #include "coin.h"
 
+point _closest_coin(point player, const std::vector<point>& coins) {
+  point closest_c{coins[0]};
+
+  auto minimum_distance = player - closest_c;
+  for (auto const& coin : coins) {
+    if (auto distance = player - coin; distance < minimum_distance) {
+      closest_c = coin;
+      minimum_distance = distance;
+    }
+  }
+
+  return closest_c;
+}
+
 void closest_coin(point a, std::vector<point> coins) {
   for (auto const& c : coins) {
     point b = _closest_coin(a, coins);
