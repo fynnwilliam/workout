@@ -59,12 +59,3 @@ public:
 
   inline bool operator==(coin const&) const  = default;
 };
-
-inline std::vector<coin> coin_list(const std::vector<point>& coins) {
-  std::vector<coin> c;
-
-  for (auto const& coin : coins)
-    c.push_back(coin);
-
-  return c;
-}
