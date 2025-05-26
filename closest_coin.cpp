@@ -15,6 +15,8 @@ point closest_coin(point player, const std::vector<point>& coins) {
   return closest_c;
 }
 
+
+
 void shortest_path(point a, const std::vector<point>& coins) {
   auto coins_{coin_list(coins)};
 
@@ -35,5 +37,4 @@ int main() {
   };
 
   assert((closest_coin(a, coins) == point{0, 2}));
-  shortest_path(a, coins);
 }
