@@ -1,5 +1,5 @@
 #include "coin.h"
-#include <cassert>
+#include <catch2/catch_test_macros.hpp>
 
 point closest_coin(point player, const std::vector<point>& coins) {
   point closest_c{coins[0]};
@@ -15,8 +15,7 @@ point closest_coin(point player, const std::vector<point>& coins) {
   return closest_c;
 }
 
-int main() {
-  point a{0, 1};
+TEST_CASE("closest_coin") {
   std::vector<point> coins{
       {1, 3},
       {2, 0},
@@ -25,5 +24,5 @@ int main() {
       {0, 0}
   };
 
-  assert((closest_coin(a, coins) == point{0, 2}));
+  REQUIRE(closest_coin(point{0, 1}, coins) == point{0, 2});
 }
