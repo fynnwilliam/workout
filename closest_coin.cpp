@@ -1,7 +1,7 @@
 #include "coin.h"
 #include <cassert>
 
-point _closest_coin(point player, const std::vector<point>& coins) {
+point closest_coin(point player, const std::vector<point>& coins) {
   point closest_c{coins[0]};
 
   auto minimum_distance = player - closest_c;
@@ -34,6 +34,6 @@ int main() {
       {0, 0}
   };
 
-  assert((_closest_coin(a, coins) == point{0, 2}));
+  assert((closest_coin(a, coins) == point{0, 2}));
   shortest_path(a, coins);
 }
