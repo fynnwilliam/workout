@@ -15,17 +15,6 @@ point closest_coin(point player, const std::vector<point>& coins) {
   return closest_c;
 }
 
-
-
-void shortest_path(point a, const std::vector<point>& coins) {
-  auto coins_{coin_list(coins)};
-
-  for (auto const& coin : _shortest_path(a, coins_)) {
-    std::cout << a << " -> " << coin.location() << '\n';
-    a.move_to(coin.location());
-  }
-}
-
 int main() {
   point a{0, 1};
   std::vector<point> coins{
