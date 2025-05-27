@@ -48,7 +48,7 @@ public:
     }
   }
 
-  friend coin closest_coin(point c, std::vector<coin> coins) {
+  friend coin closest_coin(point c, std::vector<coin>& coins) {
     coin closest_c{coins[0]};
 
     for (auto const& coin : coins) {
