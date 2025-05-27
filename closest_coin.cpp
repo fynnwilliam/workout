@@ -2,17 +2,20 @@
 #include <catch2/catch_test_macros.hpp>
 
 coin closest_coin(point player, const std::vector<coin>& coins) {
-  coin closest_c{coins[0]};
+  auto closest_c = std::data(coins);
+  auto minimum_distance = player - closest_c->location();
+  auto first = closest_c + 1;
+  auto last = closest_c + coins.size();
 
-  auto minimum_distance = player - closest_c.location();
-  for (auto const& coin : coins) {
-    if (auto distance = player - coin.location(); distance < minimum_distance) {
-      closest_c = coin;
+  for (; first < last; ++first) {
+    const auto& location = first->location();
+    if (auto distance = player - location; distance < minimum_distance) {
+      closest_c = first;
       minimum_distance = distance;
     }
   }
 
-  return closest_c;
+  return !closest_c || closest_c == last ? coin{point{0, 0}} : * closest_c;
 }
 
 TEST_CASE("closest_coin") {
