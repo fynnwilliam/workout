@@ -26,7 +26,8 @@ public:
   void update_neighbours(std::vector<coin> coins) {
     point current_location{location_};
 
-    for (auto const& c : coins) {
+    auto size = coins.size() + 1;
+    while (--size) {
       coin b = closest_coin(current_location, coins);
 
       std::erase_if(coins, [&](auto const& c) { return c == b; });
