@@ -24,5 +24,5 @@ TEST_CASE("closest_coin") {
       point{0, 0}
   };
 
-  REQUIRE(::closest_coin(point{0, 1}, coins) == point{0, 2});
+  REQUIRE(::closest_coin(point{0, 1}, coins).location() == point{0, 2});
 }
