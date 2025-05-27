@@ -41,7 +41,8 @@ public:
     if (neighbours_.size() == 1) {
       path_ = 0;
     } else {
-      for (std::size_t i{}; i < neighbours_.size() - 1; ++i) {
+      const auto max_index = neighbours_.size() - 1;
+      for (std::size_t i{}; i < max_index; ++i) {
         path_ += neighbours_[i].location() - neighbours_[i + 1].location();
       }
     }
@@ -58,5 +59,5 @@ public:
     return closest_c;
   }
 
-  inline bool operator==(coin const&) const  = default;
+  inline bool operator==(coin const&) const = default;
 };
