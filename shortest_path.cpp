@@ -1,4 +1,5 @@
 #include "coin.h"
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 
 std::vector<coin> shortest_path(point player, std::vector<coin> coins) {
@@ -38,4 +39,18 @@ TEST_CASE("shortest_path") {
   REQUIRE(coins[2].location() == point{0, 2});
   REQUIRE(coins[3].location() == point{1, 3});
   REQUIRE(coins[4].location() == point{4, 4});
+}
+
+TEST_CASE("shortest_path", "[!benchmark]") {
+  std::vector<coin> coins{
+      point{1, 3},
+      point{2, 0},
+      point{0, 2},
+      point{4, 4},
+      point{0, 0}
+  };
+
+  BENCHMARK("shortest_path(p, coins)") {
+    return shortest_path(point{0, 1}, coins);
+  };
 }
