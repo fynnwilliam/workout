@@ -10,12 +10,12 @@ std::vector<coin> shortest_path(point player, std::vector<coin> coins) {
     coin.update_path();
   }
 
-  const auto* min = &coins[0];
+  auto min = std::cbegin(coins);
   int min_length = player - min->location() + min->path();
-  for (auto const& coin : coins) {
-    int length = player - coin.location();
-    if ((length += coin.path()) < min_length) {
-      min = &coin;
+  for (auto first = min + 1, last = std::cend(coins); first < last; ++first) {
+    int length = player - first->location();
+    if ((length += first->path()) < min_length) {
+      min = first;
       min_length = length;
     }
   }
