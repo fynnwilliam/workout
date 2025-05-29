@@ -13,7 +13,9 @@ bool can_sum_r(int target, std::vector<int> const& v) {
     if (factor_of(target, elem))
       return true;
 
-    auto present = [&](int a) { return a == target - elem || a == target; };
+    auto present = [&, b = target - elem](int a) {
+      return a == b || a == target;
+    };
     if (std::any_of(std::begin(v), std::end(v), present))
       return true;
   }
@@ -33,7 +35,7 @@ TEST_CASE("can_sum_r", "[!benchmark]") {
 
   REQUIRE(can_sum_r(7, v) == true);
 
-  BENCHMARK( "can_sum_r(7, v)") {
+  BENCHMARK("can_sum_r(7, v)") {
     return can_sum_r(7, v);
   };
 }
