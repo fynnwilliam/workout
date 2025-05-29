@@ -49,14 +49,14 @@ public:
   }
 
   friend coin closest_coin(point c, std::vector<coin>& coins) {
-    coin closest_c{coins[0]};
+    const coin* closest_c = &coins[0];
 
     for (auto const& coin : coins) {
-      if (c - coin.location() < c - closest_c.location())
-        closest_c = coin;
+      if (c - coin.location() < c - closest_c->location())
+        closest_c = &coin;
     }
 
-    return closest_c;
+    return *closest_c;
   }
 
   inline bool operator==(coin const&) const = default;
