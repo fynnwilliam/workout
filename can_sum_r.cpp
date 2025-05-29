@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <cassert>
+#include <catch2/catch_test_macros.hpp>
 #include <iostream>
 #include <iterator>
 #include <vector>
@@ -21,18 +22,8 @@ bool can_sum_r(int target, std::vector<int> const& v) {
   return false;
 }
 
-int main() {
-  std::cout << std::boolalpha << can_sum_r(7, {2, 3}) << std::endl;
-
-  assert(can_sum_r(7, {5, 3, 4, 7}) == true);
-  assert(
-      can_sum_r(
-          7,
-          {
-              2,
-              4,
-              6,
-          }
-      ) == false
-  );
+TEST_CASE("can_sum_r") {
+  REQUIRE(can_sum_r(7, {2, 3}) == false);
+  REQUIRE(can_sum_r(7, {2, 4, 6}) == false);
+  REQUIRE(can_sum_r(7, {5, 3, 4, 7}) == true);
 }
