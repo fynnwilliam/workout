@@ -13,10 +13,10 @@ bool can_sum_r(int target, std::vector<int> const& v) {
     if (factor_of(target, elem))
       return true;
 
-    auto present = [=, b = target - elem](int a) {
+    auto is_present = [=, b = target - elem](int a) {
       return a == b || a == target;
     };
-    if (std::any_of(std::begin(v), std::end(v), present))
+    if (std::any_of(std::begin(v), std::end(v), is_present))
       return true;
   }
 
