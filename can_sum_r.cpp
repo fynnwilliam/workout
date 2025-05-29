@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <iterator>
 #include <vector>
@@ -24,4 +25,15 @@ TEST_CASE("can_sum_r") {
   REQUIRE(can_sum_r(7, {2, 3}) == false);
   REQUIRE(can_sum_r(7, {2, 4, 6}) == false);
   REQUIRE(can_sum_r(7, {5, 3, 4, 7}) == true);
+}
+
+TEST_CASE("can_sum_r", "[!benchmark]") {
+  std::vector<int> v(1'000'000, 5);
+  *(std::end(v) - 1) = 2;
+
+  REQUIRE(can_sum_r(7, v) == true);
+
+  BENCHMARK( "can_sum_r(7, v)") {
+    return can_sum_r(7, v);
+  };
 }
