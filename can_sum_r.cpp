@@ -9,14 +9,15 @@ bool factor_of(int target, int i) {
 }
 
 bool can_sum_r(int target, std::vector<int> const& v) {
-  for (int elem : v) {
+  for (auto first = std::begin(v), last = std::end(v); first < last; ) {
+    int elem = *first;
     if (factor_of(target, elem))
       return true;
 
     auto is_present = [=, b = target - elem](int a) {
       return a == b || a == target;
     };
-    if (std::any_of(std::begin(v), std::end(v), is_present))
+    if (std::any_of(++first, last, is_present))
       return true;
   }
 
