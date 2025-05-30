@@ -32,7 +32,7 @@ TEST_CASE("can_sum_r") {
 
 TEST_CASE("can_sum_r", "[!benchmark]") {
   std::vector<int> v(1'000'000, 5);
-  *(std::end(v) - 1) = 2;
+  v.back() = 2;
 
   REQUIRE(can_sum_r(7, v) == true);
 
