@@ -1,7 +1,5 @@
-#include <algorithm>
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
-#include <iterator>
 #include <vector>
 
 bool factor_of(int target, int i) {
