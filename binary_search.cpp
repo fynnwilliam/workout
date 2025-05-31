@@ -48,7 +48,7 @@ int main() {
   std::string elem{};
   std::getline(std::cin, elem);
 
-  int index = binary_search(elem, v.data(), v.size());
+  int index = binary_search(elem, v.data(), static_cast<int>(v.size()));
 
   verify(index);
 }
