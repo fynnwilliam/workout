@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <vector>
 
@@ -33,4 +34,14 @@ TEST_CASE("binary_search") {
   REQUIRE(binary_search("rabbit"s, v_ptr, size) == 3);
   REQUIRE(binary_search("sheep"s, v_ptr, size) == 4);
   REQUIRE(binary_search("unknown"s, v_ptr, size) == -1);
+}
+
+TEST_CASE("binary_search", "[!benchmark]") {
+  using namespace std::string_literals;
+  std::vector v{"cat"s, "cow"s, "dog"s, "rabbit"s, "sheep"s};
+  const int size = static_cast<int>(v.size());
+
+  BENCHMARK("binary_search(unknown, v_ptr, size)") {
+    return binary_search("unknown"s, std::data(v), size);
+  };
 }
