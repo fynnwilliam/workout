@@ -40,7 +40,7 @@ TEST_CASE("binary_search", "[!benchmark]") {
   const auto l = v.data();
   const auto h = l + v.size();
 
-  BENCHMARK("binary_search(unknown, v_ptr, size)") {
+  BENCHMARK("binary_search(l, h, unknown)") {
     return binary_search(l, h, "unknown"s);
   };
 }
