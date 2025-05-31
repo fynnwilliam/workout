@@ -28,4 +28,9 @@ TEST_CASE("binary_search") {
   const int size = static_cast<int>(v.size());
 
   REQUIRE(binary_search("cat"s, v_ptr, size) == 0);
+  REQUIRE(binary_search("cow"s, v_ptr, size) == 1);
+  REQUIRE(binary_search("dog"s, v_ptr, size) == 2);
+  REQUIRE(binary_search("rabbit"s, v_ptr, size) == 3);
+  REQUIRE(binary_search("sheep"s, v_ptr, size) == 4);
+  REQUIRE(binary_search("unknown"s, v_ptr, size) == -1);
 }
