@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <catch2/catch_test_macros.hpp>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -38,17 +39,12 @@ void verify(int const& index) noexcept {
     std::cout << "element found at index " << index << std::endl;
 }
 
-int main() {
-  std::vector<std::string> v{"cat", "dog", "cow", "sheep", "rabbit"};
+TEST_CASE("binary_search") {
+  using namespace std::string_literals;
 
-  std::sort(v.begin(), v.end(), [](auto& a, auto& b) { return a < b; });
-  print(v);
+  std::vector v{"cat"s, "cow"s, "dog"s, "rabbit"s, "sheep"s};
+  const auto v_ptr = v.data();
+  const int size = static_cast<int>(v.size());
 
-  std::cout << "please enter an element to search: ";
-  std::string elem{};
-  std::getline(std::cin, elem);
-
-  int index = binary_search(elem, v.data(), static_cast<int>(v.size()));
-
-  verify(index);
+  REQUIRE(binary_search("cat"s, v_ptr, size) == 0);
 }
