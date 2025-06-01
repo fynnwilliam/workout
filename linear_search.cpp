@@ -1,14 +1,15 @@
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 
-template <typename T>
-int linear_search(T elem, T const* v, int const& size) noexcept {
-  for (int i = 0; i < size; ++i) {
-    if (v[i] == elem)
-      return i;
+template <std::forward_iterator Itr, typename Element>
+Itr linear_search(Itr first, Itr last, const Element& e) noexcept {
+  --first;
+  while (++first < last) {
+    if (*first == e)
+      return first;
   }
 
-  return -1;
+  return first;
 }
 
 TEST_CASE("linear_search") {
