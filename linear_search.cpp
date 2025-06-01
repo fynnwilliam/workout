@@ -33,4 +33,7 @@ TEST_CASE("linear_search") {
   const int size = sizeof arr / sizeof arr[0];
 
   REQUIRE(linear_search(3, arr, size) == 0);
+  REQUIRE(linear_search(4, arr, size) == 1);
+  REQUIRE(linear_search(9, arr, size) == 3);
+  REQUIRE(linear_search(1, arr, size) == -1);
 }
