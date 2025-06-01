@@ -1,6 +1,4 @@
 #include <catch2/catch_test_macros.hpp>
-#include <iostream>
-#include <limits>
 
 template <typename T>
 int linear_search(T elem, T const* v, int const& size) noexcept {
