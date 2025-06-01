@@ -14,20 +14,23 @@ Itr linear_search(Itr first, Itr last, const Element& e) noexcept {
 
 TEST_CASE("linear_search") {
   int arr[]{3, 4, 33, 9, 23, 99};
-  const int size = sizeof arr / sizeof arr[0];
+  auto first = std::cbegin(arr);
+  auto last = std::cend(arr);
 
-  REQUIRE(linear_search(3, arr, size) == 0);
-  REQUIRE(linear_search(4, arr, size) == 1);
-  REQUIRE(linear_search(9, arr, size) == 3);
-  REQUIRE(linear_search(1, arr, size) == -1);
+  REQUIRE(*linear_search(first, last, 3) == 3);
+  REQUIRE(*linear_search(first, last, 4) == 4);
+  REQUIRE(*linear_search(first, last, 9) == 9);
+  REQUIRE(linear_search(first, last, 1) == last);
 }
 
 TEST_CASE("linear_search", "[!benchmark]") {
   int arr[1'000]{3, 4, 33, 9, 23, 99};
   arr[989] = 42;
-  const int size = sizeof arr / sizeof arr[0];
 
-  BENCHMARK("linear_search(42, arr, size)") {
-    return linear_search(42, arr, size);
+  auto first = std::cbegin(arr);
+  auto last = std::cend(arr);
+
+  BENCHMARK("linear_search(f, l, 42)") {
+    return linear_search(first, last, 42);
   };
 }
