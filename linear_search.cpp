@@ -1,3 +1,4 @@
+#include <catch2/catch_test_macros.hpp>
 #include <iostream>
 #include <limits>
 
@@ -27,17 +28,9 @@ void verify(int const& index) noexcept {
     std::cout << "element found at index " << index << std::endl;
 }
 
-int main() {
+TEST_CASE("linear_search") {
   int arr[]{3, 4, 33, 9, 23, 99};
-  print(arr);
+  const int size = sizeof arr / sizeof arr[0];
 
-  std::cout << "please enter an element to search: ";
-  int elem{};
-  std::cin >> elem;
-  std::cin.clear();
-  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-  int index = linear_search(elem, arr, 6);
-
-  verify(index);
+  REQUIRE(linear_search(3, arr, size) == 0);
 }
