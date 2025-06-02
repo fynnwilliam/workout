@@ -16,11 +16,11 @@ int main() {
     d = dist(gen);
   }
 
-  auto info = std::bit_cast<usr_data>(data);
+  auto [name, location, age] = std::bit_cast<usr_data>(data);
 
-  std::puts(info.name);
-  std::puts(info.location);
-  std::printf("%d\n", info.age);
+  std::puts(name);
+  std::puts(location);
+  std::printf("%d\n", age);
 
   return sizeof usr_data{};
 }
