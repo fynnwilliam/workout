@@ -21,6 +21,4 @@ int main() {
   std::puts(name);
   std::puts(location);
   std::printf("%d\n", age);
-
-  return sizeof usr_data{};
 }
