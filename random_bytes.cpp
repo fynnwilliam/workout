@@ -20,7 +20,7 @@ int main() {
 
   std::puts(info.name);
   std::puts(info.location);
-  printf("%d\n", info.age);
+  std::printf("%d\n", info.age);
 
   return sizeof usr_data{};
 }
