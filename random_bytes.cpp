@@ -10,7 +10,7 @@ struct usr_data {
 int main() {
   std::uint8_t data[sizeof(usr_data)];
   std::mt19937 gen{std::random_device{}()};
-  std::uniform_int_distribution<std::uint8_t> dist{0, UINT8_MAX};
+  std::uniform_int_distribution<std::uint8_t> dist{'a', 'z'};
 
   for (auto& d : data) {
     d = dist(gen);
