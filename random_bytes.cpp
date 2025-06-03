@@ -1,4 +1,5 @@
 #include <bit>
+#include <print>
 #include <random>
 
 struct usr_data {
@@ -17,8 +18,5 @@ int main() {
   }
 
   auto [name, location, age] = std::bit_cast<usr_data>(data);
-
-  std::puts(name);
-  std::puts(location);
-  std::printf("%d\n", age);
+  std::println("name: {}\nlocation: {}\nage: {}", name, location, age);
 }
