@@ -1,3 +1,4 @@
+#include <catch2/catch_test_macros.hpp>
 #include <iostream>
 #include <string_view>
 
@@ -7,6 +8,6 @@ constexpr bool is_palindrome(std::string_view sv) {
                                    : false;
 }
 
-int main() {
-  std::cout << std::boolalpha << is_palindrome("kayak") << std::endl;
+TEST_CASE("is_palindrome") {
+  REQUIRE(is_palindrome("kayak") == true);
 }
