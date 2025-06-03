@@ -9,4 +9,6 @@ constexpr bool is_palindrome(std::string_view sv) {
 
 TEST_CASE("is_palindrome") {
   REQUIRE(is_palindrome("kayak") == true);
+  REQUIRE(is_palindrome("mountain") == false);
+  REQUIRE(is_palindrome("level") == true);
 }
