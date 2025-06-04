@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
 
@@ -10,4 +11,10 @@ TEST_CASE("to_binary") {
   REQUIRE(to_binary(233) == "011101001"s);
   REQUIRE(to_binary(100) == "01100100"s);
   REQUIRE(to_binary(121) == "01111001"s);
+}
+
+TEST_CASE("to_binary", "[!benchmark]") {
+  BENCHMARK("to_binary(128)") {
+    return to_binary(128);
+  };
 }
