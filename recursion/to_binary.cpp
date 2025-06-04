@@ -8,4 +8,6 @@ std::string to_binary(int d) {
 TEST_CASE("to_binary") {
   using namespace std::string_literals;
   REQUIRE(to_binary(233) == "011101001"s);
+  REQUIRE(to_binary(100) == "01100100"s);
+  REQUIRE(to_binary(121) == "01111001"s);
 }
