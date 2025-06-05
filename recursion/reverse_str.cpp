@@ -1,3 +1,4 @@
+#include <catch2/catch_test_macros.hpp>
 #include <iostream>
 #include <string>
 
@@ -5,4 +6,7 @@ std::string reverse_str(std::string s) {
   return s.empty() ? std::string{} : reverse_str(s.substr(1)) + s[0];
 }
 
-int main() { std::cout << reverse_str("perception") << std::endl; }
+TEST_CASE("reverse_str") {
+  using namespace std::string_literals;
+  REQUIRE(reverse_str("perception") == "noitpecrep"s);
+}
