@@ -22,7 +22,7 @@ TEST_CASE("reverse_str") {
 }
 
 TEST_CASE("reverse_str", "[!benchmark]") {
-  std::string s(10'000, ' ');
+  std::string s(1'000'000, ' ');
   BENCHMARK("reverse_str(s)") {
     return reverse_str(s);
   };
