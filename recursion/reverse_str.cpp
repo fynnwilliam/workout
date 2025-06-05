@@ -8,4 +8,7 @@ std::string reverse_str(std::string s) {
 TEST_CASE("reverse_str") {
   using namespace std::string_literals;
   REQUIRE(reverse_str("perception") == "noitpecrep"s);
+  REQUIRE(reverse_str("require") == "eriuqer"s);
+  REQUIRE(reverse_str("reverse") == "esrever"s);
+  REQUIRE(reverse_str("etarelecca") == "accelerate"s);
 }
