@@ -3,7 +3,14 @@
 #include <string>
 
 std::string reverse_str(std::string s) {
-  return s.empty() ? std::string{} : reverse_str(s.substr(1)) + s[0];
+  [](this auto&& reverse, char* first, char* last) -> void {
+    if (first < last) {
+      std::iter_swap(first, last);
+      reverse(++first, --last);
+    }
+  }(s.data(), &s.back());
+
+  return s;
 }
 
 TEST_CASE("reverse_str") {
