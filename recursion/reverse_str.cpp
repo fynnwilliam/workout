@@ -1,5 +1,4 @@
 #include <catch2/catch_test_macros.hpp>
-#include <iostream>
 #include <string>
 
 std::string reverse_str(std::string s) {
