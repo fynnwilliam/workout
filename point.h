@@ -66,5 +66,5 @@ public:
     return a - b;
   }
 
-  ~point() {}
+  ~point() = default;
 };
