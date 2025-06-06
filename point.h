@@ -2,7 +2,7 @@
 #include <iostream>
 #include <utility>
 
-class point {
+class [[nodiscard]] point {
 private:
   int x_{};
   int y_{};
