@@ -34,7 +34,7 @@ public:
     y_ += y - y_;
   }
 
-  void move_to(point p) {
+  void move_to(const point& p) {
     x_move(p.x());
     y_move(p.y());
   }
