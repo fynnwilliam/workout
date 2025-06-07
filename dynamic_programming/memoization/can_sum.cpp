@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <unordered_map>
 #include <vector>
@@ -30,4 +31,12 @@ TEST_CASE("can_sum") {
   REQUIRE(can_sum(41, std::vector<int>{7, 15}, e) == false);
   REQUIRE(can_sum(8, std::vector<int>{2, 3, 5}, f) == true);
   REQUIRE(can_sum(300, std::vector<int>{7, 14}, g) == false);
+}
+
+TEST_CASE("can_sum", "[!benchmark]") {
+  std::unordered_map<int, bool> m;
+  std::vector v{7, 14};
+  BENCHMARK("can_sum(300, v, m)") {
+    return can_sum(300, v, m);
+  };
 }
