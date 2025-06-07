@@ -4,8 +4,7 @@
 #include <vector>
 
 bool can_sum(
-    int target, std::vector<int> const& v,
-    std::unordered_map<int, bool>&& m = {}
+    int target, std::vector<int> const& v, std::unordered_map<int, bool> m = {}
 ) {
   if (m.count(target))
     return m[target];
