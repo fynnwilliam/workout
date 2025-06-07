@@ -1,3 +1,4 @@
+#include <catch2/catch_test_macros.hpp>
 #include <iostream>
 #include <unordered_map>
 #include <vector>
@@ -21,11 +22,11 @@ bool can_sum(
   return m[target] = false;
 }
 
-int main() {
+TEST_CASE("can_sum") {
   std::unordered_map<int, bool> a, b, c, d, e;
-  std::cout << std::boolalpha << can_sum(7, std::vector<int>{2, 3}, a) << '\n'
-            << can_sum(7, std::vector<int>{5, 3, 4, 7}, b) << '\n'
-            << can_sum(7, std::vector<int>{2, 4}, c) << '\n'
-            << can_sum(19, std::vector<int>{12, 3, 5}, d) << '\n'
-            << can_sum(41, std::vector<int>{7, 15}, e) << std::endl;
+  REQUIRE(can_sum(7, std::vector<int>{2, 3}, a) == true);
+  REQUIRE(can_sum(7, std::vector<int>{5, 3, 4, 7}, b) == true);
+  REQUIRE(can_sum(7, std::vector<int>{2, 4}, c) == false);
+  REQUIRE(can_sum(19, std::vector<int>{12, 3, 5}, d) == true);
+  REQUIRE(can_sum(41, std::vector<int>{7, 15}, e) == false);
 }
