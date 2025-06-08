@@ -1,12 +1,9 @@
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
-#include <unordered_map>
 #include <vector>
 
-std::uint8_t can_sum(
-    int target, const std::vector<int>& v,
-    std::vector<std::uint8_t>& m
-) {
+std::uint8_t
+can_sum(int target, const std::vector<int>& v, std::vector<std::uint8_t>& m) {
   if (target < 0)
     return 0;
   if (target == 0)
