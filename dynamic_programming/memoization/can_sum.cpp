@@ -8,18 +8,20 @@ can_sum(int target, const std::vector<int>& v, std::vector<std::uint8_t>& m) {
     return 0;
   if (target == 0)
     return 1;
-  if (target >= m.size())
-    m.resize(target + 1, 2);
-  else if (m[target] < 2)
-    return m[target];
+
+  const auto& target_ = static_cast<std::size_t>(target);
+  if (target_ >= m.size())
+    m.resize(target_ + 1, 2);
+  else if (m[target_] < 2)
+    return m[target_];
 
   for (const auto& elem : v) {
     if (can_sum(target - elem, v, m) == 1) {
-      return m[target] = 1;
+      return m[target_] = 1;
     }
   }
 
-  return m[target] = 0;
+  return m[target_] = 0;
 }
 
 TEST_CASE("can_sum") {
