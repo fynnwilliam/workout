@@ -2,31 +2,31 @@
 #include <catch2/catch_test_macros.hpp>
 #include <vector>
 
-auto can_sum = [m = std::vector<std::uint8_t>{}](
+auto can_sum = [cache = std::vector<std::uint8_t>{}](
                    int target, const std::vector<int>& v
                ) mutable {
   const auto new_size = static_cast<std::size_t>(target + 1);
-  const auto n = m.size() > new_size ? new_size : m.size();
-  m.resize(new_size, 2);
-  std::fill_n(m.data(), n, 2);
+  const auto n = cache.size() > new_size ? new_size : cache.size();
+  cache.resize(new_size, 2);
+  std::fill_n(cache.data(), n, 2);
 
-  return [&m](this auto&& can_sum_, int t, const auto& v_) -> std::uint8_t {
+  return [&cache](this auto&& can_sum_, int t, const auto& v_) -> std::uint8_t {
     if (t < 0)
       return 0;
     if (t == 0)
       return 1;
 
     const auto& target_ = static_cast<std::size_t>(t);
-    if (m[target_] < 2)
-      return m[target_];
+    if (cache[target_] < 2)
+      return cache[target_];
 
     for (const auto& elem : v_) {
       if (can_sum_(t - elem, v_) == 1) {
-        return m[target_] = 1;
+        return cache[target_] = 1;
       }
     }
 
-    return m[target_] = 0;
+    return cache[target_] = 0;
   }(target, v) == 1;
 };
 
