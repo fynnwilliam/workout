@@ -41,6 +41,6 @@ TEST_CASE("can_sum", "[!benchmark]") {
   std::vector<std::uint8_t> m;
   std::vector v{7, 14};
   BENCHMARK("can_sum(300, v, m)") {
-    return can_sum(300, v, m);
+    return can_sum(300, v);
   };
 }
