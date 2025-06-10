@@ -11,10 +11,8 @@ auto can_sum = [cache = std::vector<std::uint8_t>{}](
   std::fill_n(cache.data(), n, 2);
 
   return [&cache](this auto&& can_sum_, int t, const auto& v_) -> std::uint8_t {
-    if (t < 0)
-      return 0;
-    if (t == 0)
-      return 1;
+    if (t <= 0)
+      return t == 0;
 
     const auto& target_ = static_cast<std::size_t>(t);
     if (cache[target_] < 2)
