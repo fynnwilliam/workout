@@ -28,13 +28,13 @@ auto can_sum = [m = std::vector<std::uint8_t>{}](
 
 TEST_CASE("can_sum") {
   std::vector<std::uint8_t> a, b, c, d, e, f, g;
-  REQUIRE(can_sum(7, std::vector<int>{2, 3}, a) == true);
-  REQUIRE(can_sum(7, std::vector<int>{5, 3, 4, 7}, b) == true);
-  REQUIRE(can_sum(7, std::vector<int>{2, 4}, c) == false);
-  REQUIRE(can_sum(19, std::vector<int>{12, 3, 5}, d) == true);
-  REQUIRE(can_sum(41, std::vector<int>{7, 15}, e) == false);
-  REQUIRE(can_sum(8, std::vector<int>{2, 3, 5}, f) == true);
-  REQUIRE(can_sum(300, std::vector<int>{7, 14}, g) == false);
+  REQUIRE(can_sum(7, std::vector<int>{2, 3}) == true);
+  REQUIRE(can_sum(7, std::vector<int>{5, 3, 4, 7}) == true);
+  REQUIRE(can_sum(7, std::vector<int>{2, 4}) == false);
+  REQUIRE(can_sum(19, std::vector<int>{12, 3, 5}) == true);
+  REQUIRE(can_sum(41, std::vector<int>{7, 15}) == false);
+  REQUIRE(can_sum(8, std::vector<int>{2, 3, 5}) == true);
+  REQUIRE(can_sum(300, std::vector<int>{7, 14}) == false);
 }
 
 TEST_CASE("can_sum", "[!benchmark]") {
