@@ -5,8 +5,11 @@
 auto can_sum = [m = std::vector<std::uint8_t>{}](
                    int target, const std::vector<int>& v
                ) mutable {
-  m.clear();
-  m.resize(static_cast<std::size_t>(target + 1), 2);
+  const auto new_size = static_cast<std::size_t>(target + 1);
+  const auto n = m.size() > new_size ? new_size : m.size();
+  m.resize(new_size, 2);
+  std::fill_n(m.data(), n, 2);
+
   return [&m](this auto&& can_sum_, int t, const auto& v_) -> std::uint8_t {
     if (t < 0)
       return 0;
