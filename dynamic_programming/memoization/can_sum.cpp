@@ -6,7 +6,7 @@ auto can_sum = [cache = std::vector<std::uint8_t>{}](
                    int target, const std::vector<int>& v
                ) mutable {
   const auto new_size = static_cast<std::size_t>(target + 1);
-  const auto n = cache.size() > new_size ? new_size : cache.size();
+  const auto n = std::min(cache.size(), new_size);
   cache.resize(new_size, 2);
   std::fill_n(cache.data(), n, 2);
 
