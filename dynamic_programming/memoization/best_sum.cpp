@@ -25,7 +25,8 @@ std::unique_ptr<std::vector<int>> best_sum(
     }
   }
 
-  m[target] = *shortest_c;
+  if (shortest_c)
+    m[target] = *shortest_c;
   return shortest_c;
 }
 
