@@ -5,7 +5,7 @@
 
 std::unique_ptr<std::vector<int>> best_sum(
     int target, std::vector<int> const& v,
-    std::unordered_map<int, std::vector<int>>&& m = {}
+    std::unordered_map<int, std::vector<int>> m = {}
 ) {
   if (m.count(target))
     return std::make_unique<std::vector<int>>(m[target]);
