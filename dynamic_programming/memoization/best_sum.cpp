@@ -1,3 +1,4 @@
+#include <catch2/catch_test_macros.hpp>
 #include <iostream>
 #include <memory>
 #include <unordered_map>
@@ -29,16 +30,6 @@ std::unique_ptr<std::vector<int>> best_sum(
   return shortest_c;
 }
 
-int main() {
-  auto v{best_sum(8, {1, 2, 4, 25})};
-
-  if (!v) {
-    std::cout << "could not sum up...\n";
-    return 0;
-  }
-
-  for (int elem : *v)
-    std::cout << elem << ' ';
-
-  std::cout << std::endl;
+TEST_CASE("best_sum") {
+  REQUIRE(*best_sum(8, {1, 2, 4, 25}) == std::vector{4, 4});
 }
