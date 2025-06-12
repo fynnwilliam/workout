@@ -31,4 +31,7 @@ std::unique_ptr<std::vector<int>> best_sum(
 
 TEST_CASE("best_sum") {
   REQUIRE(*best_sum(8, {1, 2, 4, 25}) == std::vector{4, 4});
+  REQUIRE(*best_sum(7, {5, 3, 4, 7}) == std::vector{7});
+  REQUIRE(*best_sum(8, {2, 3, 5}) == std::vector{3, 5});
+  REQUIRE(*best_sum(100, {1, 2, 5, 25}) == std::vector{25, 25, 25, 25});
 }
