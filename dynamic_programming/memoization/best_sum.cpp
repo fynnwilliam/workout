@@ -39,7 +39,8 @@ TEST_CASE("best_sum") {
 
 TEST_CASE("best_sum", "[!benchmark]") {
   const std::vector v{1, 2, 5, 25};
-  BENCHMARK("best_sum(100, v)") {
-    return best_sum(100, v);
+  std::unordered_map<int, std::vector<int>> m;
+  BENCHMARK("best_sum(100, v, m)") {
+    return best_sum(100, v, m);
   };
 }
