@@ -5,7 +5,7 @@
 
 std::vector<int> best_sum(
     int target, std::vector<int> const& v,
-    std::unordered_map<int, std::vector<int>> m = {}
+    std::unordered_map<int, std::vector<int>>& m
 ) {
   if (m.count(target))
     return m[target];
@@ -17,7 +17,7 @@ std::vector<int> best_sum(
   std::vector<int> shortest_c{-1};
 
   for (const auto& elem : v) {
-    auto current_c = best_sum(target - elem, v, std::move(m));
+    auto current_c = best_sum(target - elem, v, m);
     if (current_c.empty() || current_c[0] != -1) {
       current_c.emplace_back(elem);
       if (current_c.size() < shortest_c.size() || shortest_c[0] == -1) {
