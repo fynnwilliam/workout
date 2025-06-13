@@ -4,31 +4,30 @@
 #include <unordered_map>
 #include <vector>
 
-std::unique_ptr<std::vector<int>> best_sum(
+std::vector<int> best_sum(
     int target, std::vector<int> const& v,
     std::unordered_map<int, std::vector<int>> m = {}
 ) {
   if (m.count(target))
-    return std::make_unique<std::vector<int>>(m[target]);
+    return m[target];
   if (!target)
-    return std::make_unique<std::vector<int>>();
+    return std::vector<int>{};
   if (target < 0)
-    return nullptr;
+    return std::vector{-1};
 
-  std::unique_ptr<std::vector<int>> shortest_c{};
+  std::vector<int> shortest_c{-1};
 
   for (int elem : v) {
-    if (auto current_c = best_sum(target - elem, v, std::move(m)); current_c) {
-      current_c->push_back(elem);
-      if (!shortest_c || current_c->size() < shortest_c->size()) {
+    auto current_c = best_sum(target - elem, v, std::move(m));
+    if (current_c.empty() || current_c[0] != -1) {
+      current_c.push_back(elem);
+      if (current_c.size() < shortest_c.size() || shortest_c[0] == -1) {
         shortest_c = std::move(current_c);
       }
     }
   }
 
-  if (shortest_c)
-    m[target] = *shortest_c;
-  return shortest_c;
+  return m[target] = shortest_c;
 }
 
 TEST_CASE("best_sum") {
