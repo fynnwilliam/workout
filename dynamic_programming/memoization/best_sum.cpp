@@ -19,7 +19,7 @@ std::vector<int> best_sum(
   for (const auto& elem : v) {
     auto current_c = best_sum(target - elem, v, std::move(m));
     if (current_c.empty() || current_c[0] != -1) {
-      current_c.push_back(elem);
+      current_c.emplace_back(elem);
       if (current_c.size() < shortest_c.size() || shortest_c[0] == -1) {
         shortest_c = std::move(current_c);
       }
