@@ -33,7 +33,7 @@ std::vector<int> best_sum(
 }
 
 TEST_CASE("best_sum") {
-  std::unordered_map<int, std::vector<int>> a, b, c, d;
+  std::vector<std::vector<int>> a, b, c, d;
   REQUIRE(best_sum(8, {1, 2, 4, 25}, a) == std::vector{4, 4});
   REQUIRE(best_sum(7, {5, 3, 4, 7}, b) == std::vector{7});
   REQUIRE(best_sum(8, {2, 3, 5}, c) == std::vector{5, 3});
