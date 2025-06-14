@@ -7,7 +7,7 @@ std::vector<int> best_sum(
     int target, std::vector<int> const& v,
     std::unordered_map<int, std::vector<int>>& m
 ) {
-  if (m.count(target))
+  if (m.contains(target))
     return m[target];
   if (!target)
     return std::vector<int>{};
