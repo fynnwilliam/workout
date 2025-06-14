@@ -4,15 +4,18 @@
 #include <vector>
 
 std::vector<int> best_sum(
-    int target, std::vector<int> const& v,
-    std::unordered_map<int, std::vector<int>>& m
+    int target, std::vector<int> const& v, std::vector<std::vector<int>>& m
 ) {
-  if (m.contains(target))
-    return m[target];
-  if (!target)
-    return std::vector<int>{};
   if (target < 0)
     return std::vector{-1};
+  if (!target)
+    return std::vector<int>{};
+
+  const auto& target_ = static_cast<std::size_t>(target);
+  if (target_ >= m.size())
+    m.resize(target_ + 1, std::vector{-1});
+  else if (m[target_].size() == 0 || m[target_][0] != -1)
+    return m[target_];
 
   std::vector<int> shortest_c{-1};
 
@@ -26,7 +29,7 @@ std::vector<int> best_sum(
     }
   }
 
-  return m[target] = shortest_c;
+  return m[target_] = shortest_c;
 }
 
 TEST_CASE("best_sum") {
