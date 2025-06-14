@@ -13,7 +13,7 @@ std::vector<int> best_sum(
   const auto& target_ = static_cast<std::size_t>(target);
   if (target_ >= m.size())
     m.resize(target_ + 1, std::vector{-1});
-  else if (m[target_].size() == 0 || m[target_][0] != -1)
+  else if (m[target_][0] != -1)
     return m[target_];
 
   std::vector<int> shortest_c{-1};
