@@ -3,7 +3,7 @@
 #include <vector>
 
 std::vector<int> best_sum(
-    int target, std::vector<int> const& v, std::vector<std::vector<int>>& m
+    int target, std::vector<int> const& v, std::vector<std::vector<int>>& cache
 ) {
   if (target < 0)
     return std::vector{-1};
@@ -11,15 +11,15 @@ std::vector<int> best_sum(
     return std::vector<int>{};
 
   const auto& target_ = static_cast<std::size_t>(target);
-  if (target_ >= m.size())
-    m.resize(target_ + 1, std::vector{-1});
-  else if (m[target_][0] != -1)
-    return m[target_];
+  if (target_ >= cache.size())
+    cache.resize(target_ + 1, std::vector{-1});
+  else if (cache[target_][0] != -1)
+    return cache[target_];
 
   std::vector<int> shortest_c{-1};
 
   for (const auto& elem : v) {
-    auto current_c = best_sum(target - elem, v, m);
+    auto current_c = best_sum(target - elem, v, cache);
     if (current_c.empty() || current_c[0] != -1) {
       current_c.emplace_back(elem);
       if (current_c.size() < shortest_c.size() || shortest_c[0] == -1) {
@@ -28,7 +28,7 @@ std::vector<int> best_sum(
     }
   }
 
-  return m[target_] = shortest_c;
+  return cache[target_] = shortest_c;
 }
 
 TEST_CASE("best_sum") {
