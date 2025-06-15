@@ -5,8 +5,6 @@
 std::vector<int> best_sum(
     int target, std::vector<int> const& v, std::vector<std::vector<int>>& cache
 ) {
-  if (target < 0)
-    return std::vector{-1};
   if (!target)
     return std::vector<int>{};
 
