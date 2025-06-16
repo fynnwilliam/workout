@@ -3,7 +3,8 @@
 #include <vector>
 
 std::vector<int> best_sum(
-    int target, std::vector<int> const& v, std::vector<std::vector<int>>& cache
+    std::uint32_t target, std::vector<std::uint32_t> const& v,
+    std::vector<std::vector<int>>& cache
 ) {
   if (!target)
     return std::vector<int>{};
