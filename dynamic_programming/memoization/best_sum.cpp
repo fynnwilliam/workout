@@ -2,19 +2,19 @@
 #include <catch2/catch_test_macros.hpp>
 #include <vector>
 
-std::vector<std::uint32_t> best_sum(
-    std::uint32_t target, std::vector<std::uint32_t> const& v,
-    std::vector<std::vector<std::uint32_t>>& cache
-) {
+using numbers = std::vector<std::uint32_t>;
+
+numbers
+best_sum(std::uint32_t target, numbers const& v, std::vector<numbers>& cache) {
   if (!target)
-    return std::vector<std::uint32_t>{};
+    return numbers{};
 
   if (target >= cache.size())
-    cache.resize(target + 1, std::vector{0u});
+    cache.resize(target + 1, numbers{0u});
   else if (cache[target][0] != 0u)
     return cache[target];
 
-  std::vector<std::uint32_t> shortest_c{0u};
+  numbers shortest_c{0u};
 
   for (const auto& elem : v) {
     if (elem <= target) {
@@ -30,7 +30,7 @@ std::vector<std::uint32_t> best_sum(
 }
 
 TEST_CASE("best_sum") {
-  std::vector<std::vector<std::uint32_t>> a, b, c, d;
+  std::vector<numbers> a, b, c, d;
   REQUIRE(best_sum(8, {1, 2, 4, 25}, a) == std::vector{4u, 4u});
   REQUIRE(best_sum(7, {5, 3, 4, 7}, b) == std::vector{7u});
   REQUIRE(best_sum(8, {2, 3, 5}, c) == std::vector{5u, 3u});
@@ -38,8 +38,8 @@ TEST_CASE("best_sum") {
 }
 
 TEST_CASE("best_sum", "[!benchmark]") {
-  const std::vector<std::uint32_t> v{1, 2, 5, 25};
-  std::vector<std::vector<std::uint32_t>> m;
+  const numbers v{1, 2, 5, 25};
+  std::vector<numbers> m;
   BENCHMARK("best_sum(100, v, m)") {
     return best_sum(100, v, m);
   };
