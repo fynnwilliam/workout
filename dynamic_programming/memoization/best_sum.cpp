@@ -10,17 +10,17 @@ std::vector<int> best_sum(
     return std::vector<int>{};
 
   if (target >= cache.size())
-    cache.resize(target + 1, std::vector{-1});
-  else if (cache[target][0] != -1)
+    cache.resize(target + 1, std::vector{0});
+  else if (cache[target][0] != 0)
     return cache[target];
 
-  std::vector<int> shortest_c{-1};
+  std::vector<int> shortest_c{0};
 
   for (const auto& elem : v) {
     if (elem <= target) {
       auto current_c = best_sum(target - elem, v, cache);
       current_c.emplace_back(elem);
-      if (current_c.size() < shortest_c.size() || shortest_c[0] == -1) {
+      if (current_c.size() < shortest_c.size() || shortest_c[0] == 0) {
         shortest_c = std::move(current_c);
       }
     }
