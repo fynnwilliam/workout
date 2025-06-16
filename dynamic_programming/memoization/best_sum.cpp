@@ -9,11 +9,10 @@ std::vector<int> best_sum(
   if (!target)
     return std::vector<int>{};
 
-  const auto& target_ = static_cast<std::size_t>(target);
-  if (target_ >= cache.size())
-    cache.resize(target_ + 1, std::vector{-1});
-  else if (cache[target_][0] != -1)
-    return cache[target_];
+  if (target >= cache.size())
+    cache.resize(target + 1, std::vector{-1});
+  else if (cache[target][0] != -1)
+    return cache[target];
 
   std::vector<int> shortest_c{-1};
 
@@ -27,7 +26,7 @@ std::vector<int> best_sum(
     }
   }
 
-  return cache[target_] = shortest_c;
+  return cache[target] = shortest_c;
 }
 
 TEST_CASE("best_sum") {
