@@ -2,25 +2,25 @@
 #include <catch2/catch_test_macros.hpp>
 #include <vector>
 
-std::vector<int> best_sum(
+std::vector<std::uint32_t> best_sum(
     std::uint32_t target, std::vector<std::uint32_t> const& v,
-    std::vector<std::vector<int>>& cache
+    std::vector<std::vector<std::uint32_t>>& cache
 ) {
   if (!target)
-    return std::vector<int>{};
+    return std::vector<std::uint32_t>{};
 
   if (target >= cache.size())
-    cache.resize(target + 1, std::vector{0});
-  else if (cache[target][0] != 0)
+    cache.resize(target + 1, std::vector{0u});
+  else if (cache[target][0] != 0u)
     return cache[target];
 
-  std::vector<int> shortest_c{0};
+  std::vector<std::uint32_t> shortest_c{0u};
 
   for (const auto& elem : v) {
     if (elem <= target) {
       auto current_c = best_sum(target - elem, v, cache);
       current_c.emplace_back(elem);
-      if (current_c.size() < shortest_c.size() || shortest_c[0] == 0) {
+      if (current_c.size() < shortest_c.size() || shortest_c[0] == 0u) {
         shortest_c = std::move(current_c);
       }
     }
@@ -30,7 +30,7 @@ std::vector<int> best_sum(
 }
 
 TEST_CASE("best_sum") {
-  std::vector<std::vector<int>> a, b, c, d;
+  std::vector<std::vector<std::uint32_t>> a, b, c, d;
   REQUIRE(best_sum(8, {1, 2, 4, 25}, a) == std::vector{4, 4});
   REQUIRE(best_sum(7, {5, 3, 4, 7}, b) == std::vector{7});
   REQUIRE(best_sum(8, {2, 3, 5}, c) == std::vector{5, 3});
