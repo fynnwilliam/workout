@@ -7,27 +7,31 @@ using numbers = std::vector<std::uint32_t>;
 auto best_sum = [cache = std::vector<numbers>{{}}](
                     std::uint32_t target, const numbers& v
                 ) mutable {
-  cache.resize(target + 1, {0u});
+  const auto new_size = static_cast<std::size_t>(target + 1);
+  const auto n = std::min(cache.size(), new_size);
+  cache.resize(new_size, {0u});
+  std::fill_n(cache.data() + 1, n - 1, numbers{0u});
 
-  return
-      [&cache](this auto&& best_sum_, std::uint32_t target_, numbers const& v_) {
-        if (target_ == 0u || cache[target_][0] != 0u)
-          return cache[target_];
+  return [&cache](
+             this auto&& best_sum_, std::uint32_t target_, numbers const& v_
+         ) {
+    if (target_ == 0u || cache[target_][0] != 0u)
+      return cache[target_];
 
-        numbers shortest_c{0u};
+    numbers shortest_c{0u};
 
-        for (const auto& elem : v_) {
-          if (elem <= target_) {
-            auto current_c = best_sum_(target_ - elem, v_);
-            current_c.emplace_back(elem);
-            if (current_c.size() < shortest_c.size() || shortest_c[0] == 0u) {
-              shortest_c = std::move(current_c);
-            }
-          }
+    for (const auto& elem : v_) {
+      if (elem <= target_) {
+        auto current_c = best_sum_(target_ - elem, v_);
+        current_c.emplace_back(elem);
+        if (current_c.size() < shortest_c.size() || shortest_c[0] == 0u) {
+          shortest_c = std::move(current_c);
         }
+      }
+    }
 
-        return cache[target_] = shortest_c;
-      }(target, v);
+    return cache[target_] = shortest_c;
+  }(target, v);
 };
 
 TEST_CASE("best_sum") {
