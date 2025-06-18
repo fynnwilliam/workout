@@ -31,11 +31,10 @@ auto best_sum = [cache = std::vector<numbers>{{}}](
 };
 
 TEST_CASE("best_sum") {
-  std::vector<numbers> a, b, c, d;
-  REQUIRE(best_sum(8, {1, 2, 4, 25}, a) == std::vector{4u, 4u});
-  REQUIRE(best_sum(7, {5, 3, 4, 7}, b) == std::vector{7u});
-  REQUIRE(best_sum(8, {2, 3, 5}, c) == std::vector{5u, 3u});
-  REQUIRE(best_sum(100, {1, 2, 5, 25}, d) == std::vector{25u, 25u, 25u, 25u});
+  REQUIRE(best_sum(8, {1, 2, 4, 25}) == std::vector{4u, 4u});
+  REQUIRE(best_sum(7, {5, 3, 4, 7}) == std::vector{7u});
+  REQUIRE(best_sum(8, {2, 3, 5}) == std::vector{5u, 3u});
+  REQUIRE(best_sum(100, {1, 2, 5, 25}) == std::vector{25u, 25u, 25u, 25u});
 }
 
 TEST_CASE("best_sum", "[!benchmark]") {
