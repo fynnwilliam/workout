@@ -39,8 +39,7 @@ TEST_CASE("best_sum") {
 
 TEST_CASE("best_sum", "[!benchmark]") {
   const numbers v{1, 2, 5, 25};
-  std::vector<numbers> m;
   BENCHMARK("best_sum(100, v, m)") {
-    return best_sum(100, v, m);
+    return best_sum(100, v);
   };
 }
