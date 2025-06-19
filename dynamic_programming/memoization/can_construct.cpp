@@ -26,6 +26,10 @@ bool can_construct(
 }
 
 TEST_CASE("can_construct") {
-  std::vector<std::string> v{"a", "p", "ent", "enter", "ot", "o", "t"};
-  REQUIRE(can_construct("enterapotentpot", v) == true);
+  REQUIRE(
+      can_construct("enterapotentpot", {"a", "p", "ent", "er", "ot"}) == true
+  );
+  REQUIRE(can_construct("skateboard", {"bo", "rd", "ate", "ska"}) == false);
+  REQUIRE(can_construct("abcdef", {"ab", "abc", "cd", "def", "abcd"}) == true);
+  REQUIRE(can_construct("aaaaaaaaaaz", {"a", "aa", "aaa", "aaaa"}) == false);
 }
