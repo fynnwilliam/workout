@@ -1,3 +1,4 @@
+#include <catch2/catch_test_macros.hpp>
 #include <iostream>
 #include <string>
 #include <unordered_map>
@@ -24,8 +25,7 @@ bool can_construct(
   return m[s] = false;
 }
 
-int main() {
+TEST_CASE("can_construct") {
   std::vector<std::string> v{"a", "p", "ent", "enter", "ot", "o", "t"};
-
-  std::cout << std::boolalpha << can_construct("enterapotentpot", v) << '\n';
+  REQUIRE(can_construct("enterapotentpot", v) == true);
 }
