@@ -6,7 +6,7 @@
 
 bool can_construct(
     std::string s, std::vector<std::string> const& word_bank,
-    std::unordered_map<std::string, bool> m = {}
+    std::unordered_map<std::string, bool>& m
 ) {
   if (m.count(s))
     return m[s];
@@ -15,7 +15,7 @@ bool can_construct(
 
   for (auto const& word : word_bank) {
     if (s.find(word) == 0) {
-      if (can_construct(s.substr(word.length()), word_bank, std::move(m))) {
+      if (can_construct(s.substr(word.length()), word_bank, m)) {
         return m[s] = true;
       }
     }
