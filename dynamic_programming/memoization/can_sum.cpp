@@ -40,7 +40,7 @@ TEST_CASE("can_sum") {
 
 TEST_CASE("can_sum", "[!benchmark]") {
   std::vector v{7, 14};
-  BENCHMARK("can_sum(300, v, m)") {
+  BENCHMARK("can_sum(300, v)") {
     return can_sum(300, v);
   };
 }
