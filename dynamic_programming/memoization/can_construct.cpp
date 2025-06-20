@@ -1,7 +1,6 @@
 #include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <unordered_map>
-#include <utility>
 #include <vector>
 
 bool can_construct(
