@@ -1,3 +1,4 @@
+#include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 #include <string>
 #include <unordered_map>
@@ -33,4 +34,17 @@ TEST_CASE("can_construct") {
       can_construct("abcdef", {"ab", "abc", "cd", "def", "abcd"}, c) == true
   );
   REQUIRE(can_construct("aaaaaaaaaaz", {"a", "aa", "aaa", "aaaa"}, d) == false);
+}
+
+TEST_CASE("can_construct", "[!benchmark]") {
+  std::unordered_map<std::string, bool> m;
+  std::string s(10'000, ' ');
+  std::vector<std::string> word_bank{" ",     "  ",     "   ",   "    ",
+                                     "     ", "      ", "      "};
+
+  REQUIRE(can_construct(s, word_bank, m) == true);
+  
+  BENCHMARK("can_construct(s, word_bank, m)") {
+    return can_construct(s, word_bank, m);
+  };
 }
