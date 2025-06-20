@@ -25,10 +25,13 @@ bool can_construct(
 }
 
 TEST_CASE("can_construct") {
+  std::unordered_map<std::string, bool> a, b, c, d;
   REQUIRE(
-      can_construct("enterapotentpot", {"a", "p", "ent", "er", "ot"}) == true
+      can_construct("enterapotentpot", {"a", "p", "ent", "er", "ot"}, a) == true
   );
-  REQUIRE(can_construct("skateboard", {"bo", "rd", "ate", "ska"}) == false);
-  REQUIRE(can_construct("abcdef", {"ab", "abc", "cd", "def", "abcd"}) == true);
-  REQUIRE(can_construct("aaaaaaaaaaz", {"a", "aa", "aaa", "aaaa"}) == false);
+  REQUIRE(can_construct("skateboard", {"bo", "rd", "ate", "ska"}, b) == false);
+  REQUIRE(
+      can_construct("abcdef", {"ab", "abc", "cd", "def", "abcd"}, c) == true
+  );
+  REQUIRE(can_construct("aaaaaaaaaaz", {"a", "aa", "aaa", "aaaa"}, d) == false);
 }
