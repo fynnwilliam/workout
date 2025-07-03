@@ -18,7 +18,7 @@ auto best_sum = [cache = std::vector<numbers>{{}}](
     if (target_ == 0u || cache[target_][0] != 0u)
       return cache[target_];
 
-    numbers shortest_c{0u};
+    numbers& shortest_c = cache[target_];
 
     for (const auto& elem : v_) {
       if (elem <= target_) {
@@ -30,7 +30,7 @@ auto best_sum = [cache = std::vector<numbers>{{}}](
       }
     }
 
-    return cache[target_] = shortest_c;
+    return shortest_c;
   }(target, v);
 };
 
