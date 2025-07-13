@@ -17,6 +17,7 @@ int match_players_and_trainers(
     if (*p_first <= *t_first) {
       ++p_first;
       ++t_first;
+      ++matches;
     } else
       ++p_first;
   }
