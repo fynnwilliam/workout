@@ -19,7 +19,7 @@ int match_players_and_trainers(
       ++t_first;
       ++matches;
     } else
-      ++p_first;
+      ++t_first;
   }
 
   return matches;
