@@ -5,12 +5,12 @@ bool horizontal_search(
     std::unique_ptr<const char*>& puzzle_ptr, std::uint32_t rows,
     std::uint32_t columns, std::string_view word
 ) {
-  auto head = *puzzle_ptr.get();
+  auto row_ptr = *puzzle_ptr.get();
   for (std::uint32_t r = 0u; r < rows; ++r) {
-    std::string_view row_view{head, columns};
+    std::string_view row_view{row_ptr, columns};
     if (row_view.contains(word))
       return true;
-    head += columns;
+    row_ptr += columns;
   }
 
   return false;
