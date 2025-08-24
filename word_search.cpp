@@ -70,13 +70,13 @@ TEST_CASE("horizontal_search", "[!benchmark]") {
 }
 
 TEST_CASE("vertical_search") {
-  const auto column_ptr = &puzzle[0][0];
+  const char* column_ptr = &puzzle[0][0];
   REQUIRE(vertical_search(column_ptr, 10, 10, "000") == false);
   REQUIRE(vertical_search(column_ptr, 10, 10, "ooo") == true);
 }
 
 TEST_CASE("vertical_search", "[!benchmark]") {
-  const auto column_ptr = &puzzle[0][0];
+  const char* column_ptr = &puzzle[0][0];
   BENCHMARK("vertical_search(column_ptr, 10, 10, ooo) == true)") {
     return vertical_search(column_ptr, 10, 10, "ooo");
   };
