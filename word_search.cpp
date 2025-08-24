@@ -57,13 +57,13 @@ std::array<std::array<char, 10>, 10> puzzle{
 } // namespace
 
 TEST_CASE("horizontal_search") {
-  const auto row_ptr = &puzzle[0][0];
+  const char* row_ptr = &puzzle[0][0];
   REQUIRE(horizontal_search(row_ptr, 10, 10, "000") == false);
   REQUIRE(horizontal_search(row_ptr, 10, 10, "ooo") == true);
 }
 
 TEST_CASE("horizontal_search", "[!benchmark]") {
-  const auto row_ptr = &puzzle[0][0];
+  const char* row_ptr = &puzzle[0][0];
   BENCHMARK("horizontal_search(row_ptr, 10, 10, ooo) == true)") {
     return horizontal_search(row_ptr, 10, 10, "ooo");
   };
