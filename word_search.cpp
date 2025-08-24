@@ -2,10 +2,9 @@
 #include <catch2/catch_test_macros.hpp>
 
 bool horizontal_search(
-    std::unique_ptr<const char*>& puzzle_ptr, std::uint32_t rows,
-    std::uint32_t columns, std::string_view word
+    const char* row_ptr, std::uint32_t rows, std::uint32_t columns,
+    std::string_view word
 ) {
-  auto row_ptr = *puzzle_ptr.get();
   for (std::uint32_t r = 0u; r < rows; ++r) {
     std::string_view row_view{row_ptr, columns};
     if (row_view.contains(word))
@@ -59,15 +58,15 @@ std::array<std::array<char, 10>, 10> puzzle{
 } // namespace
 
 TEST_CASE("horizontal_search") {
-  auto puzzle_ptr = std::make_unique<const char*>(&puzzle[0][0]);
-  REQUIRE(horizontal_search(puzzle_ptr, 10, 10, "000") == false);
-  REQUIRE(horizontal_search(puzzle_ptr, 10, 10, "ooo") == true);
+  const auto row_ptr = &puzzle[0][0];
+  REQUIRE(horizontal_search(row_ptr, 10, 10, "000") == false);
+  REQUIRE(horizontal_search(row_ptr, 10, 10, "ooo") == true);
 }
 
 TEST_CASE("horizontal_search", "[!benchmark]") {
-  auto puzzle_ptr = std::make_unique<const char*>(&puzzle[0][0]);
-  BENCHMARK("horizontal_search(puzzle_ptr, 10, 10, ooo) == true)") {
-    return horizontal_search(puzzle_ptr, 10, 10, "ooo");
+  const auto row_ptr = &puzzle[0][0];
+  BENCHMARK("horizontal_search(row_ptr, 10, 10, ooo) == true)") {
+    return horizontal_search(row_ptr, 10, 10, "ooo");
   };
 }
 
