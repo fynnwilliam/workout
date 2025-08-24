@@ -16,6 +16,23 @@ bool horizontal_search(
   return false;
 }
 
+bool vertical_search(
+    std::unique_ptr<const char*>& puzzle_ptr, std::uint32_t rows,
+    std::uint32_t columns, std::string_view word
+) {
+  char column_data[rows];
+  auto column_ptr = *puzzle_ptr.get();
+
+  for (std::uint32_t c = 0u; c < columns; ++c) {
+    update_column_data(column_ptr++, rows, columns, column_data);
+    std::string_view column_view{column_data, rows};
+    if (column_view.contains(word))
+      return true;
+  }
+
+  return false;
+}
+
 namespace {
 std::array<std::array<char, 10>, 10> puzzle{
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
