@@ -76,3 +76,10 @@ TEST_CASE("vertical_search") {
   REQUIRE(vertical_search(puzzle_ptr, 10, 10, "000") == false);
   REQUIRE(vertical_search(puzzle_ptr, 10, 10, "ooo") == true);
 }
+
+TEST_CASE("vertical_search", "[!benchmark]") {
+  auto puzzle_ptr = std::make_unique<const char*>(&puzzle[0][0]);
+  BENCHMARK("vertical_search(puzzle_ptr, 10, 10, ooo) == true)") {
+    return vertical_search(puzzle_ptr, 10, 10, "ooo");
+  };
+}
