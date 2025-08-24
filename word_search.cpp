@@ -52,8 +52,8 @@ std::array<std::array<char, 10>, 10> puzzle{
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'o'},
+    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'o'},
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'o', 'o', 'o'}
 };
 } // namespace
@@ -69,4 +69,10 @@ TEST_CASE("horizontal_search", "[!benchmark]") {
   BENCHMARK("horizontal_search(puzzle_ptr, 10, 10, ooo) == true)") {
     return horizontal_search(puzzle_ptr, 10, 10, "ooo");
   };
+}
+
+TEST_CASE("vertical_search") {
+  auto puzzle_ptr = std::make_unique<const char*>(&puzzle[0][0]);
+  REQUIRE(vertical_search(puzzle_ptr, 10, 10, "000") == false);
+  REQUIRE(vertical_search(puzzle_ptr, 10, 10, "ooo") == true);
 }
