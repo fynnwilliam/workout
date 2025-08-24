@@ -26,11 +26,10 @@ void update_column_data(
 }
 
 bool vertical_search(
-    std::unique_ptr<const char*>& puzzle_ptr, std::uint32_t rows,
-    std::uint32_t columns, std::string_view word
+    const char* column_ptr, std::uint32_t rows, std::uint32_t columns,
+    std::string_view word
 ) {
   char column_data[rows];
-  auto column_ptr = *puzzle_ptr.get();
 
   for (std::uint32_t c = 0u; c < columns; ++c) {
     update_column_data(column_ptr++, rows, columns, column_data);
@@ -71,14 +70,14 @@ TEST_CASE("horizontal_search", "[!benchmark]") {
 }
 
 TEST_CASE("vertical_search") {
-  auto puzzle_ptr = std::make_unique<const char*>(&puzzle[0][0]);
-  REQUIRE(vertical_search(puzzle_ptr, 10, 10, "000") == false);
-  REQUIRE(vertical_search(puzzle_ptr, 10, 10, "ooo") == true);
+  auto column_ptr = &puzzle[0][0];
+  REQUIRE(vertical_search(column_ptr, 10, 10, "000") == false);
+  REQUIRE(vertical_search(column_ptr, 10, 10, "ooo") == true);
 }
 
 TEST_CASE("vertical_search", "[!benchmark]") {
-  auto puzzle_ptr = std::make_unique<const char*>(&puzzle[0][0]);
-  BENCHMARK("vertical_search(puzzle_ptr, 10, 10, ooo) == true)") {
-    return vertical_search(puzzle_ptr, 10, 10, "ooo");
+  auto column_ptr = &puzzle[0][0];
+  BENCHMARK("vertical_search(column_ptr, 10, 10, ooo) == true)") {
+    return vertical_search(column_ptr, 10, 10, "ooo");
   };
 }
