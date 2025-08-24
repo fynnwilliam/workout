@@ -16,6 +16,16 @@ bool horizontal_search(
   return false;
 }
 
+void update_column_data(
+    const char* source, std::uint32_t rows, std::uint32_t steps,
+    char* destination
+) {
+  for (std::uint32_t i = 0u; i < rows; ++i) {
+    *destination++ = *source;
+    source += steps;
+  }
+}
+
 bool vertical_search(
     std::unique_ptr<const char*>& puzzle_ptr, std::uint32_t rows,
     std::uint32_t columns, std::string_view word
