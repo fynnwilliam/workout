@@ -77,9 +77,9 @@ std::array<std::array<char, 10>, 10> puzzle{
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'o'},
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'o'},
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'o', 'o', 'o'}
+    std::array{'o', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'o'},
+    std::array{'x', 'o', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'o'},
+    std::array{'x', 'x', 'o', 'x', 'x', 'x', 'x', 'o', 'o', 'o'}
 };
 } // namespace
 
