@@ -114,3 +114,10 @@ TEST_CASE("slope_search") {
   REQUIRE(slope_search(slope_ptr, 10, 10, "000") == false);
   REQUIRE(slope_search(slope_ptr, 10, 10, "ooo") == true);
 }
+
+TEST_CASE("slope_search", "[!benchmark]") {
+  const char* slope_ptr = &puzzle[0][0];
+  BENCHMARK("slope_search(slope_ptr, 10, 10, ooo) == true)") {
+    return slope_search(slope_ptr, 10, 10, "ooo");
+  };
+}
