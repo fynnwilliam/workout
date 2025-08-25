@@ -108,3 +108,9 @@ TEST_CASE("vertical_search", "[!benchmark]") {
     return vertical_search(column_ptr, 10, 10, "ooo");
   };
 }
+
+TEST_CASE("slope_search") {
+  const char* slope_ptr = &puzzle[0][0];
+  REQUIRE(slope_search(slope_ptr, 10, 10, "000") == false);
+  REQUIRE(slope_search(slope_ptr, 10, 10, "ooo") == true);
+}
