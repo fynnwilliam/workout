@@ -41,6 +41,33 @@ bool vertical_search(
   return false;
 }
 
+bool slope_search(
+    const char* slope_ptr, std::uint32_t rows, std::uint32_t columns,
+    std::string_view word
+) {
+  char slope_data[rows];
+
+  auto depth = rows, steps = columns + 1u;
+  auto source = slope_ptr;
+  for (std::uint32_t c = 0u; c < columns && depth >= word.size(); ++c) {
+    copy(source++, depth, steps, slope_data);
+    std::string_view slope_view{slope_data, depth--};
+    if (slope_view.contains(word))
+      return true;
+  }
+
+  depth = rows - 1u, source = slope_ptr + columns;
+  for (std::uint32_t r = 1u; r < rows && depth >= word.size(); ++r) {
+    copy(source, depth, steps, slope_data);
+    std::string_view slope_view{slope_data, depth--};
+    if (slope_view.contains(word))
+      return true;
+    source += columns;
+  }
+
+  return false;
+}
+
 namespace {
 std::array<std::array<char, 10>, 10> puzzle{
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
