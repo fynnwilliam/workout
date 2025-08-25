@@ -15,7 +15,7 @@ bool horizontal_search(
   return false;
 }
 
-void update_column_data(
+void copy(
     const char* source, std::uint32_t rows, std::uint32_t steps,
     char* destination
 ) {
@@ -32,7 +32,7 @@ bool vertical_search(
   char column_data[rows];
 
   for (std::uint32_t c = 0u; c < columns; ++c) {
-    update_column_data(column_ptr++, rows, columns, column_data);
+    copy(column_ptr++, rows, columns, column_data);
     std::string_view column_view{column_data, rows};
     if (column_view.contains(word))
       return true;
