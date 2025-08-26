@@ -74,12 +74,12 @@ std::array<std::array<char, 10>, 10> puzzle{
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-    std::array{'o', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'o'},
-    std::array{'x', 'o', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'o'},
-    std::array{'x', 'x', 'o', 'x', 'x', 'x', 'x', 'o', 'o', 'o'}
+    std::array{'s', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+    std::array{'x', 'l', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+    std::array{'x', 'x', 'o', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+    std::array{'x', 'x', 'x', 'p', 'x', 'x', 'x', 'x', 'x', 'o'},
+    std::array{'x', 'x', 'x', 'x', 'e', 'x', 'x', 'x', 'x', 'o'},
+    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'o', 'o', 'o'}
 };
 } // namespace
 
@@ -112,7 +112,7 @@ TEST_CASE("vertical_search", "[!benchmark]") {
 TEST_CASE("slope_search") {
   const char* slope_ptr = &puzzle[0][0];
   REQUIRE(slope_search(slope_ptr, 10, 10, "000") == false);
-  REQUIRE(slope_search(slope_ptr, 10, 10, "ooo") == true);
+  REQUIRE(slope_search(slope_ptr, 10, 10, "slope") == true);
 }
 
 TEST_CASE("slope_search", "[!benchmark]") {
