@@ -76,17 +76,17 @@ std::array<std::array<char, 10>, 10> puzzle{
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
     std::array{'s', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
     std::array{'x', 'l', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-    std::array{'x', 'x', 'o', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+    std::array{'x', 'x', 'o', 'x', 'x', 'x', 'x', 'x', 'x', 'o'},
     std::array{'x', 'x', 'x', 'p', 'x', 'x', 'x', 'x', 'x', 'o'},
     std::array{'x', 'x', 'x', 'x', 'e', 'x', 'x', 'x', 'x', 'o'},
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'o', 'o', 'o'}
+    std::array{'h', 'o', 'r', 'i', 'z', 'o', 'n', 't', 'a', 'l'}
 };
 } // namespace
 
 TEST_CASE("horizontal_search") {
   const char* row_ptr = &puzzle[0][0];
   REQUIRE(horizontal_search(row_ptr, 10, 10, "000") == false);
-  REQUIRE(horizontal_search(row_ptr, 10, 10, "ooo") == true);
+  REQUIRE(horizontal_search(row_ptr, 10, 10, "horizontal") == true);
 }
 
 TEST_CASE("horizontal_search", "[!benchmark]") {
