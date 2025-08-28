@@ -1,13 +1,29 @@
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
 
+bool rcontains(std::string_view source, std::string_view word) {
+  const auto word_size = word.size();
+  for (auto f = source.size() - 1, l = word_size - 1; f >= l; --f) {
+    auto i = 0zu;
+    for (auto j = f; i < word_size; --j, ++i) {
+      if (source[j] != word[i])
+        break;
+    }
+
+    if (i == word_size)
+      return true;
+  }
+
+  return false;
+}
+
 bool horizontal_search(
     const char* row_ptr, std::uint32_t rows, std::uint32_t columns,
     std::string_view word
 ) {
   for (std::uint32_t r = 0u; r < rows; ++r) {
     std::string_view row_view{row_ptr, columns};
-    if (row_view.contains(word))
+    if (row_view.contains(word) || rcontains(row_view, word))
       return true;
     row_ptr += columns;
   }
