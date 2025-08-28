@@ -138,3 +138,10 @@ TEST_CASE("slope_search", "[!benchmark]") {
     return slope_search(slope_ptr, 10, 10, "ooo");
   };
 }
+
+TEST_CASE("rcontains") {
+  std::string_view data{"xxesreverh"};
+  REQUIRE(rcontains(data, "revrs") == false);
+  REQUIRE(rcontains(data, "reverse") == true);
+  REQUIRE(rcontains(data, "hreverse") == true);
+}
