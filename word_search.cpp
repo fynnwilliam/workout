@@ -145,3 +145,10 @@ TEST_CASE("rcontains") {
   REQUIRE(rcontains(data, "reverse") == true);
   REQUIRE(rcontains(data, "hreverse") == true);
 }
+
+TEST_CASE("rcontains", "[!benchmark]") {
+  std::string_view data{"xxesreverh"};
+  BENCHMARK("rcontains(data, ooo)") {
+    return rcontains(data, "ooo");
+  };
+}
