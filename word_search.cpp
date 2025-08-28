@@ -50,7 +50,7 @@ bool vertical_search(
   for (std::uint32_t c = 0u; c < columns; ++c) {
     copy(column_ptr++, rows, columns, column_data);
     std::string_view column_view{column_data, rows};
-    if (column_view.contains(word))
+    if (column_view.contains(word) || rcontains(column_view, word))
       return true;
   }
 
@@ -88,13 +88,13 @@ namespace {
 std::array<std::array<char, 10>, 10> puzzle{
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
     std::array{'x', 'x', 'e', 's', 'r', 'e', 'v', 'e', 'r', 'h'},
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'v'},
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'e'},
-    std::array{'s', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'r'},
-    std::array{'x', 'l', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 't'},
-    std::array{'x', 'x', 'o', 'x', 'x', 'x', 'x', 'x', 'x', 'i'},
-    std::array{'x', 'x', 'x', 'p', 'x', 'x', 'x', 'x', 'x', 'c'},
-    std::array{'x', 'x', 'x', 'x', 'e', 'x', 'x', 'x', 'x', 'a'},
+    std::array{'x', 'x', 'x', 'x', 'x', 's', 'x', 'x', 'x', 'v'},
+    std::array{'x', 'x', 'x', 'x', 'x', 'r', 'x', 'x', 'x', 'e'},
+    std::array{'s', 'x', 'x', 'x', 'x', 'e', 'x', 'x', 'x', 'r'},
+    std::array{'x', 'l', 'x', 'x', 'x', 'v', 'x', 'x', 'x', 't'},
+    std::array{'x', 'x', 'o', 'x', 'x', 'e', 'x', 'x', 'x', 'i'},
+    std::array{'x', 'x', 'x', 'p', 'x', 'r', 'x', 'x', 'x', 'c'},
+    std::array{'x', 'x', 'x', 'x', 'e', 'v', 'x', 'x', 'x', 'a'},
     std::array{'h', 'o', 'r', 'i', 'z', 'o', 'n', 't', 'a', 'l'}
 };
 } // namespace
@@ -117,6 +117,7 @@ TEST_CASE("vertical_search") {
   const char* column_ptr = &puzzle[0][0];
   REQUIRE(vertical_search(column_ptr, 10, 10, "000") == false);
   REQUIRE(vertical_search(column_ptr, 10, 10, "vertical") == true);
+  REQUIRE(vertical_search(column_ptr, 10, 10, "vreverse") == true);
 }
 
 TEST_CASE("vertical_search", "[!benchmark]") {
