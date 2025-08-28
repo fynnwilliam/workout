@@ -91,7 +91,7 @@ TEST_CASE("horizontal_search") {
 
 TEST_CASE("horizontal_search", "[!benchmark]") {
   const char* row_ptr = &puzzle[0][0];
-  BENCHMARK("horizontal_search(row_ptr, 10, 10, ooo) == true)") {
+  BENCHMARK("horizontal_search(row_ptr, 10, 10, ooo)") {
     return horizontal_search(row_ptr, 10, 10, "ooo");
   };
 }
@@ -104,7 +104,7 @@ TEST_CASE("vertical_search") {
 
 TEST_CASE("vertical_search", "[!benchmark]") {
   const char* column_ptr = &puzzle[0][0];
-  BENCHMARK("vertical_search(column_ptr, 10, 10, ooo) == true)") {
+  BENCHMARK("vertical_search(column_ptr, 10, 10, ooo)") {
     return vertical_search(column_ptr, 10, 10, "ooo");
   };
 }
@@ -117,7 +117,7 @@ TEST_CASE("slope_search") {
 
 TEST_CASE("slope_search", "[!benchmark]") {
   const char* slope_ptr = &puzzle[0][0];
-  BENCHMARK("slope_search(slope_ptr, 10, 10, ooo) == true)") {
+  BENCHMARK("slope_search(slope_ptr, 10, 10, ooo)") {
     return slope_search(slope_ptr, 10, 10, "ooo");
   };
 }
