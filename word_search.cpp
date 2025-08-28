@@ -87,7 +87,7 @@ bool slope_search(
 namespace {
 std::array<std::array<char, 10>, 10> puzzle{
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+    std::array{'x', 'x', 'e', 's', 'r', 'e', 'v', 'e', 'r', 'h'},
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'v'},
     std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'e'},
     std::array{'s', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'r'},
@@ -103,6 +103,7 @@ TEST_CASE("horizontal_search") {
   const char* row_ptr = &puzzle[0][0];
   REQUIRE(horizontal_search(row_ptr, 10, 10, "000") == false);
   REQUIRE(horizontal_search(row_ptr, 10, 10, "horizontal") == true);
+  REQUIRE(horizontal_search(row_ptr, 10, 10, "hreverse") == true);
 }
 
 TEST_CASE("horizontal_search", "[!benchmark]") {
