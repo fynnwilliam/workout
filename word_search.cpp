@@ -32,20 +32,20 @@ bool horizontal_search(
 }
 
 void copy(
-    const char* source, std::uint32_t rows, std::uint32_t steps,
+    const char* source, std::uint32_t depth, std::uint32_t steps,
     char* destination
 ) {
-  for (std::uint32_t i = 0u; i < rows; ++i) {
+  for (std::uint32_t i = 0u; i < depth; ++i) {
     *destination++ = *source;
     source += steps;
   }
 }
 
 void rcopy(
-    const char* source, std::uint32_t rows, std::uint32_t steps,
+    const char* source, std::uint32_t depth, std::uint32_t steps,
     char* destination
 ) {
-  for (std::uint32_t i = 0u; i < rows; ++i) {
+  for (std::uint32_t i = 0u; i < depth; ++i) {
     *destination++ = *source;
     source -= steps;
   }
