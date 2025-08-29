@@ -114,11 +114,11 @@ bool slope_search(
 
 namespace {
 std::array<std::array<char, 10>, 10> puzzle{
-    std::array{'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x'},
+    std::array{'x', 'x', 'x', 'x', 'd', 'x', 'x', 'x', 'x', 'x'},
     std::array{'x', 'x', 'e', 's', 'r', 'e', 'v', 'e', 'r', 'h'},
-    std::array{'x', 'x', 'x', 'x', 't', 's', 'x', 'x', 'x', 'v'},
-    std::array{'x', 'x', 'x', 'n', 'x', 'r', 'x', 'x', 'x', 'e'},
-    std::array{'s', 'x', 'a', 'x', 'x', 'e', 'x', 'x', 'x', 'r'},
+    std::array{'x', 'x', 'x', 'x', 't', 's', 't', 'x', 'x', 'v'},
+    std::array{'x', 'x', 'x', 'n', 'x', 'r', 'x', 'l', 'x', 'e'},
+    std::array{'s', 'x', 'a', 'x', 'x', 'e', 'x', 'x', 'i', 'r'},
     std::array{'x', 'l', 'x', 'x', 'x', 'v', 'x', 'x', 'x', 't'},
     std::array{'s', 'x', 'o', 'x', 'x', 'e', 'x', 'x', 'x', 'i'},
     std::array{'x', 'x', 'x', 'p', 'x', 'r', 'x', 'x', 'x', 'c'},
@@ -160,6 +160,7 @@ TEST_CASE("slope_search") {
   REQUIRE(slope_search(slope_ptr, 10, 10, "000") == false);
   REQUIRE(slope_search(slope_ptr, 10, 10, "slope") == true);
   REQUIRE(slope_search(slope_ptr, 10, 10, "slant") == true);
+  REQUIRE(slope_search(slope_ptr, 10, 10, "tilted") == true);
 }
 
 TEST_CASE("slope_search", "[!benchmark]") {
