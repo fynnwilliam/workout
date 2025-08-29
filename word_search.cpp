@@ -91,6 +91,24 @@ bool slope_search(
     source += columns;
   }
 
+  depth = rows, source = slope_ptr + columns * (rows - 1u);
+  steps = columns - 1;
+  for (; depth >= word.size();) {
+    rcopy(source++, depth, steps, slope_data);
+    std::string_view slope_view{slope_data, depth--};
+    if (slope_view.contains(word))
+      return true;
+  }
+
+  depth = rows - 1u, source = slope_ptr + columns * (rows - 2u);
+  for (; depth >= word.size();) {
+    rcopy(source, depth, steps, slope_data);
+    std::string_view slope_view{slope_data, depth--};
+    if (slope_view.contains(word))
+      return true;
+    source -= columns;
+  }
+
   return false;
 }
 
