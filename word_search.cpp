@@ -78,7 +78,7 @@ bool slope_search(
   for (; depth >= word.size();) {
     copy(source++, depth, steps, slope_data);
     std::string_view slope_view{slope_data, depth--};
-    if (slope_view.contains(word))
+    if (slope_view.contains(word) || rcontains(slope_view, word))
       return true;
   }
 
@@ -86,7 +86,7 @@ bool slope_search(
   for (; depth >= word.size();) {
     copy(source, depth, steps, slope_data);
     std::string_view slope_view{slope_data, depth--};
-    if (slope_view.contains(word))
+    if (slope_view.contains(word) || rcontains(slope_view, word))
       return true;
     source += columns;
   }
@@ -96,7 +96,7 @@ bool slope_search(
   for (; depth >= word.size();) {
     rcopy(source++, depth, steps, slope_data);
     std::string_view slope_view{slope_data, depth--};
-    if (slope_view.contains(word))
+    if (slope_view.contains(word) || rcontains(slope_view, word))
       return true;
   }
 
@@ -104,7 +104,7 @@ bool slope_search(
   for (; depth >= word.size();) {
     rcopy(source, depth, steps, slope_data);
     std::string_view slope_view{slope_data, depth--};
-    if (slope_view.contains(word))
+    if (slope_view.contains(word) || rcontains(slope_view, word))
       return true;
     source -= columns;
   }
