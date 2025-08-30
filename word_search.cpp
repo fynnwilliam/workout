@@ -35,7 +35,7 @@ void copy(
     const char* source, std::uint32_t depth, std::uint32_t steps,
     char* destination
 ) {
-  for (std::uint32_t i = 0u; i < depth; ++i) {
+  while (depth--) {
     *destination++ = *source;
     source += steps;
   }
