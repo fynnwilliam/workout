@@ -57,8 +57,9 @@ bool vertical_search(
 ) {
   char column_data[rows];
 
-  for (std::uint32_t c = 0u; c < columns; ++c) {
-    copy(column_ptr++, rows, columns, column_data);
+  const auto steps = columns;
+  while (columns--) {
+    copy(column_ptr++, rows, steps, column_data);
     std::string_view column_view{column_data, rows};
     if (column_view.contains(word) || rcontains(column_view, word))
       return true;
