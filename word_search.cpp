@@ -21,7 +21,7 @@ bool horizontal_search(
     const char* row_ptr, std::uint32_t rows, std::uint32_t columns,
     std::string_view word
 ) {
-  for (std::uint32_t r = 0u; r < rows; ++r) {
+  while (rows--) {
     std::string_view row_view{row_ptr, columns};
     if (row_view.contains(word) || rcontains(row_view, word))
       return true;
