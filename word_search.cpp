@@ -71,7 +71,7 @@ bool slope_search(
   std::vector<char> slope_data(rows);
 
   auto depth = rows, steps = columns + 1u;
-  auto source = &data[0][0];
+  const char* source = &data[0][0];
   while (depth >= word.size()) {
     copy(source++, depth, steps, slope_data.data());
     std::string_view slope_view{slope_data.data(), depth--};
