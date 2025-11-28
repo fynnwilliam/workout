@@ -50,14 +50,13 @@ void rcopy(
 }
 
 bool vertical_search(
-    const char* column_ptr, std::uint32_t rows, std::uint32_t columns,
-    std::string_view word
+    auto& data, std::uint32_t rows, std::uint32_t columns, std::string_view word
 ) {
   char column_data[rows];
 
   const auto steps = columns;
   while (columns--) {
-    copy(column_ptr++, rows, steps, column_data);
+    copy(&data[0][columns], rows, steps, column_data);
     std::string_view column_view{column_data, rows};
     if (column_view.contains(word) || rcontains(column_view, word))
       return true;
@@ -139,16 +138,14 @@ TEST_CASE("horizontal_search", "[!benchmark]") {
 }
 
 TEST_CASE("vertical_search") {
-  const char* column_ptr = &puzzle[0][0];
-  REQUIRE(vertical_search(column_ptr, 10, 10, "000") == false);
-  REQUIRE(vertical_search(column_ptr, 10, 10, "vertical") == true);
-  REQUIRE(vertical_search(column_ptr, 10, 10, "vreverse") == true);
+  REQUIRE(vertical_search(puzzle, 10, 10, "000") == false);
+  REQUIRE(vertical_search(puzzle, 10, 10, "vertical") == true);
+  REQUIRE(vertical_search(puzzle, 10, 10, "vreverse") == true);
 }
 
 TEST_CASE("vertical_search", "[!benchmark]") {
-  const char* column_ptr = &puzzle[0][0];
-  BENCHMARK("vertical_search(column_ptr, 10, 10, ooo)") {
-    return vertical_search(column_ptr, 10, 10, "ooo");
+  BENCHMARK("vertical_search(puzzle, 10, 10, ooo)") {
+    return vertical_search(puzzle, 10, 10, "ooo");
   };
 }
 
