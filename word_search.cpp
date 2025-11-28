@@ -18,14 +18,12 @@ bool rcontains(std::string_view source, std::string_view word) {
 }
 
 bool horizontal_search(
-    const char* row_ptr, std::uint32_t rows, std::uint32_t columns,
-    std::string_view word
+    auto& data, std::uint32_t rows, std::uint32_t columns, std::string_view word
 ) {
   while (rows--) {
-    std::string_view row_view{row_ptr, columns};
+    std::string_view row_view{&data[rows][columns], columns};
     if (row_view.contains(word) || rcontains(row_view, word))
       return true;
-    row_ptr += columns;
   }
 
   return false;
@@ -129,16 +127,14 @@ std::array<std::array<char, 10>, 10> puzzle{
 } // namespace
 
 TEST_CASE("horizontal_search") {
-  const char* row_ptr = &puzzle[0][0];
-  REQUIRE(horizontal_search(row_ptr, 10, 10, "000") == false);
-  REQUIRE(horizontal_search(row_ptr, 10, 10, "horizontal") == true);
-  REQUIRE(horizontal_search(row_ptr, 10, 10, "hreverse") == true);
+  REQUIRE(horizontal_search(puzzle, 10, 10, "000") == false);
+  REQUIRE(horizontal_search(puzzle, 10, 10, "horizontal") == true);
+  REQUIRE(horizontal_search(puzzle, 10, 10, "hreverse") == true);
 }
 
 TEST_CASE("horizontal_search", "[!benchmark]") {
-  const char* row_ptr = &puzzle[0][0];
-  BENCHMARK("horizontal_search(row_ptr, 10, 10, ooo)") {
-    return horizontal_search(row_ptr, 10, 10, "ooo");
+  BENCHMARK("horizontal_search(puzzle, 10, 10, ooo)") {
+    return horizontal_search(puzzle, 10, 10, "ooo");
   };
 }
 
