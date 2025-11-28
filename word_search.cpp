@@ -29,23 +29,10 @@ bool horizontal_search(
   return false;
 }
 
-void copy(
-    const char* source, std::uint32_t depth, std::uint32_t steps,
-    char* destination
-) {
+void xcopy(const char* source, uint32_t depth, auto steps, char* destination) {
   while (depth--) {
     *destination++ = *source;
     source += steps;
-  }
-}
-
-void rcopy(
-    const char* source, std::uint32_t depth, std::uint32_t steps,
-    char* destination
-) {
-  while (depth--) {
-    *destination++ = *source;
-    source -= steps;
   }
 }
 
@@ -56,7 +43,7 @@ bool vertical_search(
 
   const auto steps = columns;
   while (columns--) {
-    copy(&data[0][columns], rows, steps, column_data.data());
+    xcopy(&data[0][columns], rows, steps, column_data.data());
     std::string_view column_view{column_data.data(), rows};
     if (column_view.contains(word) || rcontains(column_view, word))
       return true;
@@ -73,7 +60,7 @@ bool slope_search(
   auto depth = rows, steps = columns + 1u;
   const char* source = &data[0][0];
   while (depth >= word.size()) {
-    copy(source++, depth, steps, slope_data.data());
+    xcopy(source++, depth, steps, slope_data.data());
     std::string_view slope_view{slope_data.data(), depth--};
     if (slope_view.contains(word) || rcontains(slope_view, word))
       return true;
@@ -81,7 +68,7 @@ bool slope_search(
 
   depth = rows - 1u, source = &data[1][0];
   while (depth >= word.size()) {
-    copy(source, depth, steps, slope_data.data());
+    xcopy(source, depth, steps, slope_data.data());
     std::string_view slope_view{slope_data.data(), depth--};
     if (slope_view.contains(word) || rcontains(slope_view, word))
       return true;
@@ -91,7 +78,7 @@ bool slope_search(
   depth = rows, source = &data[rows - 1][0];
   steps = columns - 1;
   while (depth >= word.size()) {
-    rcopy(source++, depth, steps, slope_data.data());
+    xcopy(source++, depth, -int(steps), slope_data.data());
     std::string_view slope_view{slope_data.data(), depth--};
     if (slope_view.contains(word) || rcontains(slope_view, word))
       return true;
@@ -99,7 +86,7 @@ bool slope_search(
 
   depth = rows - 1u, source = &data[rows - 2][0];
   while (depth >= word.size()) {
-    rcopy(source, depth, steps, slope_data.data());
+    xcopy(source, depth, -int(steps), slope_data.data());
     std::string_view slope_view{slope_data.data(), depth--};
     if (slope_view.contains(word) || rcontains(slope_view, word))
       return true;
