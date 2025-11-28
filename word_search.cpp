@@ -66,13 +66,12 @@ bool vertical_search(
 }
 
 bool slope_search(
-    const char* slope_ptr, std::uint32_t rows, std::uint32_t columns,
-    std::string_view word
+    auto& data, std::uint32_t rows, std::uint32_t columns, std::string_view word
 ) {
   std::vector<char> slope_data(rows);
 
   auto depth = rows, steps = columns + 1u;
-  auto source = slope_ptr;
+  auto source = &data[0][0];
   while (depth >= word.size()) {
     copy(source++, depth, steps, slope_data.data());
     std::string_view slope_view{slope_data.data(), depth--};
@@ -80,7 +79,7 @@ bool slope_search(
       return true;
   }
 
-  depth = rows - 1u, source = slope_ptr + columns;
+  depth = rows - 1u, source = &data[1][0];
   while (depth >= word.size()) {
     copy(source, depth, steps, slope_data.data());
     std::string_view slope_view{slope_data.data(), depth--};
@@ -89,7 +88,7 @@ bool slope_search(
     source += columns;
   }
 
-  depth = rows, source = slope_ptr + columns * (rows - 1u);
+  depth = rows, source = &data[rows - 1][0];
   steps = columns - 1;
   while (depth >= word.size()) {
     rcopy(source++, depth, steps, slope_data.data());
@@ -98,7 +97,7 @@ bool slope_search(
       return true;
   }
 
-  depth = rows - 1u, source = slope_ptr + columns * (rows - 2u);
+  depth = rows - 1u, source = &data[rows - 2][0];
   while (depth >= word.size()) {
     rcopy(source, depth, steps, slope_data.data());
     std::string_view slope_view{slope_data.data(), depth--};
@@ -150,17 +149,15 @@ TEST_CASE("vertical_search", "[!benchmark]") {
 }
 
 TEST_CASE("slope_search") {
-  const char* slope_ptr = &puzzle[0][0];
-  REQUIRE(slope_search(slope_ptr, 10, 10, "000") == false);
-  REQUIRE(slope_search(slope_ptr, 10, 10, "slope") == true);
-  REQUIRE(slope_search(slope_ptr, 10, 10, "slant") == true);
-  REQUIRE(slope_search(slope_ptr, 10, 10, "tilted") == true);
+  REQUIRE(slope_search(puzzle, 10, 10, "000") == false);
+  REQUIRE(slope_search(puzzle, 10, 10, "slope") == true);
+  REQUIRE(slope_search(puzzle, 10, 10, "slant") == true);
+  REQUIRE(slope_search(puzzle, 10, 10, "tilted") == true);
 }
 
 TEST_CASE("slope_search", "[!benchmark]") {
-  const char* slope_ptr = &puzzle[0][0];
-  BENCHMARK("slope_search(slope_ptr, 10, 10, ooo)") {
-    return slope_search(slope_ptr, 10, 10, "ooo");
+  BENCHMARK("slope_search(puzzle, 10, 10, ooo)") {
+    return slope_search(puzzle, 10, 10, "ooo");
   };
 }
 
