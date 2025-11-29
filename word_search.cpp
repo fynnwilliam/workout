@@ -18,8 +18,7 @@ bool rcontains(std::string_view source, std::string_view word) {
 }
 
 bool horizontal_search(
-    const auto& data, std::uint32_t rows, std::uint32_t columns,
-    std::string_view word
+    const auto& data, size_t rows, size_t columns, std::string_view word
 ) {
   while (rows--) {
     std::string_view row_view{&data[rows][columns], columns};
@@ -30,7 +29,7 @@ bool horizontal_search(
   return false;
 }
 
-void xcopy(const char* source, uint32_t depth, auto steps, char* destination) {
+void xcopy(const char* source, size_t depth, auto steps, char* destination) {
   while (depth--) {
     *destination++ = *source;
     source += steps;
@@ -38,8 +37,7 @@ void xcopy(const char* source, uint32_t depth, auto steps, char* destination) {
 }
 
 bool vertical_search(
-    const auto& data, std::uint32_t rows, std::uint32_t columns,
-    std::string_view word
+    const auto& data, size_t rows, size_t columns, std::string_view word
 ) {
   std::vector<char> column_data(rows);
 
@@ -55,11 +53,10 @@ bool vertical_search(
 }
 
 bool slope_search(
-    const auto& data, std::uint32_t rows, std::uint32_t columns,
-    std::string_view word
+    const auto& data, size_t rows, size_t columns, std::string_view word
 ) {
   auto word_found = [&word, slope_data = std::vector<char>(rows)](
-                        const char* source, auto n, uint32_t depth, auto steps
+                        const char* source, auto n, size_t depth, auto steps
                     ) mutable {
     auto count = depth >= word.size() ? depth - word.size() + 1 : 0;
     while (count--) {
