@@ -55,45 +55,26 @@ bool vertical_search(
 bool slope_search(
     auto& data, std::uint32_t rows, std::uint32_t columns, std::string_view word
 ) {
-  std::vector<char> slope_data(rows);
+  auto word_found = [&word, slope_data = std::vector<char>(rows)](
+                        const char* source, auto n, uint32_t depth, auto steps
+                    ) mutable {
+    auto count = depth >= word.size() ? depth - word.size() + 1 : 0;
+    while (count--) {
+      xcopy(source, depth, steps, slope_data.data());
+      std::string_view slope_view{slope_data.data(), depth--};
+      if (slope_view.contains(word) || rcontains(slope_view, word))
+        return true;
+      source += n;
+    }
 
-  auto depth = rows, steps = columns + 1u;
-  const char* source = &data[0][0];
-  while (depth >= word.size()) {
-    xcopy(source++, depth, steps, slope_data.data());
-    std::string_view slope_view{slope_data.data(), depth--};
-    if (slope_view.contains(word) || rcontains(slope_view, word))
-      return true;
-  }
+    return false;
+  };
 
-  depth = rows - 1u, source = &data[1][0];
-  while (depth >= word.size()) {
-    xcopy(source, depth, steps, slope_data.data());
-    std::string_view slope_view{slope_data.data(), depth--};
-    if (slope_view.contains(word) || rcontains(slope_view, word))
-      return true;
-    source += columns;
-  }
-
-  depth = rows, source = &data[rows - 1][0];
-  steps = columns - 1;
-  while (depth >= word.size()) {
-    xcopy(source++, depth, -int(steps), slope_data.data());
-    std::string_view slope_view{slope_data.data(), depth--};
-    if (slope_view.contains(word) || rcontains(slope_view, word))
-      return true;
-  }
-
-  depth = rows - 1u, source = &data[rows - 2][0];
-  while (depth >= word.size()) {
-    xcopy(source, depth, -int(steps), slope_data.data());
-    std::string_view slope_view{slope_data.data(), depth--};
-    if (slope_view.contains(word) || rcontains(slope_view, word))
-      return true;
-    source -= columns;
-  }
-
-  return false;
+  const int rstep = -static_cast<int>(columns - 1);
+  return word_found(&data[0][0], 1, rows, columns + 1) ||
+         word_found(&data[1][0], columns, rows - 1, columns + 1) ||
+         word_found(&data[rows - 1][0], 1, rows, rstep) ||
+         word_found(&data[rows - 2][0], -int(columns), rows - 1, rstep);
 }
 
 namespace {
