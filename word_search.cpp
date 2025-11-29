@@ -77,6 +77,18 @@ bool slope_search(
          word_found(&data[rows - 2][0], -int(columns), rows - 1, rstep);
 }
 
+bool word_search(const auto& data, std::string_view word) {
+  const auto rows = data.size();
+  if (rows == 0)
+    return false;
+
+  const auto columns = data[0].size();
+
+  return horizontal_search(data, rows, columns, word) ||
+         vertical_search(data, rows, columns, word) ||
+         slope_search(data, rows, columns, word);
+}
+
 namespace {
 std::array<std::array<char, 10>, 10> puzzle{
     std::array{'x', 'x', 'x', 'x', 'd', 'x', 'x', 'x', 'x', 'x'},
@@ -140,5 +152,18 @@ TEST_CASE("rcontains", "[!benchmark]") {
   std::string_view data{"xxesreverh"};
   BENCHMARK("rcontains(data, ooo)") {
     return rcontains(data, "ooo");
+  };
+}
+
+TEST_CASE("word_search") {
+  REQUIRE(word_search(puzzle, "000") == false);
+  REQUIRE(word_search(puzzle, "horizontal") == true);
+  REQUIRE(word_search(puzzle, "vertical") == true);
+  REQUIRE(word_search(puzzle, "tilted") == true);
+}
+
+TEST_CASE("word_search", "[!benchmark]") {
+  BENCHMARK("word_search(puzzle, ooo)") {
+    return word_search(puzzle, "ooo");
   };
 }
