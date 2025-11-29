@@ -18,7 +18,8 @@ bool rcontains(std::string_view source, std::string_view word) {
 }
 
 bool horizontal_search(
-    auto& data, std::uint32_t rows, std::uint32_t columns, std::string_view word
+    const auto& data, std::uint32_t rows, std::uint32_t columns,
+    std::string_view word
 ) {
   while (rows--) {
     std::string_view row_view{&data[rows][columns], columns};
@@ -37,7 +38,8 @@ void xcopy(const char* source, uint32_t depth, auto steps, char* destination) {
 }
 
 bool vertical_search(
-    auto& data, std::uint32_t rows, std::uint32_t columns, std::string_view word
+    const auto& data, std::uint32_t rows, std::uint32_t columns,
+    std::string_view word
 ) {
   std::vector<char> column_data(rows);
 
@@ -53,7 +55,8 @@ bool vertical_search(
 }
 
 bool slope_search(
-    auto& data, std::uint32_t rows, std::uint32_t columns, std::string_view word
+    const auto& data, std::uint32_t rows, std::uint32_t columns,
+    std::string_view word
 ) {
   auto word_found = [&word, slope_data = std::vector<char>(rows)](
                         const char* source, auto n, uint32_t depth, auto steps
