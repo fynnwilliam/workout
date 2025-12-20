@@ -1,5 +1,6 @@
 #include <catch2/benchmark/catch_benchmark.hpp>
 #include <catch2/catch_test_macros.hpp>
+#include <numeric>
 
 auto extract_unique(const auto& v) {
   std::vector<int> unique_numbers;
