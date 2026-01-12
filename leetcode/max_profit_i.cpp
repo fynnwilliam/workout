@@ -2,20 +2,20 @@
 #include <catch2/catch_test_macros.hpp>
 
 int max_profit_i(const std::vector<int>& prices) {
-  int max_profit = 0;
   const auto size = prices.size();
 
-  for (size_t i = 0, i_size = size - 1; i < i_size; ++i) {
-    const int& price = prices[i];
-    int sell = price;
-    for (size_t j = i + 1; j < size; ++j) {
-      if (int p = prices[j]; p > sell)
-        sell = p;
-    }
+  if (size < 2) return 0;
 
-    const int profit = sell - price;
-    if (profit > max_profit)
-      max_profit = profit;
+  std::vector<int> bids(size, 0);
+  for (size_t i = size - 2; i > 0; --i) {
+    bids[i] = std::max(bids[i + 1], prices[i + 1]);
+  }
+
+  bids[0] = std::max(bids[1], prices[1]);
+
+  int max_profit = 0;
+  for (size_t i = 0, i_size = size - 1; i < i_size; ++i) {
+    max_profit = std::max(bids[i] - prices[i], max_profit);
   }
 
   return max_profit;
